@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
+
+    [SerializeField]
+    private CharacterController characterController;
 
     [SerializeField]
     private Camera playerCamera;
@@ -50,19 +54,34 @@ public class BuildingSystem : MonoBehaviour
         {
             RaycastHit buildPosHit;
 
-            if (Physics.Raycast(playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)), out buildPosHit, 10, buildableSurfacesLayer))
+            if (Physics.Raycast(playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)), out buildPosHit, 8, buildableSurfacesLayer))
             {
                 Vector3 point = buildPosHit.point;
-                buildPos = new Vector3(Mathf.Round(point.x), Mathf.Round(point.y)+1/2f, Mathf.Round(point.z));
+
+                float xOffset;
+                float zOffset;
+
+                if (characterController.transform.rotation.eulerAngles.y > 0 && characterController.transform.rotation.eulerAngles.y < 180)
+                    xOffset = -.1f;
+                else
+                    xOffset = .1f;
+
+                if (characterController.transform.rotation.eulerAngles.y > 270 || characterController.transform.rotation.eulerAngles.y < 90)
+                    zOffset = -.1f;
+                else
+                    zOffset = .1f;
+
+                buildPos = new Vector3(Mathf.Round(point.x + xOffset), Mathf.FloorToInt(point.y+1f/2f), Mathf.Round(point.z + zOffset));
                 canBuild = true;
             }
             else
             {
-                if(currentTemplateBlock != null)
+                if (currentTemplateBlock != null)
                     Destroy(currentTemplateBlock.gameObject);
-                canBuild = false;
+                    canBuild = false;
             }
         }
+
 
         if (!buildModeOn && currentTemplateBlock != null)
         {
@@ -81,9 +100,7 @@ public class BuildingSystem : MonoBehaviour
             currentTemplateBlock.transform.position = buildPos;
 
             if (Input.GetMouseButtonDown(0))
-            {
                 PlaceBlock();
-            }
         }
     }
 

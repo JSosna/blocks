@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377780265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb61e52223aa8a64f87d39c3c38ca8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 995338404}
   playerCamera: {fileID: 1709924587}
   buildableSurfacesLayer:
     serializedVersion: 2
@@ -795,6 +796,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931448194}
   m_CullTransparentMesh: 0
+--- !u!143 &995338404 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 888517965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251724335
 GameObject:
   m_ObjectHideFlags: 0
