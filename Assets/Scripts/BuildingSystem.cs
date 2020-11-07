@@ -73,6 +73,10 @@ public class BuildingSystem : MonoBehaviour
 
                 buildPos = new Vector3(Mathf.Round(point.x + xOffset), Mathf.FloorToInt(point.y+1f/2f), Mathf.Round(point.z + zOffset));
                 canBuild = true;
+
+
+                if (Input.GetMouseButtonDown(1))
+                    Destroy(buildPosHit.transform.gameObject);
             }
             else
             {
