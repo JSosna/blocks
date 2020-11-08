@@ -2,9 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingSystem : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject toolbar;
+    private int selectedSlot = 0;
 
     [SerializeField]
     private CharacterController characterController;
@@ -37,18 +41,36 @@ public class BuildingSystem : MonoBehaviour
     private void Start()
     {
         blockSystem = GetComponent<BlockSystem>();
+        HandleSlotChange(0);
     }
 
     private void Update()
     {
         // change to pick blocks with keys (1-9) or scroll
-        if (Input.GetKeyDown("1")) buildModeOn = !buildModeOn;
+        if (Input.GetKeyDown("b"))
+            buildModeOn = !buildModeOn;
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f) // forward
         {
-            blockSelectCounter++;
-            if (blockSelectCounter >= blockSystem.allBlocks.Count) blockSelectCounter = 0;
+            if(selectedSlot < 8)
+                HandleSlotChange(selectedSlot+1);
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // backwards
+        {
+            if (selectedSlot > 0)
+                HandleSlotChange(selectedSlot - 1);
+        }
+
+
+        if (Input.GetKeyDown("1")) HandleSlotChange(0);
+        if (Input.GetKeyDown("2")) HandleSlotChange(1);
+        if (Input.GetKeyDown("3")) HandleSlotChange(2);
+        if (Input.GetKeyDown("4")) HandleSlotChange(3);
+        if (Input.GetKeyDown("5")) HandleSlotChange(4);
+        if (Input.GetKeyDown("6")) HandleSlotChange(5);
+        if (Input.GetKeyDown("7")) HandleSlotChange(6);
+        if (Input.GetKeyDown("8")) HandleSlotChange(7);
+        if (Input.GetKeyDown("9")) HandleSlotChange(8);
 
         if (buildModeOn)
         {
@@ -106,6 +128,18 @@ public class BuildingSystem : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 PlaceBlock();
         }
+    }
+
+    private void HandleSlotChange(int newSelection)
+    {
+        blockSelectCounter = newSelection;
+
+        GameObject oldSlot = toolbar.transform.GetChild(selectedSlot).gameObject;
+        oldSlot.GetComponent<Image>().color = new Color32(0, 0, 0, 255);
+
+        GameObject newSlot = toolbar.transform.GetChild(newSelection).gameObject;
+        newSlot.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        selectedSlot = newSelection;
     }
 
     private void PlaceBlock()
