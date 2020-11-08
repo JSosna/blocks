@@ -82,18 +82,26 @@ public class BuildingSystem : MonoBehaviour
 
                 float xOffset;
                 float zOffset;
+                float xCameraOffset;
 
                 if (characterController.transform.rotation.eulerAngles.y > 0 && characterController.transform.rotation.eulerAngles.y < 180)
-                    xOffset = -.1f;
+                    xOffset = -.02f;
                 else
-                    xOffset = .1f;
+                    xOffset = .02f;
 
                 if (characterController.transform.rotation.eulerAngles.y > 270 || characterController.transform.rotation.eulerAngles.y < 90)
-                    zOffset = -.1f;
+                    zOffset = -.02f;
                 else
-                    zOffset = .1f;
+                    zOffset = .02f;
 
-                buildPos = new Vector3(Mathf.Round(point.x + xOffset), Mathf.FloorToInt(point.y+1f/2f), Mathf.Round(point.z + zOffset));
+                GameObject camera = characterController.transform.GetChild(0).gameObject;
+
+                if (camera.transform.rotation.eulerAngles.x > 270)
+                    xCameraOffset = -.02f;
+                else
+                    xCameraOffset = .02f;
+
+                buildPos = new Vector3(Mathf.Round(point.x + xOffset), Mathf.Round(point.y + xCameraOffset), Mathf.Round(point.z + zOffset));
                 canBuild = true;
 
 
