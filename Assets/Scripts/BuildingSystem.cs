@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildingSystem : MonoBehaviour
@@ -12,6 +9,7 @@ public class BuildingSystem : MonoBehaviour
 
     [SerializeField]
     private CharacterController characterController;
+    private GameObject characterCamera;
 
     [SerializeField]
     private Camera playerCamera;
@@ -41,7 +39,12 @@ public class BuildingSystem : MonoBehaviour
     private void Start()
     {
         blockSystem = GetComponent<BlockSystem>();
+        
+        // Set to start game with the first slot
         HandleSlotChange(0);
+
+        // get camera
+        characterCamera = characterController.transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -84,6 +87,7 @@ public class BuildingSystem : MonoBehaviour
                 float zOffset;
                 float xCameraOffset;
 
+                // .02f, so you can place blocks in corners
                 if (characterController.transform.rotation.eulerAngles.y > 0 && characterController.transform.rotation.eulerAngles.y < 180)
                     xOffset = -.02f;
                 else
@@ -94,9 +98,7 @@ public class BuildingSystem : MonoBehaviour
                 else
                     zOffset = .02f;
 
-                GameObject camera = characterController.transform.GetChild(0).gameObject;
-
-                if (camera.transform.rotation.eulerAngles.x > 270)
+                if (characterCamera.transform.rotation.eulerAngles.x > 270)
                     xCameraOffset = -.02f;
                 else
                     xCameraOffset = .02f;
