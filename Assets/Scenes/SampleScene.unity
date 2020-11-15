@@ -558,6 +558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dimensions: 70
+  power: 15
+  density: 0.5
   blockPrefab: {fileID: 1573481866022216373, guid: 9337afb6f1866614cb968a2e73ca6137, type: 3}
 --- !u!1 &510324453
 GameObject:
@@ -1518,7 +1520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.36
+      value: 34.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z

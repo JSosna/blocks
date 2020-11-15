@@ -8,6 +8,12 @@ public class TerrainGenerator : MonoBehaviour
     private int dimensions = 70;
 
     [SerializeField]
+    private float power = 8;
+
+    [SerializeField]
+    private float density = 1;
+
+    [SerializeField]
     private GameObject blockPrefab;
 
     private BlockSystem blockSystem;
@@ -20,14 +26,15 @@ public class TerrainGenerator : MonoBehaviour
 
     void generatePlane()
     {
-        for(int x = 0; x < dimensions; x++)
+        for(float x = 0; x < dimensions/10; x+=.1f)
         {
-            for(int z = 0; z < dimensions; z++)
+            for(float z = 0; z < dimensions/10; z+=.1f)
             {
-                int y = Random.Range(0, 3);
-                placeBlock(x - dimensions / 2, y, z - dimensions / 2, 0);
-                placeBlock(x - dimensions / 2, y + 1, z - dimensions / 2, 0);
-                placeBlock(x - dimensions / 2, y + 1, z - dimensions / 2, 1);   // top layer - "grass"
+                float y = Mathf.PerlinNoise(x*density, z*density) * power;
+                Debug.Log((x) + " " + (z) + " = " +y);
+                placeBlock((int)(x * 10) - dimensions / 2, (int)y, (int)(z * 10) - dimensions / 2, 0);
+                placeBlock((int)(x * 10) - dimensions / 2, (int)y + 1, (int)(z * 10) - dimensions / 2, 0);
+                placeBlock((int)(x * 10) - dimensions / 2, (int)y + 2, (int)(z * 10) - dimensions / 2, 1);   // top layer - "grass"
             }
         }
     }
