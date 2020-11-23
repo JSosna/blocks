@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BuildingSystem : MonoBehaviour
 {
-    [SerializeField]
+    /*[SerializeField]
     private GameObject toolbar;
     private int selectedSlot = 0;
 
@@ -158,5 +158,5 @@ public class BuildingSystem : MonoBehaviour
         Block tempBlock = blockSystem.allBlocks[blockSelectCounter];
         newBlock.name = tempBlock.blockName + "-Block";
         newBlock.GetComponent<MeshRenderer>().material = tempBlock.blockMaterial;
-    }
+    }*/
 }

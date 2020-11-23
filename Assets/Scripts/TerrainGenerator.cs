@@ -4,46 +4,49 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    [SerializeField]
-    private int dimensions = 70;
 
     [SerializeField]
     private float power = 8;
-
     [SerializeField]
-    private float density = 1;
+    private float density = .1f;
 
-    [SerializeField]
-    private GameObject blockPrefab;
+    public GameObject terrainChunk;
+    public Transform player;
 
-    private BlockSystem blockSystem;
+    Dictionary<Vector2Int, TerrainChunk> chunks = new Dictionary<Vector2Int, TerrainChunk>();
+
 
     void Start()
     {
-        blockSystem = GetComponent<BlockSystem>();
-        generatePlane();
+        CreateChunk(-5, -5);
     }
 
-    void generatePlane()
+
+    void CreateChunk(int chunkX, int chunkZ)
     {
-        for(float x = 0; x < dimensions/10; x+=.1f)
-        {
-            for(float z = 0; z < dimensions/10; z+=.1f)
-            {
-                float y = Mathf.PerlinNoise(x*density, z*density) * power;
-                Debug.Log((x) + " " + (z) + " = " +y);
-                placeBlock((int)(x * 10) - dimensions / 2, (int)y, (int)(z * 10) - dimensions / 2, 0);
-                placeBlock((int)(x * 10) - dimensions / 2, (int)y + 1, (int)(z * 10) - dimensions / 2, 0);
-                placeBlock((int)(x * 10) - dimensions / 2, (int)y + 2, (int)(z * 10) - dimensions / 2, 1);   // top layer - "grass"
-            }
-        }
+        GameObject chunk = Instantiate(this.terrainChunk, new Vector3(chunkX, 0, chunkZ), Quaternion.identity);
+        TerrainChunk terrainChunk = chunk.GetComponent<TerrainChunk>();
+
+        LoadBlocks(chunkX, chunkZ, terrainChunk);
+        terrainChunk.GenerateMesh();
+
+        chunks.Add(new Vector2Int(chunkX, chunkZ), terrainChunk);
     }
 
-    void placeBlock(int x, int y, int z, int type)
+    private void LoadBlocks(int chunkX, int chunkZ, TerrainChunk terrainChunk)
     {
-        GameObject newBlock = Instantiate(blockPrefab, new Vector3(x, y, z), Quaternion.identity);
-        Block tempBlock = blockSystem.allBlocks[type];
-        newBlock.name = tempBlock.blockName + "-Block";
-        newBlock.GetComponent<MeshRenderer>().material = tempBlock.blockMaterial;
+        for (int x = 0; x < TerrainChunk.chunkWidth + 2; x++)
+            for (int z = 0; z < TerrainChunk.chunkWidth + 2; z++)
+                for (int y = 0; y < TerrainChunk.chunkHeight; y++)
+                    if (GetBlock(chunkX, chunkZ, x, z, y))
+                        // 1 - there isn't any block, 0 - there is a block
+                        terrainChunk.blocks[x, y, z] = 1;
+    }
+
+    private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
+    {
+        double perlinValue = Mathf.PerlinNoise((chunkX + x - 1) * density, (chunkZ + z - 1) * density) * power + y;
+
+        return perlinValue < TerrainChunk.chunkHeight / 3;
     }
 }

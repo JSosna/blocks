@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BlockSystem : MonoBehaviour
 {
-
+/*
     [SerializeField]
     private BlockType[] allBlockTypes;
 
@@ -22,10 +22,10 @@ public class BlockSystem : MonoBehaviour
             allBlocks[i] = newBlock;
             Debug.Log("Block added to dictionary " + allBlocks[i].blockName);
         }
-    }
+    }*/
 }
 
-public class Block
+/*public class Block
 {
     public int blockID;
     public string blockName;
@@ -44,4 +44,4 @@ public struct BlockType
 {
     public string blockName;
     public Material blockMat;
-}
+}*/
