@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.021
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.3490566, g: 0.3378305, b: 0.30789426, a: 1}
@@ -534,8 +534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bd0b2e3bc37a24f90ab992e7a0070e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 15
-  density: 0.04
+  power: 60
+  density: 1
+  viewDistance: 7
   terrainChunk: {fileID: 2291862893387533456, guid: 4926e0297c89cb0438e77d9694a80c5a, type: 3}
   player: {fileID: 259832456}
 --- !u!1 &510324453

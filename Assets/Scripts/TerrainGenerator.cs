@@ -25,10 +25,13 @@ public class TerrainGenerator : MonoBehaviour
 
     FastNoise fastNoise = new FastNoise();
 
+    private float noise;
+    private float noise2;
+    private float noise3;
+
 
     void Update()
     {
-        //CreateChunk(-5, -5);
         LoadChunks();
     }
 
@@ -56,9 +59,11 @@ public class TerrainGenerator : MonoBehaviour
 
     private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
     {
-        double noise = fastNoise.GetPerlin((chunkX + x - 1) * density, (chunkZ + z - 1) * density) * power + y;
+        noise = fastNoise.GetPerlin((chunkX + x - 1) * density, (chunkZ + z - 1) * density) * power + y;
+        noise2 = .5f * fastNoise.GetPerlin((chunkX + x - 1) * density * 2, (chunkZ + z - 1) * density * 2) * power + y;
+        noise3 = .25f * fastNoise.GetPerlin((chunkX + x - 1) * density * 4, (chunkZ + z - 1) * density * 4) * power + y;
 
-        return noise < TerrainChunk.chunkHeight / 3;
+        return noise + noise2 + noise3 < TerrainChunk.chunkHeight;
     }
 
     void LoadChunks()
