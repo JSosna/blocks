@@ -6,11 +6,11 @@ public class TerrainGenerator : MonoBehaviour
 {
 
     [SerializeField]
-    private float power = 8;        // default 8
+    private float strength = 50;
     [SerializeField]
-    private float density = .1f;    // (Frequency) default .1f
+    private float frequency = 1.5f;
     [SerializeField]
-    private int viewDistance = 2;   // default 4
+    private int viewDistance = 5;
 
     public GameObject terrainChunk;
     public Transform player;
@@ -29,6 +29,12 @@ public class TerrainGenerator : MonoBehaviour
     private float noise2;
     private float noise3;
 
+    private void Start()
+    {
+        viewDistance = CrossSceneData.ViewDistance;
+        frequency = CrossSceneData.Frequency;
+        strength = CrossSceneData.Strength;
+    }
 
     void Update()
     {
@@ -66,9 +72,9 @@ public class TerrainGenerator : MonoBehaviour
 
     private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
     {
-        noise = fastNoise.GetPerlin((chunkX + x - 1) * density, (chunkZ + z - 1) * density) * power + y;
-        noise2 = .5f * fastNoise.GetPerlin((chunkX + x - 1) * density * 2, (chunkZ + z - 1) * density * 2) * power + y;
-        noise3 = .25f * fastNoise.GetPerlin((chunkX + x - 1) * density * 4, (chunkZ + z - 1) * density * 4) * power + y;
+        noise = fastNoise.GetPerlin((chunkX + x - 1) * frequency, (chunkZ + z - 1) * frequency) * strength + y;
+        noise2 = .5f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 2, (chunkZ + z - 1) * frequency * 2) * strength + y;
+        noise3 = .25f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 4, (chunkZ + z - 1) * frequency * 4) * strength + y;
 
         return noise + noise2 + noise3 < TerrainChunk.chunkHeight;
     }

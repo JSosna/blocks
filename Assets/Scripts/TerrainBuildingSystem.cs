@@ -103,14 +103,15 @@ public class TerrainBuildingSystem : MonoBehaviour
             // replace block with air if right click - (button == true)
             if (button)
             {
-                if(biy != 0) // we can't destroy blocks on the bottom of the map
+                
+                if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
                     tc.blocks[bix, biy, biz] = BlockType.Air;
                     tc.GenerateMesh();
                 }
             }
             // left click
-            else
+            else if (biy <= TerrainChunk.chunkHeight - 2) // and we can't place blocks above the limit
             {
                 tc.blocks[bix, biy, biz] = (BlockType)(blockSelectCounter + 2);
                 tc.GenerateMesh();
