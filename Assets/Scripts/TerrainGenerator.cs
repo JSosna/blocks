@@ -6,11 +6,11 @@ public class TerrainGenerator : MonoBehaviour
 {
 
     [SerializeField]
-    private float power = 8;
+    private float power = 8;        // default 8
     [SerializeField]
-    private float density = .1f;
+    private float density = .1f;    // (Frequency) default .1f
     [SerializeField]
-    private int viewDistance = 4;
+    private int viewDistance = 2;   // default 4
 
     public GameObject terrainChunk;
     public Transform player;
@@ -52,9 +52,16 @@ public class TerrainGenerator : MonoBehaviour
         for (int x = 0; x < TerrainChunk.chunkWidth + 2; x++)
             for (int z = 0; z < TerrainChunk.chunkWidth + 2; z++)
                 for (int y = 0; y < TerrainChunk.chunkHeight; y++)
-                    if (GetBlock(chunkX, chunkZ, x, z, y))
-                        // 1 - there isn't any block, 0 - there is a block
-                        terrainChunk.blocks[x, y, z] = BlockType.Grass;
+                    if (GetBlock(chunkX, chunkZ, x, z, y - 15))
+                    {
+                        // on the bottom of the map create sth like bedrock (not destroyable)
+                        if (y == 0)
+                            terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
+                        else if (y < 10)
+                            terrainChunk.blocks[x, y, z] = BlockType.Stone;
+                        else
+                            terrainChunk.blocks[x, y, z] = BlockType.Grass;
+                    }
     }
 
     private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
@@ -68,7 +75,6 @@ public class TerrainGenerator : MonoBehaviour
 
     void LoadChunks()
     {
-        // TODO: There is a little lag when destroying/creating new chunks, so try to generate them in circle instead of square to save some processing power
         // Divided loading and destroying chunks into two parts for better performance. New chunks load when you enter new one, and old chunks are destroyed when you are half way in this new chunk
         currentChunkPos.x = Mathf.FloorToInt(player.position.x / TerrainChunk.chunkWidth) * TerrainChunk.chunkWidth;
         currentChunkPos.y = Mathf.FloorToInt(player.position.z / TerrainChunk.chunkWidth) * TerrainChunk.chunkWidth;
@@ -81,10 +87,12 @@ public class TerrainGenerator : MonoBehaviour
         {
             lastChunkPos = currentChunkPos;
 
-            for (int x = currentChunkPos.x - 16 * viewDistance; x <= currentChunkPos.x + 16 * viewDistance; x += 16)
-                for (int z = currentChunkPos.y - 16 * viewDistance; z <= currentChunkPos.y + 16 * viewDistance; z += 16)
+            for (int x = currentChunkPos.x - TerrainChunk.chunkWidth * viewDistance; x <= currentChunkPos.x + TerrainChunk.chunkWidth * viewDistance; x += TerrainChunk.chunkWidth)
+                for (int z = currentChunkPos.y - TerrainChunk.chunkWidth * viewDistance; z <= currentChunkPos.y + TerrainChunk.chunkWidth * viewDistance; z += TerrainChunk.chunkWidth)
                     if (!chunks.ContainsKey(new Vector2Int(x, z)))
-                        CreateChunk(x, z);
+                        // (Mathf.Pow is slower)
+                        if((x - currentChunkPos.x) * (x - currentChunkPos.x) + (z - currentChunkPos.y) * (z - currentChunkPos.y) <= viewDistance * TerrainChunk.chunkWidth * viewDistance * TerrainChunk.chunkWidth)
+                            CreateChunk(x, z);
         }
 
 
@@ -97,7 +105,8 @@ public class TerrainGenerator : MonoBehaviour
             foreach (KeyValuePair<Vector2Int, TerrainChunk> c in chunks)
             {
                 Vector2Int cp = c.Key;
-                if (Mathf.Abs(currentChunkPos.x - cp.x) > 16 * viewDistance || Mathf.Abs(currentChunkPos.y - cp.y) > 16 * viewDistance)
+                // Destroy chunks outside of the circle
+                if ((cp.x - currentChunkPos.x) * (cp.x - currentChunkPos.x) + (cp.y - currentChunkPos.y) * (cp.y - currentChunkPos.y) >= (viewDistance + 1) * TerrainChunk.chunkWidth * (viewDistance + 1) * TerrainChunk.chunkWidth)
                     toDestroy.Add(c.Key);
             }
 

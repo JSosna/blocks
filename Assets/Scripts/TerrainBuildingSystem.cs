@@ -88,8 +88,8 @@ public class TerrainBuildingSystem : MonoBehaviour
                 pointInTargetBlock = hitInfo.point - transform.forward * .01f;
 
             // get the terrain chunk
-            int chunkPosX = Mathf.FloorToInt(pointInTargetBlock.x / 16f) * 16;
-            int chunkPosZ = Mathf.FloorToInt(pointInTargetBlock.z / 16f) * 16;
+            int chunkPosX = Mathf.FloorToInt(pointInTargetBlock.x / TerrainChunk.chunkWidth) * TerrainChunk.chunkWidth;
+            int chunkPosZ = Mathf.FloorToInt(pointInTargetBlock.z / TerrainChunk.chunkWidth) * TerrainChunk.chunkWidth;
 
             Vector2Int cp = new Vector2Int(chunkPosX, chunkPosZ);
 
@@ -103,8 +103,11 @@ public class TerrainBuildingSystem : MonoBehaviour
             // replace block with air if right click - (button == true)
             if (button)
             {
-                tc.blocks[bix, biy, biz] = BlockType.Air;
-                tc.GenerateMesh();
+                if(biy != 0) // we can't destroy blocks on the bottom of the map
+                {
+                    tc.blocks[bix, biy, biz] = BlockType.Air;
+                    tc.GenerateMesh();
+                }
             }
             // left click
             else

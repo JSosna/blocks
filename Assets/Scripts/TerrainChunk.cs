@@ -4,7 +4,7 @@ using UnityEngine;
 public class TerrainChunk : MonoBehaviour
 {
     public const int chunkWidth = 16;
-    public const int chunkHeight = 40;
+    public const int chunkHeight = 60;
 
     public BlockType[,,] blocks = new BlockType[chunkWidth + 2, chunkHeight, chunkWidth + 2];
 
@@ -50,7 +50,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // front
-                        if (blocks[x, y, z - 1] == BlockType.Air)
+                        if (blocks[x, y, z - 1] == BlockType.Air || z - 1 == 0)
                         {
                             verts.Add(blockPos + new Vector3(0, 0, 0));
                             verts.Add(blockPos + new Vector3(0, 1, 0));
@@ -62,7 +62,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // back
-                        if (blocks[x, y, z + 1] == BlockType.Air)
+                        if (blocks[x, y, z + 1] == BlockType.Air || z == chunkWidth)
                         {
                             verts.Add(blockPos + new Vector3(1, 0, 1));
                             verts.Add(blockPos + new Vector3(1, 1, 1));
@@ -74,7 +74,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // left
-                        if (blocks[x - 1, y, z] == BlockType.Air)
+                        if (blocks[x - 1, y, z] == BlockType.Air || x - 1 == 0)
                         {
                             verts.Add(blockPos + new Vector3(0, 0, 1));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
@@ -86,7 +86,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // right
-                        if (blocks[x + 1, y, z] == BlockType.Air)
+                        if (blocks[x + 1, y, z] == BlockType.Air || x == chunkWidth)
                         {
                             verts.Add(blockPos + new Vector3(1, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 1, 0));
