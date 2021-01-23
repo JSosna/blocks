@@ -21,7 +21,7 @@ public class TerrainGenerator : MonoBehaviour
     private Vector2Int currentChunkHalfPos;
     private Vector2Int lastChunkHalpPos = new Vector2Int(0, 0);
 
-    Dictionary<Vector2Int, TerrainChunk> chunks = new Dictionary<Vector2Int, TerrainChunk>();
+    public static Dictionary<Vector2Int, TerrainChunk> chunks = new Dictionary<Vector2Int, TerrainChunk>();
 
     FastNoise fastNoise = new FastNoise();
 
@@ -54,7 +54,7 @@ public class TerrainGenerator : MonoBehaviour
                 for (int y = 0; y < TerrainChunk.chunkHeight; y++)
                     if (GetBlock(chunkX, chunkZ, x, z, y))
                         // 1 - there isn't any block, 0 - there is a block
-                        terrainChunk.blocks[x, y, z] = 1;
+                        terrainChunk.blocks[x, y, z] = BlockType.Grass;
     }
 
     private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
