@@ -24,8 +24,9 @@ public class TerrainBuildingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.GamePaused) return;
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
             HandleMouseClick(false);
         else if (Input.GetMouseButtonDown(1))
             HandleMouseClick(true);

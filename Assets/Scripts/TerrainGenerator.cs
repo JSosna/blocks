@@ -21,7 +21,7 @@ public class TerrainGenerator : MonoBehaviour
     private Vector2Int currentChunkHalfPos;
     private Vector2Int lastChunkHalpPos = new Vector2Int(0, 0);
 
-    public static Dictionary<Vector2Int, TerrainChunk> chunks = new Dictionary<Vector2Int, TerrainChunk>();
+    public static Dictionary<Vector2Int, TerrainChunk> chunks;
 
     FastNoise fastNoise = new FastNoise();
 
@@ -31,6 +31,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Start()
     {
+        chunks = new Dictionary<Vector2Int, TerrainChunk>();
         viewDistance = CrossSceneData.ViewDistance;
         frequency = CrossSceneData.Frequency;
         strength = CrossSceneData.Strength;

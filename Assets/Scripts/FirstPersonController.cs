@@ -19,6 +19,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
         [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] private float m_BaseMouseXSensitivity;
+        [SerializeField] private float m_BaseMouseYSensitivity;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -62,6 +64,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if (PauseMenu.GamePaused)
+            {
+                m_MouseLook.XSensitivity = 0.03f;
+                m_MouseLook.YSensitivity = 0.03f;
+            } else
+            {
+                m_MouseLook.XSensitivity = m_BaseMouseXSensitivity;
+                m_MouseLook.YSensitivity = m_BaseMouseYSensitivity;
+            }
+
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)

@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class BaseMenu : MonoBehaviour
 {
 
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
