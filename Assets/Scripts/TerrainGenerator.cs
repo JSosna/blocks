@@ -10,7 +10,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField]
     private float frequency = 1.5f;
     [SerializeField]
-    private int viewDistance = 5;
+    private int viewDistance = 8;
 
     public GameObject terrainChunk;
     public Transform player;
@@ -29,6 +29,9 @@ public class TerrainGenerator : MonoBehaviour
     private float noise2;
     private float noise3;
 
+    private List<Vector2Int> chunksToLoad = new List<Vector2Int>();
+    public static bool InitialMapLoaded { get; set; } = false;
+
     private void Start()
     {
         chunks = new Dictionary<Vector2Int, TerrainChunk>();
@@ -39,7 +42,16 @@ public class TerrainGenerator : MonoBehaviour
 
     void Update()
     {
-        LoadChunks();
+        if(chunksToLoad.Count != 0)
+        {
+            CreateChunk(chunksToLoad[chunksToLoad.Count - 1].x, chunksToLoad[chunksToLoad.Count - 1].y);
+            chunksToLoad.RemoveAt(chunksToLoad.Count - 1);
+            if (chunksToLoad.Count == 0) InitialMapLoaded = true;
+        }
+        else
+        {
+            LoadChunks();
+        }
     }
 
 
@@ -66,8 +78,10 @@ public class TerrainGenerator : MonoBehaviour
                             terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
                         else if (y < 10)
                             terrainChunk.blocks[x, y, z] = BlockType.Stone;
-                        else
+                        else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
                             terrainChunk.blocks[x, y, z] = BlockType.Grass;
+                        else
+                            terrainChunk.blocks[x, y, z] = BlockType.Dirt;
                     }
     }
 
@@ -98,8 +112,8 @@ public class TerrainGenerator : MonoBehaviour
                 for (int z = currentChunkPos.y - TerrainChunk.chunkWidth * viewDistance; z <= currentChunkPos.y + TerrainChunk.chunkWidth * viewDistance; z += TerrainChunk.chunkWidth)
                     if (!chunks.ContainsKey(new Vector2Int(x, z)))
                         // (Mathf.Pow is slower)
-                        if((x - currentChunkPos.x) * (x - currentChunkPos.x) + (z - currentChunkPos.y) * (z - currentChunkPos.y) <= viewDistance * TerrainChunk.chunkWidth * viewDistance * TerrainChunk.chunkWidth)
-                            CreateChunk(x, z);
+                        if ((x - currentChunkPos.x) * (x - currentChunkPos.x) + (z - currentChunkPos.y) * (z - currentChunkPos.y) <= viewDistance * TerrainChunk.chunkWidth * viewDistance * TerrainChunk.chunkWidth)
+                            chunksToLoad.Add(new Vector2Int(x, z)); //CreateChunk(x, z);
         }
 
 

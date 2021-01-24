@@ -4,7 +4,7 @@ using UnityEngine;
 public class TerrainChunk : MonoBehaviour
 {
     public const int chunkWidth = 16;
-    public const int chunkHeight = 60;
+    public const int chunkHeight = 100;
 
     public BlockType[,,] blocks = new BlockType[chunkWidth + 2, chunkHeight, chunkWidth + 2];
 

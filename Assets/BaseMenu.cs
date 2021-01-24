@@ -10,6 +10,9 @@ public class BaseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        CrossSceneData.Strength = 50;
+        CrossSceneData.Frequency = 1.5f;
     }
 
     public void StartGame()
