@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -30,7 +31,13 @@ public class TerrainGenerator : MonoBehaviour
     private float noise3;
 
     private List<Vector2Int> chunksToLoad = new List<Vector2Int>();
+    private int InitialChunksToLoadCount;
     public static bool InitialMapLoaded { get; set; } = false;
+
+    public GameObject ProgressBar;
+    public Slider ProgressBarSlider;
+    
+
 
     private void Start()
     {
@@ -46,7 +53,18 @@ public class TerrainGenerator : MonoBehaviour
         {
             CreateChunk(chunksToLoad[chunksToLoad.Count - 1].x, chunksToLoad[chunksToLoad.Count - 1].y);
             chunksToLoad.RemoveAt(chunksToLoad.Count - 1);
-            if (chunksToLoad.Count == 0) InitialMapLoaded = true;
+
+            if(!InitialMapLoaded)
+            {
+                ProgressBarSlider.value = 1 - (chunksToLoad.Count / (float)InitialChunksToLoadCount);
+
+
+                if (chunksToLoad.Count == 0)
+                {
+                    ProgressBar.SetActive(false);
+                    InitialMapLoaded = true;
+                }
+            }
         }
         else
         {
@@ -76,7 +94,7 @@ public class TerrainGenerator : MonoBehaviour
                         // on the bottom of the map create sth like bedrock (not destroyable)
                         if (y == 0)
                             terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
-                        else if (y < 10)
+                        else if (y < Random.Range(20, 25))
                             terrainChunk.blocks[x, y, z] = BlockType.Stone;
                         else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
                             terrainChunk.blocks[x, y, z] = BlockType.Grass;
@@ -114,6 +132,9 @@ public class TerrainGenerator : MonoBehaviour
                         // (Mathf.Pow is slower)
                         if ((x - currentChunkPos.x) * (x - currentChunkPos.x) + (z - currentChunkPos.y) * (z - currentChunkPos.y) <= viewDistance * TerrainChunk.chunkWidth * viewDistance * TerrainChunk.chunkWidth)
                             chunksToLoad.Add(new Vector2Int(x, z)); //CreateChunk(x, z);
+
+            if (!InitialMapLoaded)
+                InitialChunksToLoadCount = chunksToLoad.Count;
         }
 
 
