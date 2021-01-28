@@ -107,6 +107,9 @@ public class TerrainBuildingSystem : MonoBehaviour
                 
                 if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
+                    if (tc.blocks[bix, biy, biz] == BlockType.DiamondOre)
+                        Debug.Log("Diamonds, gg");
+
                     tc.blocks[bix, biy, biz] = BlockType.Air;
                     tc.GenerateMesh();
                 }

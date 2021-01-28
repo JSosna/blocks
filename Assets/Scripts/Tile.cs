@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public enum TileType { Dirt, Grass, GrassSide, Stone, Wood, WoolWhite, WoolRed, WoolBlue, WoolGreen, WoolPink, WoolBlack }
+public enum TileType { Dirt, Grass, GrassSide, Stone, Wood, WoolWhite, WoolRed, WoolBlue, WoolGreen, WoolPink, WoolBlack, DiamondOre, WoodLogTop, WoodLogSide, Leaves }
 
 
 public class Tile
@@ -31,5 +31,9 @@ public class Tile
         {TileType.WoolGreen, new Tile(6, 0)},
         {TileType.WoolPink, new Tile(7, 0)},
         {TileType.WoolBlack, new Tile(8, 0)},
+        {TileType.DiamondOre, new Tile(9, 0)},
+        {TileType.WoodLogTop, new Tile(10, 0)},
+        {TileType.WoodLogSide, new Tile(10, 1)},
+        {TileType.Leaves, new Tile(11, 0)},
     };
 }

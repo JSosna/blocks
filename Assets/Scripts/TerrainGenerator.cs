@@ -95,12 +95,63 @@ public class TerrainGenerator : MonoBehaviour
                         if (y == 0)
                             terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
                         else if (y < Random.Range(20, 25))
+                        {
                             terrainChunk.blocks[x, y, z] = BlockType.Stone;
+
+                            if(Random.Range(0, 100) < 1)
+                            {
+                                terrainChunk.blocks[x, y, z] = BlockType.DiamondOre;
+                            }
+                        }
                         else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
+                        {
                             terrainChunk.blocks[x, y, z] = BlockType.Grass;
+
+                            if (Random.Range(0, 200) < 1) {
+                                GenerateTree(terrainChunk, x, y, z);
+                            }
+                        }
+
                         else
                             terrainChunk.blocks[x, y, z] = BlockType.Dirt;
                     }
+    }
+
+    private void GenerateTree(TerrainChunk terrainChunk, int x, int y, int z)
+    {
+        if (x + 4 > terrainChunk.blocks.GetLength(0) ||
+            x - 4 < 0 ||
+            z + 4 > terrainChunk.blocks.GetLength(2) ||
+            z - 4 < 0) return;
+
+        int height = Random.Range(5, 8);
+
+        // Base of the tree
+        for(int i = 1; i < height; i++)
+        {
+            terrainChunk.blocks[x, y + i, z] = BlockType.WoodLog;
+        }
+
+        // Leaves part
+        for(int layer = 0; layer < 4; layer++)
+        {
+            if (layer == 3)
+            {
+                for (int a = 0; a < 3; a++)
+                    for (int b = 0; b < 3; b++)
+                        terrainChunk.blocks[x + a - 1, y + height + layer, z + b - 1] = BlockType.Leaves;
+            }
+            else
+            {
+                for (int a = 0; a < 7; a++)
+                    for (int b = 0; b < 7; b++)
+                        if ((3 - a) * (3 - a) + (3 - b) * (3 - b) < 8)
+                            terrainChunk.blocks[x + a - 3, y + height + layer, z + b - 3] = BlockType.Leaves;
+            }
+
+            
+        }
+
     }
 
     private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)

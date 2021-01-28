@@ -26,7 +26,7 @@ public class TerrainChunk : MonoBehaviour
                         int faces = 0;
 
                         // top
-                        if (y < chunkHeight - 1 && blocks[x, y + 1, z] == BlockType.Air)
+                        if (y < chunkHeight - 1 && blocks[x, y + 1, z] == BlockType.Air || blocks[x, y + 1, z] == BlockType.Leaves)
                         {
                             verts.Add(blockPos + new Vector3(0, 1, 0));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
@@ -38,7 +38,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // bottom
-                        if (y > 0 && blocks[x, y - 1, z] == BlockType.Air)
+                        if (y > 0 && (blocks[x, y - 1, z] == BlockType.Air || blocks[x, y - 1, z] == BlockType.Leaves))
                         {
                             verts.Add(blockPos + new Vector3(0, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 0, 0));
@@ -50,7 +50,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // front
-                        if (blocks[x, y, z - 1] == BlockType.Air || z - 1 == 0)
+                        if (blocks[x, y, z - 1] == BlockType.Air || z - 1 == 0 || blocks[x, y, z - 1] == BlockType.Leaves)
                         {
                             verts.Add(blockPos + new Vector3(0, 0, 0));
                             verts.Add(blockPos + new Vector3(0, 1, 0));
@@ -62,7 +62,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // back
-                        if (blocks[x, y, z + 1] == BlockType.Air || z == chunkWidth)
+                        if (blocks[x, y, z + 1] == BlockType.Air || z == chunkWidth || blocks[x, y, z + 1] == BlockType.Leaves)
                         {
                             verts.Add(blockPos + new Vector3(1, 0, 1));
                             verts.Add(blockPos + new Vector3(1, 1, 1));
@@ -74,7 +74,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // left
-                        if (blocks[x - 1, y, z] == BlockType.Air || x - 1 == 0)
+                        if (blocks[x - 1, y, z] == BlockType.Air || x - 1 == 0 || blocks[x - 1, y, z] == BlockType.Leaves)
                         {
                             verts.Add(blockPos + new Vector3(0, 0, 1));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
@@ -86,7 +86,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // right
-                        if (blocks[x + 1, y, z] == BlockType.Air || x == chunkWidth)
+                        if (blocks[x + 1, y, z] == BlockType.Air || x == chunkWidth || blocks[x + 1, y, z] == BlockType.Leaves)
                         {
                             verts.Add(blockPos + new Vector3(1, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 1, 0));
