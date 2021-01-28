@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 50
   frequency: 1.5
-  viewDistance: 8
+  viewDistance: 2
   terrainChunk: {fileID: 2291862893387533456, guid: 4926e0297c89cb0438e77d9694a80c5a, type: 3}
   player: {fileID: 259832456}
   ProgressBar: {fileID: 534236249}
@@ -2317,7 +2317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 86
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z

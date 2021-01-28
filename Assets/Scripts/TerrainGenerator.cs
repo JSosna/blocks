@@ -105,9 +105,15 @@ public class TerrainGenerator : MonoBehaviour
                         }
                         else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
                         {
-                            terrainChunk.blocks[x, y, z] = BlockType.Grass;
+                            if(y < 40)
+                                terrainChunk.blocks[x, y, z] = BlockType.Sand;
+                            else if (y > 60)
+                                terrainChunk.blocks[x, y, z] = BlockType.GrassSnow;
+                            else
+                                terrainChunk.blocks[x, y, z] = BlockType.Grass;
 
                             if (Random.Range(0, 200) < 1) {
+                                if(y >= 40)
                                 GenerateTree(terrainChunk, x, y, z);
                             }
                         }

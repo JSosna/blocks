@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-public enum BlockType { Air, WoolPink, Grass, Dirt, Stone, Wood, WoolWhite, WoolBlack, WoolBlue, WoolGreen, WoolRed, DiamondOre, WoodLog, Leaves }
+public enum BlockType { Air, WoolPink, Grass, Dirt, Stone, Wood, WoolWhite, WoolBlack, WoolBlue, WoolGreen, WoolRed, DiamondOre, WoodLog, Leaves, GrassSnow, Sand }
 
 
 public class Block
@@ -44,5 +44,7 @@ public class Block
         {BlockType.DiamondOre, new Block(TileType.DiamondOre)},
         {BlockType.WoodLog, new Block(TileType.WoodLogTop, TileType.WoodLogSide, TileType.WoodLogTop)},
         {BlockType.Leaves, new Block(TileType.Leaves)},
+        {BlockType.GrassSnow, new Block(TileType.GrassSnow, TileType.GrassSnowSide, TileType.Dirt)},
+        {BlockType.Sand, new Block(TileType.Sand)},
     };
 }
