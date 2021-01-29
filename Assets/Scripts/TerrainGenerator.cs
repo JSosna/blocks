@@ -123,9 +123,16 @@ public class TerrainGenerator : MonoBehaviour
             {
                 terrainChunk.blocks[x, y, z] = BlockType.Stone;
 
-                if (Random.Range(0, 100) < 1)
+                if (Random.Range(0, 50) < 1)
                 {
-                    terrainChunk.blocks[x, y, z] = BlockType.DiamondOre;
+                    var random = Random.Range(0, 20);
+
+                    if (random < 1)
+                        GenerateOre(terrainChunk, x, y, z, BlockType.DiamondOre, 2);
+                    else if (random < 8)
+                        GenerateOre(terrainChunk, x, y, z, BlockType.IronOre, 3);
+                    else
+                        GenerateOre(terrainChunk, x, y, z, BlockType.CoalOre, 3);
                 }
                 return;
             }
@@ -158,6 +165,21 @@ public class TerrainGenerator : MonoBehaviour
 
 
         
+    }
+
+    private static void GenerateOre(TerrainChunk terrainChunk, int x, int y, int z, BlockType oreType, int size)
+    {
+        for (int i = 0; i < Random.Range(1, size + 1); i++)
+            for (int j = 0; j < Random.Range(1, size + 1); j++)
+                for (int k = 0; k < Random.Range(1, size + 1); k++)
+                {
+                    if(x - i > 0 &&
+                       z - k > 0 &&
+                       y - j > 0)
+                    {
+                        terrainChunk.blocks[x - i, y - j, z - k] = oreType;
+                    }
+                }
     }
 
     private float GetHeightMap(int chunkX, int chunkZ, int x, int z, int y)
@@ -204,11 +226,8 @@ public class TerrainGenerator : MonoBehaviour
             terrainChunk.blocks[x, y + i, z] = BlockType.WoodLog;
         }
 
-        
-
         terrainChunk.blocks[x, y + height + 1, z] = BlockType.WoodLog;
         terrainChunk.blocks[x, y + height + 2, z] = BlockType.WoodLog;
-
     }
 
 

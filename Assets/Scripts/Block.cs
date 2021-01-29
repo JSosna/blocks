@@ -5,9 +5,6 @@ public enum BlockType
 { 
     Air,
 
-    WoolPink,
-
-
     Grass,
     GrassD1,
     GrassD2,
@@ -38,25 +35,20 @@ public enum BlockType
     WoolBlackD2,
     WoolBlackD3,
 
-    WoolBlue,
-    WoolBlueD1,
-    WoolBlueD2,
-    WoolBlueD3,
-
-    WoolGreen,
-    WoolGreenD1,
-    WoolGreenD2,
-    WoolGreenD3,
-
-    WoolRed,
-    WoolRedD1,
-    WoolRedD2,
-    WoolRedD3,
-
     DiamondOre,
     DiamondOreD1,
     DiamondOreD2,
     DiamondOreD3,
+
+    CoalOre,
+    CoalOreD1,
+    CoalOreD2,
+    CoalOreD3,
+
+    IronOre,
+    IronOreD1,
+    IronOreD2,
+    IronOreD3,
 
     WoodLog,
     WoodLogD1,
@@ -64,9 +56,6 @@ public enum BlockType
     WoodLogD3,
 
     Leaves,
-    LeavesD1,
-    LeavesD2,
-    LeavesD3,
 
     GrassSnow,
     GrassSnowD1,
@@ -118,15 +107,38 @@ public class Block
         {BlockType.DirtD3, new Block(TileType.DirtD3)},
 
         {BlockType.Stone, new Block(TileType.Stone)},
+        {BlockType.StoneD1, new Block(TileType.StoneD1)},
+        {BlockType.StoneD2, new Block(TileType.StoneD2)},
+        {BlockType.StoneD3, new Block(TileType.StoneD3)},
+
         {BlockType.Wood, new Block(TileType.Wood)},
+        {BlockType.WoodD1, new Block(TileType.WoodD1)},
+        {BlockType.WoodD2, new Block(TileType.WoodD2)},
+        {BlockType.WoodD3, new Block(TileType.WoodD3)},
+
         {BlockType.WoolWhite, new Block(TileType.WoolWhite)},
-        {BlockType.WoolRed, new Block(TileType.WoolRed)},
-        {BlockType.WoolBlue, new Block(TileType.WoolBlue)},
-        {BlockType.WoolGreen, new Block(TileType.WoolGreen)},
-        {BlockType.WoolPink, new Block(TileType.WoolPink)}, // Not used
         {BlockType.WoolBlack, new Block(TileType.WoolBlack)},
+
         {BlockType.DiamondOre, new Block(TileType.DiamondOre)},
+        {BlockType.DiamondOreD1, new Block(TileType.DiamondOreD1)},
+        {BlockType.DiamondOreD2, new Block(TileType.DiamondOreD2)},
+        {BlockType.DiamondOreD3, new Block(TileType.DiamondOreD3)},
+
+        {BlockType.CoalOre, new Block(TileType.CoalOre)},
+        {BlockType.CoalOreD1, new Block(TileType.CoalOreD1)},
+        {BlockType.CoalOreD2, new Block(TileType.CoalOreD2)},
+        {BlockType.CoalOreD3, new Block(TileType.CoalOreD3)},
+
+        {BlockType.IronOre, new Block(TileType.IronOre)},
+        {BlockType.IronOreD1, new Block(TileType.IronOreD1)},
+        {BlockType.IronOreD2, new Block(TileType.IronOreD2)},
+        {BlockType.IronOreD3, new Block(TileType.IronOreD3)},
+
         {BlockType.WoodLog, new Block(TileType.WoodLogTop, TileType.WoodLogSide, TileType.WoodLogTop)},
+        {BlockType.WoodLogD1, new Block(TileType.WoodLogTopD1, TileType.WoodLogSideD1, TileType.WoodLogTopD1)},
+        {BlockType.WoodLogD2, new Block(TileType.WoodLogTopD2, TileType.WoodLogSideD2, TileType.WoodLogTopD2)},
+        {BlockType.WoodLogD3, new Block(TileType.WoodLogTopD3, TileType.WoodLogSideD3, TileType.WoodLogTopD3)},
+
         {BlockType.Leaves, new Block(TileType.Leaves)},
 
         {BlockType.GrassSnow, new Block(TileType.GrassSnow, TileType.GrassSnowSide, TileType.Dirt)},

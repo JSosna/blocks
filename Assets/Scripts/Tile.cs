@@ -33,26 +33,6 @@ public enum TileType {
     WoolWhiteD2,
     WoolWhiteD3,
 
-    WoolRed,
-    WoolRedD1,
-    WoolRedD2,
-    WoolRedD3,
-
-    WoolBlue,
-    WoolBlueD1,
-    WoolBlueD2,
-    WoolBlueD3,
-
-    WoolGreen,
-    WoolGreenD1,
-    WoolGreenD2,
-    WoolGreenD3,
-
-    WoolPink,
-    WoolPinkD1,
-    WoolPinkD2,
-    WoolPinkD3,
-
     WoolBlack,
     WoolBlackD1,
     WoolBlackD2,
@@ -62,6 +42,16 @@ public enum TileType {
     DiamondOreD1,
     DiamondOreD2,
     DiamondOreD3,
+
+    CoalOre,
+    CoalOreD1,
+    CoalOreD2,
+    CoalOreD3,
+
+    IronOre,
+    IronOreD1,
+    IronOreD2,
+    IronOreD3,
 
     WoodLogTop,
     WoodLogTopD1,
@@ -74,9 +64,6 @@ public enum TileType {
     WoodLogSideD3,
 
     Leaves,
-    LeavesD1,
-    LeavesD2,
-    LeavesD3,
 
     GrassSnow,
     GrassSnowD1,
@@ -126,27 +113,44 @@ public class Tile
         {TileType.DirtD3, new Tile(0, 11)},
 
         {TileType.Stone, new Tile(1, 0)},
-        
+        {TileType.StoneD1, new Tile(1, 1)},
+        {TileType.StoneD2, new Tile(1, 2)},
+        {TileType.StoneD3, new Tile(1, 3)},
+
         {TileType.Wood, new Tile(2, 0)},
-        
+        {TileType.WoodD1, new Tile(2, 1)},
+        {TileType.WoodD2, new Tile(2, 2)},
+        {TileType.WoodD3, new Tile(2, 3)},
+
         {TileType.WoolWhite, new Tile(3, 0)},
         
-        {TileType.WoolRed, new Tile(4, 0)},
+        {TileType.WoolBlack, new Tile(4, 0)},
         
-        {TileType.WoolBlue, new Tile(5, 0)},
-        
-        {TileType.WoolGreen, new Tile(6, 0)},
-        
-        {TileType.WoolPink, new Tile(7, 0)},
-        
-        {TileType.WoolBlack, new Tile(8, 0)},
-        
-        {TileType.DiamondOre, new Tile(9, 0)},
-        
+        {TileType.DiamondOre, new Tile(5, 0)},
+        {TileType.DiamondOreD1, new Tile(5, 1)},
+        {TileType.DiamondOreD2, new Tile(5, 2)},
+        {TileType.DiamondOreD3, new Tile(5, 3)},
+
+        {TileType.CoalOre, new Tile(6, 0)},
+        {TileType.CoalOreD1, new Tile(6, 1)},
+        {TileType.CoalOreD2, new Tile(6, 2)},
+        {TileType.CoalOreD3, new Tile(6, 3)},
+
+        {TileType.IronOre, new Tile(7, 0)},
+        {TileType.IronOreD1, new Tile(7, 1)},
+        {TileType.IronOreD2, new Tile(7, 2)},
+        {TileType.IronOreD3, new Tile(7, 3)},
+
         {TileType.WoodLogTop, new Tile(10, 0)},
-        
-        {TileType.WoodLogSide, new Tile(10, 1)},
-        
+        {TileType.WoodLogTopD1, new Tile(10, 1)},
+        {TileType.WoodLogTopD2, new Tile(10, 2)},
+        {TileType.WoodLogTopD3, new Tile(10, 3)},
+
+        {TileType.WoodLogSide, new Tile(10, 4)},
+        {TileType.WoodLogSideD1, new Tile(10, 5)},
+        {TileType.WoodLogSideD2, new Tile(10, 6)},
+        {TileType.WoodLogSideD3, new Tile(10, 7)},
+
         {TileType.Leaves, new Tile(11, 0)},
         
         {TileType.GrassSnow, new Tile(0, 12)},

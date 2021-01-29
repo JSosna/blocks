@@ -47,6 +47,13 @@ public class TerrainChunk : MonoBehaviour
 
     public void IncreaseBLockDestroyLevel(int x, int y, int z)
     {
+        // if block don't have damage effect
+        if(blocks[x, y, z] == BlockType.Leaves) // add glass
+        {
+            blocks[x, y, z] = BlockType.Air;
+            return;
+        }
+
         var key = new Tuple<int, int, int>(x, y, z);
 
         // if block is already being observed
@@ -65,7 +72,6 @@ public class TerrainChunk : MonoBehaviour
         }
         else // Add block to the list
         {
-            Debug.Log("adding new block: " + x + y + z);
             blocksToObserve.Add(key, timeToRestore);
             damageLevel[x, y, z]++;
             blocks[x, y, z]++;
