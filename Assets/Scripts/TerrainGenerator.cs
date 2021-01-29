@@ -26,17 +26,14 @@ public class TerrainGenerator : MonoBehaviour
 
     FastNoise fastNoise = new FastNoise();
 
-    private float noise;
-    private float noise2;
-    private float noise3;
-
     private List<Vector2Int> chunksToLoad = new List<Vector2Int>();
     private int InitialChunksToLoadCount;
     public static bool InitialMapLoaded { get; set; } = false;
 
     public GameObject ProgressBar;
     public Slider ProgressBarSlider;
-    
+
+    private bool updateChunks = true;
 
 
     private void Start()
@@ -49,27 +46,33 @@ public class TerrainGenerator : MonoBehaviour
 
     void Update()
     {
-        if(chunksToLoad.Count != 0)
+        // If chunks update every second frame game works smoother
+        updateChunks = !updateChunks;
+        if(updateChunks)
         {
-            CreateChunk(chunksToLoad[chunksToLoad.Count - 1].x, chunksToLoad[chunksToLoad.Count - 1].y);
-            chunksToLoad.RemoveAt(chunksToLoad.Count - 1);
-
-            if(!InitialMapLoaded)
+            if (chunksToLoad.Count != 0)
             {
-                ProgressBarSlider.value = 1 - (chunksToLoad.Count / (float)InitialChunksToLoadCount);
+                CreateChunk(chunksToLoad[chunksToLoad.Count - 1].x, chunksToLoad[chunksToLoad.Count - 1].y);
+                chunksToLoad.RemoveAt(chunksToLoad.Count - 1);
 
-
-                if (chunksToLoad.Count == 0)
+                if (!InitialMapLoaded)
                 {
-                    ProgressBar.SetActive(false);
-                    InitialMapLoaded = true;
+                    ProgressBarSlider.value = 1 - (chunksToLoad.Count / (float)InitialChunksToLoadCount);
+
+
+                    if (chunksToLoad.Count == 0)
+                    {
+                        ProgressBar.SetActive(false);
+                        InitialMapLoaded = true;
+                    }
                 }
             }
+            else
+            {
+                LoadChunks();
+            }
         }
-        else
-        {
-            LoadChunks();
-        }
+        
     }
 
 
@@ -89,44 +92,84 @@ public class TerrainGenerator : MonoBehaviour
         for (int x = 0; x < TerrainChunk.chunkWidth + 2; x++)
             for (int z = 0; z < TerrainChunk.chunkWidth + 2; z++)
                 for (int y = 0; y < TerrainChunk.chunkHeight; y++)
-                    if (GetBlock(chunkX, chunkZ, x, z, y - 15))
-                    {
-                        // on the bottom of the map create sth like bedrock (not destroyable)
-                        if (y == 0)
-                            terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
-                        else if (y < Random.Range(20, 25))
-                        {
-                            terrainChunk.blocks[x, y, z] = BlockType.Stone;
-
-                            if(Random.Range(0, 100) < 1)
-                            {
-                                terrainChunk.blocks[x, y, z] = BlockType.DiamondOre;
-                            }
-                        }
-                        else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
-                        {
-                            if(y < 40)
-                            {
-                                terrainChunk.blocks[x, y, z] = BlockType.Sand;
-                                terrainChunk.blocks[x, y - 1, z] = BlockType.Sand;
-                                terrainChunk.blocks[x, y - 2, z] = BlockType.Sand;
-                            }
-                                
-                            else if (y > 60)
-                                terrainChunk.blocks[x, y, z] = BlockType.GrassSnow;
-                            else
-                                terrainChunk.blocks[x, y, z] = BlockType.Grass;
-
-                            if (Random.Range(0, 200) < 1) {
-                                if(y >= 40)
-                                GenerateTree(terrainChunk, x, y, z);
-                            }
-                        }
-
-                        else
-                            terrainChunk.blocks[x, y, z] = BlockType.Dirt;
-                    }
+                    SetBlock(terrainChunk, chunkX, chunkZ, x, z, y, 15);
     }
+
+
+    private void SetBlock(TerrainChunk terrainChunk, int chunkX, int chunkZ, int x, int z, int y, int offsetY)
+    {
+
+        float heightMap = GetHeightMap(chunkX, chunkZ, x, z, y - offsetY);
+        //return noise + noise2 + noise3 < TerrainChunk.chunkHeight;
+
+
+        if (heightMap < TerrainChunk.chunkHeight)
+        {
+            // on the bottom of the map create sth like bedrock (not destroyable)
+            if (y == 0)
+            {
+                terrainChunk.blocks[x, y, z] = BlockType.WoolBlack;
+                return;
+            }
+
+            /*float caveNoise1 = fastNoise.GetPerlinFractal(x * 5f, y * 10f, z * 5f);
+            float caveMask = fastNoise.GetSimplex(x * .3f, z * .3f) + .3f;
+            if (caveNoise1 > Mathf.Max(caveMask, .2f))
+            {
+                terrainChunk.blocks[x, y, z] = BlockType.Air;
+                return;
+            }*/
+            else if (y < Random.Range(25, 30))
+            {
+                terrainChunk.blocks[x, y, z] = BlockType.Stone;
+
+                if (Random.Range(0, 100) < 1)
+                {
+                    terrainChunk.blocks[x, y, z] = BlockType.DiamondOre;
+                }
+                return;
+            }
+            // if there is no block above current (place grass, sand, trees, snow)
+            else if (!(GetHeightMap(chunkX, chunkZ, x, z, y - offsetY + 1) < TerrainChunk.chunkHeight))
+            {
+                if (y < 40)
+                {
+                    terrainChunk.blocks[x, y, z] = BlockType.Sand;
+                    terrainChunk.blocks[x, y - 1, z] = BlockType.Sand;
+                    terrainChunk.blocks[x, y - 2, z] = BlockType.Sand;
+                    return;
+                }
+
+                else if (y > 60)
+                    terrainChunk.blocks[x, y, z] = BlockType.GrassSnow;
+                else
+                    terrainChunk.blocks[x, y, z] = BlockType.Grass;
+
+                if (Random.Range(0, 200) < 1)
+                {
+                    if (y >= 40)
+                        GenerateTree(terrainChunk, x, y, z);
+                }
+            }
+            else
+                terrainChunk.blocks[x, y, z] = BlockType.Dirt;
+
+        }
+
+
+        
+    }
+
+    private float GetHeightMap(int chunkX, int chunkZ, int x, int z, int y)
+    {
+        float noise = fastNoise.GetPerlin((chunkX + x - 1) * frequency, (chunkZ + z - 1) * frequency) * strength + y;
+        float noise2 = .5f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 2, (chunkZ + z - 1) * frequency * 2) * strength + y;
+        float noise3 = .25f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 4, (chunkZ + z - 1) * frequency * 4) * strength + y;
+
+        return noise + noise2 + noise3;
+    }
+
+
 
     private void GenerateTree(TerrainChunk terrainChunk, int x, int y, int z)
     {
@@ -136,12 +179,6 @@ public class TerrainGenerator : MonoBehaviour
             z - 4 < 0) return;
 
         int height = Random.Range(5, 8);
-
-        // Base of the tree
-        for(int i = 1; i < height; i++)
-        {
-            terrainChunk.blocks[x, y + i, z] = BlockType.WoodLog;
-        }
 
         // Leaves part
         for(int layer = 0; layer < 4; layer++)
@@ -161,19 +198,19 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
+        // Base of the tree
+        for(int i = 1; i <= height; i++)
+        {
+            terrainChunk.blocks[x, y + i, z] = BlockType.WoodLog;
+        }
+
+        
+
         terrainChunk.blocks[x, y + height + 1, z] = BlockType.WoodLog;
         terrainChunk.blocks[x, y + height + 2, z] = BlockType.WoodLog;
 
     }
 
-    private bool GetBlock(int chunkX, int chunkZ, int x, int z, int y)
-    {
-        noise = fastNoise.GetPerlin((chunkX + x - 1) * frequency, (chunkZ + z - 1) * frequency) * strength + y;
-        noise2 = .5f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 2, (chunkZ + z - 1) * frequency * 2) * strength + y;
-        noise3 = .25f * fastNoise.GetPerlin((chunkX + x - 1) * frequency * 4, (chunkZ + z - 1) * frequency * 4) * strength + y;
-
-        return noise + noise2 + noise3 < TerrainChunk.chunkHeight;
-    }
 
     void LoadChunks()
     {

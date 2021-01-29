@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 438646829}
   - component: {fileID: 438646831}
   - component: {fileID: 438646828}
+  - component: {fileID: 438646830}
   m_Layer: 0
   m_Name: BlocksManager
   m_TagString: Untagged
@@ -1056,6 +1057,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438646830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438646827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c351a66215c2c1b4381b19ceb31bd643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudPrefabs:
+  - {fileID: 100000, guid: d6a294bdf7386d64f8c846e5ac334ffa, type: 3}
+  - {fileID: 100000, guid: c943ee3841fcbd94d9630c5e4529b603, type: 3}
+  - {fileID: 100000, guid: 1b2c48376dafb734ab58d2226e1b7747, type: 3}
+  - {fileID: 100000, guid: 5df7daeab707230409664c66ca47c5ad, type: 3}
+  - {fileID: 100000, guid: 5d92abef242cfcc4781ac2ae661d8fe8, type: 3}
+  - {fileID: 100000, guid: 9eee4a1abc7933341a548cf4c5fa26cb, type: 3}
+  player: {fileID: 888517966}
 --- !u!114 &438646831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,6 +2454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!1 &888517966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 888517965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &931448194
 GameObject:
   m_ObjectHideFlags: 0
