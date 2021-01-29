@@ -45,13 +45,13 @@ public class TerrainChunk : MonoBehaviour
         } catch { }
     }
 
-    public void IncreaseBLockDestroyLevel(int x, int y, int z)
+    public BlockType? IncreaseBLockDestroyLevel(int x, int y, int z)
     {
         // if block don't have damage effect
         if(blocks[x, y, z] == BlockType.Leaves) // add glass
         {
             blocks[x, y, z] = BlockType.Air;
-            return;
+            return null;
         }
 
         var key = new Tuple<int, int, int>(x, y, z);
@@ -63,11 +63,15 @@ public class TerrainChunk : MonoBehaviour
             blocks[x, y, z]++;
             blocksToObserve[key] = 2f;
 
+            // Destroy block and add block to inventory
             if (damageLevel[x, y, z] == 4)
             {
+                BlockType blockType = blocks[x, y, z];
                 blocks[x, y, z] = BlockType.Air;
                 damageLevel[x, y, z] = 0;
                 blocksToObserve.Remove(key);
+
+                return blockType;
             }
         }
         else // Add block to the list
@@ -76,6 +80,8 @@ public class TerrainChunk : MonoBehaviour
             damageLevel[x, y, z]++;
             blocks[x, y, z]++;
         }
+
+        return null;
     }
 
     public void GenerateMesh()

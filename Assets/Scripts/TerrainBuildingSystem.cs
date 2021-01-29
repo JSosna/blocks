@@ -9,6 +9,9 @@ public class TerrainBuildingSystem : MonoBehaviour
     private GameObject toolbar;
     private int selectedSlot = 0;
 
+    [SerializeField]
+    private Inventory inventory;
+
     private int blockSelectCounter = 0;
 
     public LayerMask groundLayer;
@@ -29,7 +32,7 @@ public class TerrainBuildingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.GamePaused) return;
+        if (PauseMenu.GamePaused || UI_Inventory.InventoryOpened) return;
 
         if (Input.GetMouseButtonDown(0))
             HandleMouseClick(false);
@@ -134,7 +137,10 @@ public class TerrainBuildingSystem : MonoBehaviour
                     if (tc.blocks[bix, biy, biz] == BlockType.DiamondOre)
                         Debug.Log("Diamonds, gg");
 
-                    tc.IncreaseBLockDestroyLevel(bix, biy, biz);
+                    BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
+                    if(block.HasValue) {
+                        inventory.AddItem(new Item { itemType = ItemType.Dirt, amount = 1 });
+                    }
 
                     tc.GenerateMesh();
                 }

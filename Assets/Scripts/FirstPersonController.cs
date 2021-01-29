@@ -64,15 +64,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            if (PauseMenu.GamePaused)
-            {
+            if (PauseMenu.GamePaused){
                 m_MouseLook.XSensitivity = 0.03f;
                 m_MouseLook.YSensitivity = 0.03f;
-            } else
-            {
+            }
+            else if (UI_Inventory.InventoryOpened) {
+                m_MouseLook.XSensitivity = 0;
+                m_MouseLook.YSensitivity = 0;
+                m_MouseLook.lockCursor = false;
+            }
+            else {
                 m_MouseLook.XSensitivity = m_BaseMouseXSensitivity;
                 m_MouseLook.YSensitivity = m_BaseMouseYSensitivity;
             }
+
 
 
             RotateView();
