@@ -106,7 +106,12 @@ public class TerrainGenerator : MonoBehaviour
                         else if (!GetBlock(chunkX, chunkZ, x, z, y - 14))
                         {
                             if(y < 40)
+                            {
                                 terrainChunk.blocks[x, y, z] = BlockType.Sand;
+                                terrainChunk.blocks[x, y - 1, z] = BlockType.Sand;
+                                terrainChunk.blocks[x, y - 2, z] = BlockType.Sand;
+                            }
+                                
                             else if (y > 60)
                                 terrainChunk.blocks[x, y, z] = BlockType.GrassSnow;
                             else
@@ -154,9 +159,10 @@ public class TerrainGenerator : MonoBehaviour
                         if ((3 - a) * (3 - a) + (3 - b) * (3 - b) < 8)
                             terrainChunk.blocks[x + a - 3, y + height + layer, z + b - 3] = BlockType.Leaves;
             }
-
-            
         }
+
+        terrainChunk.blocks[x, y + height + 1, z] = BlockType.WoodLog;
+        terrainChunk.blocks[x, y + height + 2, z] = BlockType.WoodLog;
 
     }
 
