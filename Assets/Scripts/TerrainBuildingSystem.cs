@@ -15,6 +15,11 @@ public class TerrainBuildingSystem : MonoBehaviour
 
     float maxDist = 7;
 
+    private float mouseHitInterval = .25f;
+    private float timeToNextHit;
+    private bool destroyButtonPressed = false;
+
+
     private void Start()
     {
         HandleSlotChange(selectedSlot);
@@ -28,12 +33,27 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             HandleMouseClick(false);
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
             HandleMouseClick(true);
 
+        else if (Input.GetMouseButton(1))
+        {
+            if(!destroyButtonPressed)
+            {
+                timeToNextHit = mouseHitInterval;
+                destroyButtonPressed = true;
+            }
+            else
+            {
+                timeToNextHit -= 1f * Time.deltaTime;
 
-
-
+                if(timeToNextHit <= 0)
+                {
+                    timeToNextHit = mouseHitInterval;
+                    HandleMouseClick(true);
+                }
+            }
+        }
 
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f) // forward
@@ -116,20 +136,6 @@ public class TerrainBuildingSystem : MonoBehaviour
 
                     tc.IncreaseBLockDestroyLevel(bix, biy, biz);
 
-                    /*if (tc.destroyLevel[bix, biy, biz] == 3 || tc.blocks[bix, biy, biz] == BlockType.Leaves)
-                    {
-                        // Reset Destroy Level
-                        tc.destroyLevel[bix, biy, biz] = 0;
-                        // Remove Block
-                        tc.blocks[bix, biy, biz] = BlockType.Air;
-                    }
-                    else
-                    {
-                        // Increase Destroy Level
-                        tc.destroyLevel[bix, biy, biz]++;
-                        // Change Texture
-                        tc.blocks[bix, biy, biz] = tc.blocks[bix, biy, biz] + 1;
-                    }*/
                     tc.GenerateMesh();
                 }
             }

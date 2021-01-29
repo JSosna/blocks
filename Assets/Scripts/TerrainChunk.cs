@@ -63,7 +63,7 @@ public class TerrainChunk : MonoBehaviour
                 blocksToObserve.Remove(key);
             }
         }
-        else    // Add block to the list
+        else // Add block to the list
         {
             Debug.Log("adding new block: " + x + y + z);
             blocksToObserve.Add(key, timeToRestore);
