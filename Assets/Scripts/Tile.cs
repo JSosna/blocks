@@ -2,7 +2,97 @@
 using UnityEngine;
 
 
-public enum TileType { Dirt, Grass, GrassSide, Stone, Wood, WoolWhite, WoolRed, WoolBlue, WoolGreen, WoolPink, WoolBlack, DiamondOre, WoodLogTop, WoodLogSide, Leaves, GrassSnow, GrassSnowSide, Sand }
+public enum TileType { 
+    Dirt,
+    DirtD1,
+    DirtD2,
+    DirtD3,
+
+    Grass,
+    GrassD1,
+    GrassD2,
+    GrassD3,
+
+    GrassSide,
+    GrassSideD1,
+    GrassSideD2,
+    GrassSideD3,
+    
+    Stone,
+    StoneD1,
+    StoneD2,
+    StoneD3,
+
+    Wood,
+    WoodD1,
+    WoodD2,
+    WoodD3,
+
+    WoolWhite,
+    WoolWhiteD1,
+    WoolWhiteD2,
+    WoolWhiteD3,
+
+    WoolRed,
+    WoolRedD1,
+    WoolRedD2,
+    WoolRedD3,
+
+    WoolBlue,
+    WoolBlueD1,
+    WoolBlueD2,
+    WoolBlueD3,
+
+    WoolGreen,
+    WoolGreenD1,
+    WoolGreenD2,
+    WoolGreenD3,
+
+    WoolPink,
+    WoolPinkD1,
+    WoolPinkD2,
+    WoolPinkD3,
+
+    WoolBlack,
+    WoolBlackD1,
+    WoolBlackD2,
+    WoolBlackD3,
+
+    DiamondOre,
+    DiamondOreD1,
+    DiamondOreD2,
+    DiamondOreD3,
+
+    WoodLogTop,
+    WoodLogTopD1,
+    WoodLogTopD2,
+    WoodLogTopD3,
+
+    WoodLogSide,
+    WoodLogSideD1,
+    WoodLogSideD2,
+    WoodLogSideD3,
+
+    Leaves,
+    LeavesD1,
+    LeavesD2,
+    LeavesD3,
+
+    GrassSnow,
+    GrassSnowD1,
+    GrassSnowD2,
+    GrassSnowD3,
+
+    GrassSnowSide,
+    GrassSnowSideD1,
+    GrassSnowSideD2,
+    GrassSnowSideD3,
+
+    Sand,
+    SandD1,
+    SandD2,
+    SandD3,
+}
 
 
 public class Tile
@@ -21,22 +111,57 @@ public class Tile
     public static Dictionary<TileType, Tile> tiles = new Dictionary<TileType, Tile>()
     {
         {TileType.Grass, new Tile(0, 0)},
-        {TileType.GrassSide, new Tile(0, 1)},
-        {TileType.Dirt, new Tile(0, 2)},
+        {TileType.GrassD1, new Tile(0, 1)},
+        {TileType.GrassD2, new Tile(0, 2)},
+        {TileType.GrassD3, new Tile(0, 3)},
+
+        {TileType.GrassSide, new Tile(0, 4)},
+        {TileType.GrassSideD1, new Tile(0, 5)},
+        {TileType.GrassSideD2, new Tile(0, 6)},
+        {TileType.GrassSideD3, new Tile(0, 7)},
+
+        {TileType.Dirt, new Tile(0, 8)},
+        {TileType.DirtD1, new Tile(0, 9)},
+        {TileType.DirtD2, new Tile(0, 10)},
+        {TileType.DirtD3, new Tile(0, 11)},
+
         {TileType.Stone, new Tile(1, 0)},
+        
         {TileType.Wood, new Tile(2, 0)},
+        
         {TileType.WoolWhite, new Tile(3, 0)},
+        
         {TileType.WoolRed, new Tile(4, 0)},
+        
         {TileType.WoolBlue, new Tile(5, 0)},
+        
         {TileType.WoolGreen, new Tile(6, 0)},
+        
         {TileType.WoolPink, new Tile(7, 0)},
+        
         {TileType.WoolBlack, new Tile(8, 0)},
+        
         {TileType.DiamondOre, new Tile(9, 0)},
+        
         {TileType.WoodLogTop, new Tile(10, 0)},
+        
         {TileType.WoodLogSide, new Tile(10, 1)},
+        
         {TileType.Leaves, new Tile(11, 0)},
-        {TileType.GrassSnow, new Tile(0, 3)},
-        {TileType.GrassSnowSide, new Tile(0, 4)},
+        
+        {TileType.GrassSnow, new Tile(0, 12)},
+        {TileType.GrassSnowD1, new Tile(0, 13)},
+        {TileType.GrassSnowD2, new Tile(0, 14)},
+        {TileType.GrassSnowD3, new Tile(0, 15)},
+
+        {TileType.GrassSnowSide, new Tile(1, 12)},
+        {TileType.GrassSnowSideD1, new Tile(1, 13)},
+        {TileType.GrassSnowSideD2, new Tile(1, 14)},
+        {TileType.GrassSnowSideD3, new Tile(1, 15)},
+
         {TileType.Sand, new Tile(12, 0)},
+        {TileType.SandD1, new Tile(12, 1)},
+        {TileType.SandD2, new Tile(12, 2)},
+        {TileType.SandD3, new Tile(12, 3)},
     };
 }

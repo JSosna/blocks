@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainChunk : MonoBehaviour
@@ -7,7 +8,69 @@ public class TerrainChunk : MonoBehaviour
     public const int chunkHeight = 100;
 
     public BlockType[,,] blocks = new BlockType[chunkWidth + 2, chunkHeight, chunkWidth + 2];
+    private int[,,] damageLevel = new int[chunkWidth + 2, chunkHeight, chunkWidth + 2];
 
+    private Dictionary<Tuple<int, int, int>, float> blocksToObserve = new Dictionary<Tuple<int, int, int>, float>();
+    
+
+    private float timeToRestore = 4f;
+
+
+    private void Update()
+    {
+        if (blocksToObserve.Count == 0) return;
+
+        try
+        {
+            foreach (var block in blocksToObserve)
+            {
+            
+                    blocksToObserve[block.Key] -= 1f * Time.deltaTime;
+
+                    // Reduce block damage
+                    if (block.Value <= 0)
+                    {
+                        damageLevel[block.Key.Item1, block.Key.Item2, block.Key.Item3]--;
+                        blocks[block.Key.Item1, block.Key.Item2, block.Key.Item3]--;
+                        blocksToObserve[block.Key] = .2f;
+
+                        // Remove block from list of observing blocks if damage is 0
+                        if (damageLevel[block.Key.Item1, block.Key.Item2, block.Key.Item3] == 0)
+                            blocksToObserve.Remove(block.Key);
+
+                        GenerateMesh();
+                    }
+            
+            }
+        } catch { }
+    }
+
+    public void IncreaseBLockDestroyLevel(int x, int y, int z)
+    {
+        var key = new Tuple<int, int, int>(x, y, z);
+
+        // if block is already being observed
+        if (blocksToObserve.ContainsKey(key))
+        {
+            damageLevel[x, y, z]++;
+            blocks[x, y, z]++;
+            blocksToObserve[key] = 2f;
+
+            if (damageLevel[x, y, z] == 4)
+            {
+                blocks[x, y, z] = BlockType.Air;
+                damageLevel[x, y, z] = 0;
+                blocksToObserve.Remove(key);
+            }
+        }
+        else    // Add block to the list
+        {
+            Debug.Log("adding new block: " + x + y + z);
+            blocksToObserve.Add(key, timeToRestore);
+            damageLevel[x, y, z]++;
+            blocks[x, y, z]++;
+        }
+    }
 
     public void GenerateMesh()
     {

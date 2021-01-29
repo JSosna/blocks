@@ -1683,6 +1683,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  timeToRestore: 2
 --- !u!1 &684025808
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,10 @@ public class TerrainBuildingSystem : MonoBehaviour
             HandleMouseClick(true);
 
 
+
+
+
+
         if (Input.GetAxis("Mouse ScrollWheel") < 0f) // forward
         {
             if (selectedSlot < 8)
@@ -110,7 +114,22 @@ public class TerrainBuildingSystem : MonoBehaviour
                     if (tc.blocks[bix, biy, biz] == BlockType.DiamondOre)
                         Debug.Log("Diamonds, gg");
 
-                    tc.blocks[bix, biy, biz] = BlockType.Air;
+                    tc.IncreaseBLockDestroyLevel(bix, biy, biz);
+
+                    /*if (tc.destroyLevel[bix, biy, biz] == 3 || tc.blocks[bix, biy, biz] == BlockType.Leaves)
+                    {
+                        // Reset Destroy Level
+                        tc.destroyLevel[bix, biy, biz] = 0;
+                        // Remove Block
+                        tc.blocks[bix, biy, biz] = BlockType.Air;
+                    }
+                    else
+                    {
+                        // Increase Destroy Level
+                        tc.destroyLevel[bix, biy, biz]++;
+                        // Change Texture
+                        tc.blocks[bix, biy, biz] = tc.blocks[bix, biy, biz] + 1;
+                    }*/
                     tc.GenerateMesh();
                 }
             }
