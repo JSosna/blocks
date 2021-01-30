@@ -4,9 +4,16 @@ using UnityEngine;
 
 public enum ItemType
 {
+    // Blocks
     Dirt,
     Stone,
-    Wood
+    Wood,
+    Plank,
+    Sand,
+    IronOre,
+
+    // Edible
+    Apple
 }
 
 public class Item
@@ -21,6 +28,11 @@ public class Item
             case ItemType.Dirt: return ItemAssets.Instance.dirtSprite;
             case ItemType.Stone: return ItemAssets.Instance.stoneSprite;
             case ItemType.Wood: return ItemAssets.Instance.woodSprite;
+            case ItemType.Plank: return ItemAssets.Instance.plankSprite;
+            case ItemType.Sand: return ItemAssets.Instance.sandSprite;
+            case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
+
+            case ItemType.Apple: return ItemAssets.Instance.appleSprite;
         }
     }
 
@@ -30,9 +42,16 @@ public class Item
             case ItemType.Dirt:
             case ItemType.Stone:
             case ItemType.Wood:
+            case ItemType.Plank:
+            case ItemType.Sand:
+            case ItemType.IronOre:
+
+            case ItemType.Apple:
                 return true;
         }
     }
+
+
 
     public static BlockType GetBlockType(ItemType itemType) {
         switch(itemType) {
@@ -42,6 +61,12 @@ public class Item
                 return BlockType.Stone;
             case ItemType.Wood:
                 return BlockType.Wood;
+            case ItemType.Plank:
+                return BlockType.Plank;
+            case ItemType.Sand:
+                return BlockType.Sand;
+            case ItemType.IronOre:
+                return BlockType.IronOre;
             default:
                 return BlockType.Air;
         }

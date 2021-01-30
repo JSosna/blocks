@@ -20,10 +20,10 @@ public enum BlockType
     StoneD2,
     StoneD3,
 
-    Wood,
-    WoodD1,
-    WoodD2,
-    WoodD3,
+    Plank,
+    PlankD1,
+    PlankD2,
+    PlankD3,
 
     WoolWhite,
     WoolWhiteD1,
@@ -50,10 +50,10 @@ public enum BlockType
     IronOreD2,
     IronOreD3,
 
-    WoodLog,
-    WoodLogD1,
-    WoodLogD2,
-    WoodLogD3,
+    Wood,
+    WoodD1,
+    WoodD2,
+    WoodD3,
 
     Leaves,
 
@@ -111,10 +111,10 @@ public class Block
         {BlockType.StoneD2, new Block(TileType.StoneD2)},
         {BlockType.StoneD3, new Block(TileType.StoneD3)},
 
-        {BlockType.Wood, new Block(TileType.Wood)},
-        {BlockType.WoodD1, new Block(TileType.WoodD1)},
-        {BlockType.WoodD2, new Block(TileType.WoodD2)},
-        {BlockType.WoodD3, new Block(TileType.WoodD3)},
+        {BlockType.Plank, new Block(TileType.Plank)},
+        {BlockType.PlankD1, new Block(TileType.PlankD1)},
+        {BlockType.PlankD2, new Block(TileType.PlankD2)},
+        {BlockType.PlankD3, new Block(TileType.PlankD3)},
 
         {BlockType.WoolWhite, new Block(TileType.WoolWhite)},
         {BlockType.WoolBlack, new Block(TileType.WoolBlack)},
@@ -134,10 +134,10 @@ public class Block
         {BlockType.IronOreD2, new Block(TileType.IronOreD2)},
         {BlockType.IronOreD3, new Block(TileType.IronOreD3)},
 
-        {BlockType.WoodLog, new Block(TileType.WoodLogTop, TileType.WoodLogSide, TileType.WoodLogTop)},
-        {BlockType.WoodLogD1, new Block(TileType.WoodLogTopD1, TileType.WoodLogSideD1, TileType.WoodLogTopD1)},
-        {BlockType.WoodLogD2, new Block(TileType.WoodLogTopD2, TileType.WoodLogSideD2, TileType.WoodLogTopD2)},
-        {BlockType.WoodLogD3, new Block(TileType.WoodLogTopD3, TileType.WoodLogSideD3, TileType.WoodLogTopD3)},
+        {BlockType.Wood, new Block(TileType.WoodTop, TileType.WoodSide, TileType.WoodTop)},
+        {BlockType.WoodD1, new Block(TileType.WoodTopD1, TileType.WoodSideD1, TileType.WoodTopD1)},
+        {BlockType.WoodD2, new Block(TileType.WoodTopD2, TileType.WoodSideD2, TileType.WoodTopD2)},
+        {BlockType.WoodD3, new Block(TileType.WoodTopD3, TileType.WoodSideD3, TileType.WoodTopD3)},
 
         {BlockType.Leaves, new Block(TileType.Leaves)},
 

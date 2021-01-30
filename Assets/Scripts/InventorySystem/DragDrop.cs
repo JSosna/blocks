@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler {
 
     private Canvas canvas;
     private CanvasGroup canvasGroup;
@@ -53,5 +54,12 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.blocksRaycasts = true;
 
         rectTransform.position = rectTransform.parent.position;
+    }
+
+    public Action MouseMiddleClickFunc = null;
+
+    public virtual void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Middle)
+            if (MouseMiddleClickFunc != null) MouseMiddleClickFunc();
     }
 }

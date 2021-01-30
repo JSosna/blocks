@@ -34,16 +34,16 @@ public class TerrainBuildingSystem : MonoBehaviour
     {
         if (PauseMenu.GamePaused || UI_Inventory.InventoryOpened) return;
 
-        if (Input.GetMouseButtonDown(0))
-            HandleMouseClick(false);
         if (Input.GetMouseButtonDown(1))
+            HandleMouseClick(false);
+        if (Input.GetMouseButtonDown(0))
             HandleMouseClick(true);
 
-        if(Input.GetMouseButtonUp(1)) {
+        if(Input.GetMouseButtonUp(0)) {
             destroyButtonPressed = false;
         }
 
-        else if (Input.GetMouseButton(1))
+        else if (Input.GetMouseButton(0))
         {
             if(!destroyButtonPressed)
             {
@@ -127,7 +127,7 @@ public class TerrainBuildingSystem : MonoBehaviour
         {
             Vector3 pointInTargetBlock;
 
-            // destroy if right click - (button == true)
+            // destroy if left click - (button == true)
             if (button)
                 pointInTargetBlock = hitInfo.point + transform.forward * .01f;
             else
@@ -146,7 +146,7 @@ public class TerrainBuildingSystem : MonoBehaviour
             int biy = Mathf.FloorToInt(pointInTargetBlock.y);
             int biz = Mathf.FloorToInt(pointInTargetBlock.z) - chunkPosZ + 1;
 
-            // replace block with air if right click - (button == true)
+            // replace block with air if left click - (button == true)
             if (button)
             {
                 
@@ -160,22 +160,38 @@ public class TerrainBuildingSystem : MonoBehaviour
                         if (block == BlockType.Dirt || block == BlockType.Grass || block == BlockType.GrassSnow) {
                             inventory.AddItem(new Item { itemType = ItemType.Dirt, amount = 1 });
                         }
-                        if (block == BlockType.Stone) {
+                        else if (block == BlockType.Stone) {
                             inventory.AddItem(new Item { itemType = ItemType.Stone, amount = 1 });
                         }
-                        if(block == BlockType.WoodLog) {
+                        else if(block == BlockType.Wood) {
                             inventory.AddItem(new Item { itemType = ItemType.Wood, amount = 1 });
                         }
-                        
-                        
+                        else if(block == BlockType.Plank) {
+                            inventory.AddItem(new Item { itemType = ItemType.Plank, amount = 1 });
+                        }
+                        else if(block == BlockType.Sand) {
+                            inventory.AddItem(new Item { itemType = ItemType.Sand, amount = 1 });
+                        }
+                        else if(block == BlockType.IronOre) {
+                            inventory.AddItem(new Item { itemType = ItemType.IronOre, amount = 1 });
+                        }
+                        else if(block == BlockType.Leaves) {
+                            if(Random.Range(1, 13) == 1) {
+                                inventory.AddItem(new Item { itemType = ItemType.Apple, amount = 1 });
+                            }
+                        }
+
+
                     }
 
                     tc.GenerateMesh();
                 }
             }
-            // left click
+            // right click
             else if (biy <= TerrainChunk.chunkHeight - 2) // and we can't place blocks above the limit
             {
+
+
                 BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
                 if(blockType != BlockType.Air)
                     tc.blocks[bix, biy, biz] = blockType;

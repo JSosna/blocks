@@ -23,10 +23,10 @@ public enum TileType {
     StoneD2,
     StoneD3,
 
-    Wood,
-    WoodD1,
-    WoodD2,
-    WoodD3,
+    Plank,
+    PlankD1,
+    PlankD2,
+    PlankD3,
 
     WoolWhite,
     WoolWhiteD1,
@@ -53,15 +53,15 @@ public enum TileType {
     IronOreD2,
     IronOreD3,
 
-    WoodLogTop,
-    WoodLogTopD1,
-    WoodLogTopD2,
-    WoodLogTopD3,
+    WoodTop,
+    WoodTopD1,
+    WoodTopD2,
+    WoodTopD3,
 
-    WoodLogSide,
-    WoodLogSideD1,
-    WoodLogSideD2,
-    WoodLogSideD3,
+    WoodSide,
+    WoodSideD1,
+    WoodSideD2,
+    WoodSideD3,
 
     Leaves,
 
@@ -117,10 +117,10 @@ public class Tile
         {TileType.StoneD2, new Tile(1, 2)},
         {TileType.StoneD3, new Tile(1, 3)},
 
-        {TileType.Wood, new Tile(2, 0)},
-        {TileType.WoodD1, new Tile(2, 1)},
-        {TileType.WoodD2, new Tile(2, 2)},
-        {TileType.WoodD3, new Tile(2, 3)},
+        {TileType.Plank, new Tile(2, 0)},
+        {TileType.PlankD1, new Tile(2, 1)},
+        {TileType.PlankD2, new Tile(2, 2)},
+        {TileType.PlankD3, new Tile(2, 3)},
 
         {TileType.WoolWhite, new Tile(3, 0)},
         
@@ -141,15 +141,15 @@ public class Tile
         {TileType.IronOreD2, new Tile(7, 2)},
         {TileType.IronOreD3, new Tile(7, 3)},
 
-        {TileType.WoodLogTop, new Tile(10, 0)},
-        {TileType.WoodLogTopD1, new Tile(10, 1)},
-        {TileType.WoodLogTopD2, new Tile(10, 2)},
-        {TileType.WoodLogTopD3, new Tile(10, 3)},
+        {TileType.WoodTop, new Tile(10, 0)},
+        {TileType.WoodTopD1, new Tile(10, 1)},
+        {TileType.WoodTopD2, new Tile(10, 2)},
+        {TileType.WoodTopD3, new Tile(10, 3)},
 
-        {TileType.WoodLogSide, new Tile(10, 4)},
-        {TileType.WoodLogSideD1, new Tile(10, 5)},
-        {TileType.WoodLogSideD2, new Tile(10, 6)},
-        {TileType.WoodLogSideD3, new Tile(10, 7)},
+        {TileType.WoodSide, new Tile(10, 4)},
+        {TileType.WoodSideD1, new Tile(10, 5)},
+        {TileType.WoodSideD2, new Tile(10, 6)},
+        {TileType.WoodSideD3, new Tile(10, 7)},
 
         {TileType.Leaves, new Tile(11, 0)},
         

@@ -46,8 +46,10 @@ public class TerrainChunk : MonoBehaviour
 
         // if block don't have damage effect
         if (blocks[x, y, z] == BlockType.Leaves) {  // add glass
+            BlockType blockType = blocks[x, y, z];
             blocks[x, y, z] = BlockType.Air;
-            return null;
+
+            return blockType;
         }
 
         var key = new Tuple<int, int, int>(x, y, z);

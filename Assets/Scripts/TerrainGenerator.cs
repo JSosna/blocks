@@ -223,11 +223,11 @@ public class TerrainGenerator : MonoBehaviour
         // Base of the tree
         for(int i = 1; i <= height; i++)
         {
-            terrainChunk.blocks[x, y + i, z] = BlockType.WoodLog;
+            terrainChunk.blocks[x, y + i, z] = BlockType.Wood;
         }
 
-        terrainChunk.blocks[x, y + height + 1, z] = BlockType.WoodLog;
-        terrainChunk.blocks[x, y + height + 2, z] = BlockType.WoodLog;
+        terrainChunk.blocks[x, y + height + 1, z] = BlockType.Wood;
+        terrainChunk.blocks[x, y + height + 2, z] = BlockType.Wood;
     }
 
 
