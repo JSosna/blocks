@@ -8,6 +8,8 @@ public class UI_Inventory : MonoBehaviour {
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+    private Transform slotBackgrounds;
+    private Transform slotBackgroundsToolbar;
 
     [SerializeField]
     private Transform toolbar;
@@ -15,12 +17,18 @@ public class UI_Inventory : MonoBehaviour {
     [SerializeField]
     private GameObject frame;
 
+    [SerializeField]
+    private GameObject[] slots;
+
     public static bool InventoryOpened { get; set; }
 
 
     private void Awake() {
         itemSlotContainer = transform.Find("Frame").Find("Background").Find("SlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemTemplate");
+
+        slotBackgrounds = itemSlotContainer.Find("SlotBackgrounds");
+        slotBackgroundsToolbar = toolbar.Find("SlotBackgroundsToolbar");
     }
 
     void Update() {
@@ -60,44 +68,59 @@ public class UI_Inventory : MonoBehaviour {
     }
 
     private void RefreshInventoryItems() {
-        foreach (Transform child in itemSlotContainer) {
-            if (child == itemSlotTemplate || child.name == "SlotBackgrounds") continue;
-            Destroy(child.gameObject);
+
+        foreach (Transform child in slotBackgrounds) {
+            foreach (Transform childOfChild in child) {
+                Destroy(childOfChild.gameObject);
+            }
         }
 
-        foreach (Transform child in toolbar) {
-            if (child.name == "SlotBackgrounds") continue;
-            Destroy(child.gameObject);
+        foreach (Transform child in slotBackgroundsToolbar) {
+            foreach(Transform childOfChild in child) {
+                Destroy(childOfChild.gameObject);
+            }
         }
-
-        float itemSlotCellSize = 100f;
 
         foreach (Item item in inventory.GetItems()) {
             if (item.slot.y >= 5) return;
 
-            RectTransform itemSlotRectTransform;
+            RectTransform itemSlotRectTransform = new RectTransform();
             if (item.slot.y == 0) {
-                itemSlotRectTransform = Instantiate(itemSlotTemplate, toolbar).GetComponent<RectTransform>();
+                string str = item.slot.x + " " + item.slot.y;
+
+                for (int i = 0; i < slotBackgroundsToolbar.childCount; i++) {
+                    if(slotBackgroundsToolbar.GetChild(i).name == str) {
+                        itemSlotRectTransform = Instantiate(itemSlotTemplate, slotBackgroundsToolbar.GetChild(i)).GetComponent<RectTransform>();
+                        itemSlotRectTransform.position = slotBackgroundsToolbar.GetChild(i).position;
+                    }
+                }
             }
-            else
-                itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+            else {
+                string str = item.slot.x + " " + item.slot.y;
 
-            itemSlotRectTransform.gameObject.SetActive(true);
-            itemSlotRectTransform.gameObject.AddComponent<DragDrop>();
-            itemSlotRectTransform.gameObject.AddComponent<CanvasGroup>();
+                for (int i = 0; i < slotBackgrounds.childCount; i++) {
+                    if (slotBackgrounds.GetChild(i).name == str) {
+                        itemSlotRectTransform = Instantiate(itemSlotTemplate, slotBackgrounds.GetChild(i)).GetComponent<RectTransform>();
+                        itemSlotRectTransform.position = slotBackgrounds.GetChild(i).position;
+                    }
+                }
+            }
 
-            if(item.slot.y == 0)
-                itemSlotRectTransform.anchoredPosition = new Vector2(item.slot.x * itemSlotCellSize + 60, -item.slot.y * itemSlotCellSize - 55);
-            else
-                itemSlotRectTransform.anchoredPosition = new Vector2(item.slot.x * itemSlotCellSize - 300, -item.slot.y * itemSlotCellSize + 200);
+            if(itemSlotRectTransform != null) {
+                itemSlotRectTransform.gameObject.SetActive(true);
+                itemSlotRectTransform.gameObject.AddComponent<DragDrop>();
+                itemSlotRectTransform.gameObject.AddComponent<CanvasGroup>();
+                itemSlotRectTransform.name = item.slot.x + " " + item.slot.y;
 
-            Image image = itemSlotRectTransform.GetComponent<Image>();
-            image.sprite = item.GetSprite();
-            TextMeshProUGUI amount = itemSlotRectTransform.Find("Amount").GetComponent<TextMeshProUGUI>();
-            if (item.amount > 1)
-                amount.SetText(item.amount.ToString());
-            else
-                amount.SetText("");
+                Image image = itemSlotRectTransform.GetComponent<Image>();
+                image.sprite = item.GetSprite();
+                TextMeshProUGUI amount = itemSlotRectTransform.Find("Amount").GetComponent<TextMeshProUGUI>();
+
+                if (item.amount > 1)
+                    amount.SetText(item.amount.ToString());
+                else
+                    amount.SetText("");
+            }
         }
     }
 }

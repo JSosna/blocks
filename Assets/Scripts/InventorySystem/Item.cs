@@ -27,12 +27,23 @@ public class Item
     public bool IsStackable() {
         switch(itemType) {
             default:
-            //case ItemType.Dirt:
+            case ItemType.Dirt:
             case ItemType.Stone:
             case ItemType.Wood:
                 return true;
+        }
+    }
+
+    public static BlockType GetBlockType(ItemType itemType) {
+        switch(itemType) {
             case ItemType.Dirt:
-                return false;
+                return BlockType.Dirt;
+            case ItemType.Stone:
+                return BlockType.Stone;
+            case ItemType.Wood:
+                return BlockType.Wood;
+            default:
+                return BlockType.Air;
         }
     }
 }

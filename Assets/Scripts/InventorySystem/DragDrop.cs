@@ -10,7 +10,20 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     private RectTransform rectTransform;
 
+    private Transform inventory;
+    private Transform toolbarFrame;
+
     private void Awake() {
+        rectTransform = GetComponent<RectTransform>();
+
+        canvas = FindObjectOfType<Canvas>();
+        canvasGroup = GetComponent<CanvasGroup>();
+
+        inventory = canvas.transform.Find("Inventory");
+        toolbarFrame = canvas.transform.Find("ToolbarFrame");
+    }
+
+    private void Start() {
         rectTransform = GetComponent<RectTransform>();
 
         canvas = FindObjectOfType<Canvas>();
@@ -18,23 +31,28 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
-        Debug.Log("OnBeginDrag");
+        eventData.pointerDrag.transform.parent.SetAsLastSibling();
+
+        if(eventData.pointerDrag.transform.parent.parent.name == "SlotBackgrounds") {
+            inventory.SetAsLastSibling();
+        } else {
+            toolbarFrame.SetAsLastSibling();
+        }
+        
+
         canvasGroup.alpha = .7f;
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData) {
-        Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        Debug.Log("OnPointerDown");
     }
 }

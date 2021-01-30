@@ -49,7 +49,6 @@ public class Inventory: MonoBehaviour
                 }
 
                 if(!slotTaken) {
-                    Debug.Log("Slot: " + x + " " + y);
                     item.slot = new Vector2Int(x, y);
                     items.Add(item);
                     return;
@@ -59,5 +58,26 @@ public class Inventory: MonoBehaviour
 
     public List<Item> GetItems() {
         return items;
+    }
+
+    public BlockType GetSlotItem(int slotNumber) {
+
+        foreach (Item item in items)
+            if (item.slot.y == 0 && item.slot.x == slotNumber) {
+
+                ItemType itemType = item.itemType;
+
+                item.amount--;
+
+                if(item.amount == 0)
+                    items.Remove(item);
+
+                OnItemListChanged.Invoke(this, EventArgs.Empty);
+
+                return Item.GetBlockType(itemType);
+            }
+                
+
+        return BlockType.Air;
     }
 }

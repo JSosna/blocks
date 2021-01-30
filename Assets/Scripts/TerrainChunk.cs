@@ -66,7 +66,7 @@ public class TerrainChunk : MonoBehaviour
             // Destroy block and add block to inventory
             if (damageLevel[x, y, z] == 4)
             {
-                BlockType blockType = blocks[x, y, z];
+                BlockType blockType = blocks[x, y, z] - 4;
                 blocks[x, y, z] = BlockType.Air;
                 damageLevel[x, y, z] = 0;
                 blocksToObserve.Remove(key);

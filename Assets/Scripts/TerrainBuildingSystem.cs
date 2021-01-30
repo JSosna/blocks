@@ -36,7 +36,7 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             HandleMouseClick(false);
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
             HandleMouseClick(true);
 
         else if (Input.GetMouseButton(1))
@@ -87,8 +87,10 @@ public class TerrainBuildingSystem : MonoBehaviour
     {
         blockSelectCounter = newSelection;
 
+        Debug.Log("selection: " + newSelection);
+
         GameObject oldSlot = toolbar.transform.GetChild(selectedSlot).gameObject;
-        oldSlot.GetComponent<Image>().color = new Color32(0, 0, 0, 255);
+        oldSlot.GetComponent<Image>().color = new Color32(200, 200, 200, 255);
 
         GameObject newSlot = toolbar.transform.GetChild(newSelection).gameObject;
         newSlot.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -139,7 +141,17 @@ public class TerrainBuildingSystem : MonoBehaviour
 
                     BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
                     if(block.HasValue) {
-                        inventory.AddItem(new Item { itemType = ItemType.Dirt, amount = 1 });
+                        if (block == BlockType.Dirt || block == BlockType.Grass || block == BlockType.GrassSnow) {
+                            inventory.AddItem(new Item { itemType = ItemType.Dirt, amount = 1 });
+                        }
+                        if (block == BlockType.Stone) {
+                            inventory.AddItem(new Item { itemType = ItemType.Stone, amount = 1 });
+                        }
+                        if(block == BlockType.WoodLog) {
+                            inventory.AddItem(new Item { itemType = ItemType.Wood, amount = 1 });
+                        }
+                        
+                        
                     }
 
                     tc.GenerateMesh();
@@ -148,7 +160,12 @@ public class TerrainBuildingSystem : MonoBehaviour
             // left click
             else if (biy <= TerrainChunk.chunkHeight - 2) // and we can't place blocks above the limit
             {
-                tc.blocks[bix, biy, biz] = (BlockType)(blockSelectCounter + 2);
+                BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
+                if(blockType != BlockType.Air)
+                    tc.blocks[bix, biy, biz] = blockType;
+
+
+
                 tc.GenerateMesh();
             }
         }
