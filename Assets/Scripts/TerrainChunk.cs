@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainChunk : MonoBehaviour
@@ -20,36 +21,31 @@ public class TerrainChunk : MonoBehaviour
     {
         if (blocksToObserve.Count == 0) return;
 
-        try
-        {
-            foreach (var block in blocksToObserve)
-            {
-            
-                    blocksToObserve[block.Key] -= 1f * Time.deltaTime;
+        for(int i=0; i<blocksToObserve.Count; i++) {
+            var key = blocksToObserve.ElementAt(i).Key;
+            blocksToObserve[key] -= 1f * Time.deltaTime;
 
-                    // Reduce block damage
-                    if (block.Value <= 0)
-                    {
-                        damageLevel[block.Key.Item1, block.Key.Item2, block.Key.Item3]--;
-                        blocks[block.Key.Item1, block.Key.Item2, block.Key.Item3]--;
-                        blocksToObserve[block.Key] = .2f;
+            // Reduce block damage
+            if (blocksToObserve.ElementAt(i).Value <= 0) {
+                damageLevel[key.Item1, key.Item2, key.Item3]--;
+                blocks[key.Item1, key.Item2, key.Item3]--;
+                blocksToObserve[key] = .2f;
 
-                        // Remove block from list of observing blocks if damage is 0
-                        if (damageLevel[block.Key.Item1, block.Key.Item2, block.Key.Item3] == 0)
-                            blocksToObserve.Remove(block.Key);
+                // Remove block from list of observing blocks if damage is 0
+                if (damageLevel[key.Item1, key.Item2, key.Item3] == 0)
+                    blocksToObserve.Remove(key);
 
-                        GenerateMesh();
-                    }
-            
+                GenerateMesh();
             }
-        } catch { }
+        }
     }
 
     public BlockType? IncreaseBLockDestroyLevel(int x, int y, int z)
     {
+        if (blocks[x, y, z] == BlockType.Air) return null;
+
         // if block don't have damage effect
-        if(blocks[x, y, z] == BlockType.Leaves) // add glass
-        {
+        if (blocks[x, y, z] == BlockType.Leaves) {  // add glass
             blocks[x, y, z] = BlockType.Air;
             return null;
         }

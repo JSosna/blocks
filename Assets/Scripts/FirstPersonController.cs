@@ -57,7 +57,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+            m_AudioSource.volume = 0.4f;
+            m_MouseLook.Init(transform , m_Camera.transform);
         }
 
 
@@ -228,11 +229,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsRunning;
 
-#if !MOBILE_INPUT
-            // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
             m_IsRunning = !Input.GetKey(KeyCode.LeftShift);
-#endif
+
             // set the desired speed to be walking or running
             speed = m_IsRunning ? m_RunSpeed : m_WalkSpeed;
             m_Input = new Vector2(horizontal, vertical);

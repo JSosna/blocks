@@ -108,6 +108,11 @@ public class UI_Inventory : MonoBehaviour {
 
             if(itemSlotRectTransform != null) {
                 itemSlotRectTransform.gameObject.SetActive(true);
+
+                itemSlotRectTransform.GetComponent<UI_Item>().MouseMiddleClickFunc = () => {
+                    inventory.DeleteItem(item);
+                };
+
                 itemSlotRectTransform.gameObject.AddComponent<DragDrop>();
                 itemSlotRectTransform.gameObject.AddComponent<CanvasGroup>();
                 itemSlotRectTransform.name = item.slot.x + " " + item.slot.y;

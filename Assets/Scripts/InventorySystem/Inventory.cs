@@ -80,4 +80,9 @@ public class Inventory: MonoBehaviour
 
         return BlockType.Air;
     }
+
+    public void DeleteItem(Item item) {
+        items.Remove(item);
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
 }

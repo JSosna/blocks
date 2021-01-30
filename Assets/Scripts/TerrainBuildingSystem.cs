@@ -36,8 +36,12 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             HandleMouseClick(false);
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
             HandleMouseClick(true);
+
+        if(Input.GetMouseButtonUp(1)) {
+            destroyButtonPressed = false;
+        }
 
         else if (Input.GetMouseButton(1))
         {
