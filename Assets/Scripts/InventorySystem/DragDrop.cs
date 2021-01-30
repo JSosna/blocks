@@ -51,6 +51,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData) {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
+
+        rectTransform.position = rectTransform.parent.position;
     }
 
     public void OnPointerDown(PointerEventData eventData) {

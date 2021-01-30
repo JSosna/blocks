@@ -2496,7 +2496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ea02b2f993ff84b9ed77edeb106efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolbar: {fileID: 401384808}
+  toolbar: {fileID: 1606873}
   inventory: {fileID: 888517967}
   groundLayer:
     serializedVersion: 2

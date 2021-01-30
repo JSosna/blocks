@@ -11,6 +11,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
     [SerializeField]
     private Inventory inventory;
 
+    private GameObject oldSlot;
+
 
     public void OnDrop(PointerEventData eventData) {
         if(eventData.pointerDrag != null) {
@@ -42,7 +44,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
                 }
             }
 
-            GameObject oldSlot = new GameObject();
+            
             // Get old slot
             if(y == 0) {
                 for (int i = 0; i < slotBackgroundsToolbar.childCount; i++) {

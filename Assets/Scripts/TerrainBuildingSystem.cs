@@ -87,12 +87,24 @@ public class TerrainBuildingSystem : MonoBehaviour
     {
         blockSelectCounter = newSelection;
 
-        Debug.Log("selection: " + newSelection);
+        int oldIndex = 0;
+        int newIndex = 0;
 
-        GameObject oldSlot = toolbar.transform.GetChild(selectedSlot).gameObject;
+        for (int i=0; i<toolbar.transform.childCount; i++) {
+            if (toolbar.transform.GetChild(i).name.Split(' ')[0] == selectedSlot.ToString()) {
+                oldIndex = i;
+            }
+
+
+            if (toolbar.transform.GetChild(i).name.Split(' ')[0] == newSelection.ToString()) {
+                newIndex = i;
+            }
+        }
+
+        GameObject oldSlot = toolbar.transform.GetChild(oldIndex).gameObject;
         oldSlot.GetComponent<Image>().color = new Color32(200, 200, 200, 255);
 
-        GameObject newSlot = toolbar.transform.GetChild(newSelection).gameObject;
+        GameObject newSlot = toolbar.transform.GetChild(newIndex).gameObject;
         newSlot.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         selectedSlot = newSelection;
     }
