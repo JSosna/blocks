@@ -51,6 +51,21 @@ public class Item
         }
     }
 
+    public bool IsEdible() {
+        switch (itemType) {
+            default:
+            case ItemType.Dirt:
+            case ItemType.Stone:
+            case ItemType.Wood:
+            case ItemType.Plank:
+            case ItemType.Sand:
+            case ItemType.IronOre:
+                return false;
+
+            case ItemType.Apple:
+                return true;
+        }
+    }
 
 
     public static BlockType GetBlockType(ItemType itemType) {

@@ -72,7 +72,6 @@ public class TerrainGenerator : MonoBehaviour
                 LoadChunks();
             }
         }
-        
     }
 
 
@@ -127,9 +126,9 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     var random = Random.Range(0, 20);
 
-                    if (random < 1)
+                    if (random < 1 && y < 18)
                         GenerateOre(terrainChunk, x, y, z, BlockType.DiamondOre, 2);
-                    else if (random < 8)
+                    else if (random < 8 && y < 28)
                         GenerateOre(terrainChunk, x, y, z, BlockType.IronOre, 3);
                     else
                         GenerateOre(terrainChunk, x, y, z, BlockType.CoalOre, 3);
@@ -160,11 +159,7 @@ public class TerrainGenerator : MonoBehaviour
             }
             else
                 terrainChunk.blocks[x, y, z] = BlockType.Dirt;
-
         }
-
-
-        
     }
 
     private static void GenerateOre(TerrainChunk terrainChunk, int x, int y, int z, BlockType oreType, int size)

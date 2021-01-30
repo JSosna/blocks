@@ -14,7 +14,7 @@ public class TerrainChunk : MonoBehaviour
     private Dictionary<Tuple<int, int, int>, float> blocksToObserve = new Dictionary<Tuple<int, int, int>, float>();
     
 
-    private float timeToRestore = 4f;
+    private float timeToRestore = 2f;
 
 
     private void Update()
@@ -59,7 +59,7 @@ public class TerrainChunk : MonoBehaviour
         {
             damageLevel[x, y, z]++;
             blocks[x, y, z]++;
-            blocksToObserve[key] = 2f;
+            blocksToObserve[key] = timeToRestore;
 
             // Destroy block and add block to inventory
             if (damageLevel[x, y, z] == 4)

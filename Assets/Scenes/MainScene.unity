@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &17665704
 GameObject:
@@ -449,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &63195790
 GameObject:
@@ -540,6 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &80197857
 GameObject:
@@ -666,6 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &180866297
 GameObject:
@@ -1144,12 +1148,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!4 &259832456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 888517965}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &266475913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266475914}
+  - component: {fileID: 266475917}
+  - component: {fileID: 266475916}
+  - component: {fileID: 266475915}
+  m_Layer: 5
+  m_Name: 2 2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &266475914
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266475913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -245}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &266475915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266475913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &266475916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266475913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &266475917
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266475913}
+  m_CullTransparentMesh: 1
 --- !u!1 &270949722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1412,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
+--- !u!1 &300846959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300846960}
+  - component: {fileID: 300846963}
+  - component: {fileID: 300846962}
+  - component: {fileID: 300846961}
+  m_Layer: 5
+  m_Name: 0 1 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &300846960
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300846959}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -145}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &300846961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300846959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &300846962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300846959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &300846963
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300846959}
+  m_CullTransparentMesh: 1
 --- !u!1 &312762397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1671,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.577, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1613,6 +1803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &374352059
 GameObject:
@@ -1704,6 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &401384808
 GameObject:
@@ -1871,6 +2063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &438646827
 GameObject:
@@ -2085,6 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &473761750
 GameObject:
@@ -2366,6 +2560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &534236249
 GameObject:
@@ -2382,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &534236250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2494,7 +2689,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
+--- !u!1 &544083611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544083612}
+  - component: {fileID: 544083615}
+  - component: {fileID: 544083614}
+  - component: {fileID: 544083613}
+  m_Layer: 5
+  m_Name: CraftingResultSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &544083612
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544083611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 946364698}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 300, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &544083613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544083611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6cb5224e104844aa1148437381d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 0}
+  inventory: {fileID: 888517967}
+--- !u!114 &544083614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544083611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &544083615
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544083611}
+  m_CullTransparentMesh: 1
 --- !u!1 &567076465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,6 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &604084577
 GameObject:
@@ -2751,6 +3040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &660327125
 GameObject:
@@ -2786,7 +3076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -140}
+  m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &664446764 stripped
@@ -2967,6 +3257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &702339665
 GameObject:
@@ -2998,7 +3289,7 @@ RectTransform:
   m_Children:
   - {fileID: 1082035359}
   m_Father: {fileID: 860048651}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3112,6 +3403,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &714993776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714993777}
+  - component: {fileID: 714993778}
+  m_Layer: 5
+  m_Name: CraftingSlotContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &714993777
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714993776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1275414834}
+  - {fileID: 2139451314}
+  - {fileID: 2076842183}
+  - {fileID: 300846960}
+  - {fileID: 1296586764}
+  - {fileID: 1507003208}
+  - {fileID: 1607610115}
+  - {fileID: 2144166423}
+  - {fileID: 266475914}
+  m_Father: {fileID: 946364698}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 290, y: 290}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &714993778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714993776}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 90, y: 90}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &771804281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,6 +3637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &827570305
 GameObject:
@@ -3368,6 +3729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &844145247
 GameObject:
@@ -3459,6 +3821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &860048647
 GameObject:
@@ -3551,8 +3914,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 702339666}
   - {fileID: 1251724336}
+  - {fileID: 702339666}
   - {fileID: 401384809}
   - {fileID: 1971236360}
   - {fileID: 202669463}
@@ -3791,6 +4154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui_Inventory: {fileID: 702339667}
+  playerHealth: {fileID: 202669465}
 --- !u!1 &931448194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3941,6 +4305,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941213510}
   m_CullTransparentMesh: 0
+--- !u!1 &946364697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946364698}
+  - component: {fileID: 946364699}
+  m_Layer: 5
+  m_Name: CraftingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &946364698
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946364697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 714993777}
+  - {fileID: 544083612}
+  m_Father: {fileID: 1595916695}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -120, y: 205}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &946364699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946364697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1421bef8b57f61046a015ee2fc36d249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlotTemplate: {fileID: 1169087238}
 --- !u!1 &974686942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &994124341
 GameObject:
@@ -4197,6 +4613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1009778335
 GameObject:
@@ -4288,6 +4705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1026226680
 GameObject:
@@ -4379,6 +4797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1035360323
 GameObject:
@@ -4470,6 +4889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1039232049
 GameObject:
@@ -4695,6 +5115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1082035358
 GameObject:
@@ -4714,7 +5135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1082035359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4732,8 +5153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 840, y: 720}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 840, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082035360
 MonoBehaviour:
@@ -4878,6 +5299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1097683353
 GameObject:
@@ -4969,6 +5391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1169087237
 GameObject:
@@ -4988,7 +5411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169087238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5004,9 +5427,9 @@ RectTransform:
   m_Father: {fileID: 660327126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -300, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169087239
@@ -5263,6 +5686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1251724335
 GameObject:
@@ -5296,7 +5720,7 @@ RectTransform:
   - {fileID: 931448195}
   - {fileID: 888417255}
   m_Father: {fileID: 860048651}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5393,6 +5817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1267119735
 GameObject:
@@ -5484,7 +5909,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
+--- !u!1 &1275414833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275414834}
+  - component: {fileID: 1275414837}
+  - component: {fileID: 1275414836}
+  - component: {fileID: 1275414835}
+  m_Layer: 5
+  m_Name: 0 0 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1275414834
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275414833}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -45}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1275414835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275414833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &1275414836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275414833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1275414837
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275414833}
+  m_CullTransparentMesh: 1
 --- !u!1 &1282882931
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,6 +6153,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283153249}
   m_CullTransparentMesh: 0
+--- !u!1 &1296586763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296586764}
+  - component: {fileID: 1296586767}
+  - component: {fileID: 1296586766}
+  - component: {fileID: 1296586765}
+  m_Layer: 5
+  m_Name: 1 1 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1296586764
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296586763}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145, y: -145}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1296586765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296586763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &1296586766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296586763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1296586767
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296586763}
+  m_CullTransparentMesh: 1
 --- !u!1 &1322543290
 GameObject:
   m_ObjectHideFlags: 0
@@ -5725,6 +6335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1328714004
 GameObject:
@@ -5816,6 +6427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1404553962
 GameObject:
@@ -5907,6 +6519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1424350251
 GameObject:
@@ -5998,6 +6611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1473804790
 GameObject:
@@ -6223,6 +6837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1484505255
 GameObject:
@@ -6314,7 +6929,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
+--- !u!1 &1507003207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1507003208}
+  - component: {fileID: 1507003211}
+  - component: {fileID: 1507003210}
+  - component: {fileID: 1507003209}
+  m_Layer: 5
+  m_Name: 2 1 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1507003208
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507003207}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -145}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1507003209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507003207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &1507003210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507003207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1507003211
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507003207}
+  m_CullTransparentMesh: 1
 --- !u!1 &1524742457
 GameObject:
   m_ObjectHideFlags: 0
@@ -6405,6 +7113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1534918351
 GameObject:
@@ -6496,6 +7205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1588381520
 GameObject:
@@ -6659,13 +7369,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 660327126}
+  - {fileID: 946364698}
   m_Father: {fileID: 1082035359}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 820, y: 700}
+  m_SizeDelta: {x: 820, y: 740}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595916696
 MonoBehaviour:
@@ -6705,6 +7416,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595916694}
   m_CullTransparentMesh: 0
+--- !u!1 &1607610114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607610115}
+  - component: {fileID: 1607610118}
+  - component: {fileID: 1607610117}
+  - component: {fileID: 1607610116}
+  m_Layer: 5
+  m_Name: 0 2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1607610115
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607610114}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -245}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1607610116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607610114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &1607610117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607610114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1607610118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607610114}
+  m_CullTransparentMesh: 1
 --- !u!1 &1675879694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7209,6 +8012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1808023334
 GameObject:
@@ -7350,6 +8154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &1971236357
 GameObject:
@@ -7520,6 +8325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotBackgrounds: {fileID: 2038510210}
   slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
   inventory: {fileID: 888517967}
 --- !u!1 &2008021571
 GameObject:
@@ -7722,8 +8528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 40, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -33, y: 3}
+  m_SizeDelta: {x: 60, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048537836
 MonoBehaviour:
@@ -7779,7 +8585,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7883,6 +8689,98 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &2076842182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076842183}
+  - component: {fileID: 2076842186}
+  - component: {fileID: 2076842185}
+  - component: {fileID: 2076842184}
+  m_Layer: 5
+  m_Name: 2 0 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2076842183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076842182}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -45}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2076842184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076842182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &2076842185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076842182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2076842186
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076842182}
+  m_CullTransparentMesh: 1
 --- !u!1 &2092233258
 GameObject:
   m_ObjectHideFlags: 0
@@ -7958,3 +8856,187 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092233258}
   m_CullTransparentMesh: 0
+--- !u!1 &2139451313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139451314}
+  - component: {fileID: 2139451317}
+  - component: {fileID: 2139451316}
+  - component: {fileID: 2139451315}
+  m_Layer: 5
+  m_Name: 1 0 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2139451314
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139451313}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145, y: -45}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2139451315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139451313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &2139451316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139451313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2139451317
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139451313}
+  m_CullTransparentMesh: 1
+--- !u!1 &2144166422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144166423}
+  - component: {fileID: 2144166426}
+  - component: {fileID: 2144166425}
+  - component: {fileID: 2144166424}
+  m_Layer: 5
+  m_Name: 1 2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2144166423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144166422}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 714993777}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145, y: -245}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2144166424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144166422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047337e13c9267b4f81c2863be3b28c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotBackgrounds: {fileID: 2038510210}
+  slotBackgroundsToolbar: {fileID: 1606874}
+  craftingSlots: {fileID: 714993777}
+  inventory: {fileID: 888517967}
+--- !u!114 &2144166425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144166422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2144166426
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144166422}
+  m_CullTransparentMesh: 1

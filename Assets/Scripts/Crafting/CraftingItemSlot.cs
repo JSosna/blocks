@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IDropHandler {
+public class CraftingItemSlot : MonoBehaviour, IDropHandler {
     [SerializeField]
     private Transform slotBackgrounds;
     [SerializeField]
@@ -18,7 +19,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
 
 
     public void OnDrop(PointerEventData eventData) {
-        if(eventData.pointerDrag != null) {
+        if (eventData.pointerDrag != null) {
 
             string[] position = eventData.pointerDrag.name.Split(' ');
             int x = int.Parse(position[0]);
@@ -32,7 +33,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
                 }
             }
 
-            
+
 
             string[] newPosition = gameObject.transform.name.Split(' ');
             int newX = int.Parse(newPosition[0]);
@@ -43,19 +44,20 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
                 if (item.slot.x == newX && item.slot.y == newY) {
                     item.slot.x = x;
                     item.slot.y = y;
-                    
+
                 }
             }
 
-            
+
             // Get old slot
-            if(y == 0) {
+            if (y == 0) {
                 for (int i = 0; i < slotBackgroundsToolbar.childCount; i++) {
                     if (slotBackgroundsToolbar.GetChild(i).name == eventData.pointerDrag.name) {
                         oldSlot = slotBackgroundsToolbar.GetChild(i).gameObject;
                     }
                 }
-            } else {
+            }
+            else {
                 for (int i = 0; i < slotBackgrounds.childCount; i++) {
                     if (slotBackgrounds.GetChild(i).name == eventData.pointerDrag.name) {
                         oldSlot = slotBackgrounds.GetChild(i).gameObject;

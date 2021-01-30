@@ -5,7 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int playerHealth = 10;
+    private int _health = 10;
+    public int Health {
+        get {
+            return _health;
+        }
+        set {
+            _health += value;
+            if (_health > 10) _health = 10;
+            timeLeftToReduceHealth = healthReduceThreshold;
+
+            DisplayHealthStatus();
+        }
+    }
 
     private const float healthReduceThreshold = 60f;
     private float timeLeftToReduceHealth;
@@ -23,13 +35,13 @@ public class PlayerHealth : MonoBehaviour
 
         if(timeLeftToReduceHealth < 0) {
             timeLeftToReduceHealth = healthReduceThreshold;
-            playerHealth--;
+            _health--;
             DisplayHealthStatus();
         }
     }
 
     private void DisplayHealthStatus() {
-        if(playerHealth <= 0) {
+        if(_health <= 0) {
             //TODO: Death screen
         }
 
@@ -37,14 +49,8 @@ public class PlayerHealth : MonoBehaviour
             transform.GetChild(i).GetComponent<Image>().color = new Color32(0, 0, 0, 255);
         }
 
-        for (int i = 0; i < playerHealth; i++) {
+        for (int i = 0; i < Health; i++) {
             transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
-    }
-
-    public void AddHealth(int health) {
-        playerHealth += health;
-        if (playerHealth > 10) playerHealth = 10;
-        timeLeftToReduceHealth = healthReduceThreshold;
     }
 }

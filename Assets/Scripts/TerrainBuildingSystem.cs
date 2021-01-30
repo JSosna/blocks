@@ -65,13 +65,17 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f) // forward
         {
-            if (selectedSlot < 8)
+            if (selectedSlot < 7) {
+
                 HandleSlotChange(selectedSlot + 1);
+            }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f) // backwards
         {
-            if (selectedSlot > 0)
+            if (selectedSlot > 0) {
                 HandleSlotChange(selectedSlot - 1);
+            }
+                
         }
 
 
@@ -114,7 +118,7 @@ public class TerrainBuildingSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Function that handles mouse click in building mode
+    ///
     /// </summary>
     /// <param name="button">
     /// 0 - false - left
@@ -122,6 +126,14 @@ public class TerrainBuildingSystem : MonoBehaviour
     /// </param>
     private void HandleMouseClick(bool button)
     {
+        // Check if holding sth edible and clicking right button
+        if(!button) {
+            bool wasEdible = inventory.EatSlotItemIfEdible(blockSelectCounter);
+
+            if(wasEdible)
+                return;
+        }
+
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxDist, groundLayer))
         {
@@ -188,13 +200,11 @@ public class TerrainBuildingSystem : MonoBehaviour
                 }
             }
             // right click
-            else if (biy <= TerrainChunk.chunkHeight - 2) // and we can't place blocks above the limit
-            {
-
-
+            else {
                 BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
                 if(blockType != BlockType.Air)
-                    tc.blocks[bix, biy, biz] = blockType;
+                    if(biy <= TerrainChunk.chunkHeight - 2)  // and we can't place blocks above the limit
+                        tc.blocks[bix, biy, biz] = blockType;
 
 
 

@@ -12,6 +12,9 @@ public class Inventory: MonoBehaviour
     private UI_Inventory ui_Inventory;
 
 
+    [SerializeField]
+    private PlayerHealth playerHealth;
+
     private void Start()
     {
         items = new List<Item>();
@@ -60,6 +63,29 @@ public class Inventory: MonoBehaviour
         return items;
     }
 
+    public bool EatSlotItemIfEdible(int slotNumber) {
+        foreach (Item item in items)
+            if (item.slot.y == 0 && item.slot.x == slotNumber) {
+
+                if (item.IsEdible()) {
+                    if (playerHealth.Health < 10) {
+                        playerHealth.Health += 2;
+
+                        item.amount--;
+
+                        if (item.amount == 0)
+                            items.Remove(item);
+
+                        OnItemListChanged.Invoke(this, EventArgs.Empty);
+                    }
+                        
+
+                    return true;
+                }
+            }
+        return false;
+    }
+
     public BlockType GetSlotItem(int slotNumber) {
 
         foreach (Item item in items)
@@ -76,8 +102,6 @@ public class Inventory: MonoBehaviour
 
                 return Item.GetBlockType(itemType);
             }
-                
-
         return BlockType.Air;
     }
 
