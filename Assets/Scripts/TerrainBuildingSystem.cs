@@ -23,6 +23,8 @@ public class TerrainBuildingSystem : MonoBehaviour
     private float timeToNextHit;
     private bool destroyButtonPressed = false;
 
+    [SerializeField]
+    private GameObject torchLightPrefab;
 
     private void Start()
     {
@@ -166,7 +168,6 @@ public class TerrainBuildingSystem : MonoBehaviour
                 
                 if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
-
                     BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
                     if(block.HasValue) {
                         if (block == BlockType.Dirt || block == BlockType.Grass || block == BlockType.GrassSnow) {
@@ -195,8 +196,18 @@ public class TerrainBuildingSystem : MonoBehaviour
                                 inventory.AddItem(new Item { itemType = ItemType.Apple, amount = 1 });
                             }
                         }
+                        else if(block == BlockType.Torch) {
+                            // Remove torch light from chunk
+                            for (int i = 0; i < tc.torches.Count; i++) {
+                                if (tc.torches[i].name == bix + " " + biy + " " + biz) {
+                                    var light = tc.torches[i];
+                                    tc.torches.RemoveAt(i);
+                                    Destroy(light);
+                                }
+                            }
 
-
+                            inventory.AddItem(new Item { itemType = ItemType.Torch, amount = 1 });
+                        }
                     }
 
                     tc.RegenerateMesh();
@@ -224,12 +235,21 @@ public class TerrainBuildingSystem : MonoBehaviour
             }
             // right click
             else {
-                BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
-                if(blockType != BlockType.Air)
-                    if(biy <= TerrainChunk.chunkHeight - 2)  // and we can't place blocks above the limit
+                if (tc.blocks[bix, biy, biz] != BlockType.Torch && biy <= TerrainChunk.chunkHeight - 2) {  // we can't place blocks above the limit
+                    BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
+                    if (blockType != BlockType.Air)
                         tc.blocks[bix, biy, biz] = blockType;
 
-                tc.GenerateMesh();
+                    if (blockType == BlockType.Torch) {
+                        GameObject lightGameObject = Instantiate(torchLightPrefab, tc.transform);
+                        lightGameObject.name = bix + " " + biy + " " + biz;
+                        lightGameObject.transform.position = 
+                            new Vector3(tc.transform.position.x + bix - .5f, tc.transform.position.y + biy + .8f, tc.transform.position.z + biz - .5f);
+                        tc.torches.Add(lightGameObject);
+                    }
+                }
+
+                tc.RegenerateMesh();
             }
         }
     }

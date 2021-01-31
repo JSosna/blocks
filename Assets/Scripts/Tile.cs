@@ -79,6 +79,10 @@ public enum TileType {
     SandD1,
     SandD2,
     SandD3,
+
+    TorchTop,
+    TorchSide,
+    TorchBottom
 }
 
 
@@ -167,5 +171,9 @@ public class Tile
         {TileType.SandD1, new Tile(12, 1)},
         {TileType.SandD2, new Tile(12, 2)},
         {TileType.SandD3, new Tile(12, 3)},
+
+        {TileType.TorchTop, new Tile(11, 2) },
+        {TileType.TorchSide, new Tile(11, 1) },
+        {TileType.TorchBottom, new Tile(11, 3) },
     };
 }

@@ -104,6 +104,8 @@ public class Item
                 return BlockType.Sand;
             case ItemType.IronOre:
                 return BlockType.IronOre;
+            case ItemType.Torch:
+                return BlockType.Torch;
             default:
                 return BlockType.Air;
         }

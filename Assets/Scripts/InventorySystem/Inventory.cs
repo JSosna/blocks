@@ -17,6 +17,8 @@ public class Inventory: MonoBehaviour
 
     private void Start() {
         ui_Inventory.SetInventory(this);
+
+        items.Add(new Item { amount = 10, itemType = ItemType.Torch, slot = new Vector2Int(0, 0) });
     }
 
     public void AddItem(Item item) {
