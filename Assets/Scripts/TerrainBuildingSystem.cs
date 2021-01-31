@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class TerrainBuildingSystem : MonoBehaviour
 {
@@ -198,7 +199,27 @@ public class TerrainBuildingSystem : MonoBehaviour
 
                     }
 
-                    tc.GenerateMesh();
+                    tc.RegenerateMesh();
+
+                    // Regenerate chunks if block on the edge was destroyed
+
+                    // Regenerate Front Chunk
+                    if (biz == 1) {
+                        TerrainGenerator.chunks[new Vector2Int(chunkPosX, chunkPosZ - 16)].RegenerateMesh();
+                    }
+                    // Regenerate Back Chunk
+                    else if (biz == TerrainChunk.chunkWidth) {
+                        TerrainGenerator.chunks[new Vector2Int(chunkPosX, chunkPosZ + 16)].RegenerateMesh();
+                    }
+
+                    // Regenerate Right Chunk
+                    if (bix == 1) {
+                        TerrainGenerator.chunks[new Vector2Int(chunkPosX - 16, chunkPosZ)].RegenerateMesh();
+                    }
+                    // Regenerate Left Chunk
+                    else if (bix == TerrainChunk.chunkWidth) {
+                        TerrainGenerator.chunks[new Vector2Int(chunkPosX + 16, chunkPosZ)].RegenerateMesh();
+                    }
                 }
             }
             // right click
@@ -207,8 +228,6 @@ public class TerrainBuildingSystem : MonoBehaviour
                 if(blockType != BlockType.Air)
                     if(biy <= TerrainChunk.chunkHeight - 2)  // and we can't place blocks above the limit
                         tc.blocks[bix, biy, biz] = blockType;
-
-
 
                 tc.GenerateMesh();
             }

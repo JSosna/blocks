@@ -13,8 +13,9 @@ public class TerrainChunk : MonoBehaviour
 
     private Dictionary<Tuple<int, int, int>, float> blocksToObserve = new Dictionary<Tuple<int, int, int>, float>();
     
-
     private float timeToRestore = 2f;
+    private int chunkX;
+    private int chunkZ;
 
 
     private void Update()
@@ -35,9 +36,14 @@ public class TerrainChunk : MonoBehaviour
                 if (damageLevel[key.Item1, key.Item2, key.Item3] == 0)
                     blocksToObserve.Remove(key);
 
-                GenerateMesh();
+                RegenerateMesh();
             }
         }
+    }
+
+    public void SetChunkPosition(int x, int z) {
+        chunkX = x;
+        chunkZ = z;
     }
 
     public BlockType? IncreaseBLockDestroyLevel(int x, int y, int z)
@@ -82,25 +88,22 @@ public class TerrainChunk : MonoBehaviour
         return null;
     }
 
-    public void GenerateMesh()
-    {
+    public void GenerateMesh() {
         Mesh mesh = new Mesh();
 
         List<Vector3> verts = new List<Vector3>();
         List<int> tris = new List<int>();
         List<Vector2> uvs = new List<Vector2>();
 
-        for (int x = 1; x < chunkWidth+1; x++)
-            for (int z = 1; z < chunkWidth+1; z++)
+        for (int x = 1; x < chunkWidth + 1; x++)
+            for (int z = 1; z < chunkWidth + 1; z++)
                 for (int y = 0; y < chunkHeight; y++)
-                    if (blocks[x, y, z] != BlockType.Air)
-                    {
+                    if (blocks[x, y, z] != BlockType.Air) {
                         Vector3 blockPos = new Vector3(x - 1, y, z - 1);
                         int faces = 0;
 
                         // top
-                        if (y < chunkHeight - 1 && blocks[x, y + 1, z] == BlockType.Air || blocks[x, y + 1, z] == BlockType.Leaves)
-                        {
+                        if (y < chunkHeight - 1 && blocks[x, y + 1, z] == BlockType.Air || blocks[x, y + 1, z] == BlockType.Leaves) {
                             verts.Add(blockPos + new Vector3(0, 1, 0));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
                             verts.Add(blockPos + new Vector3(1, 1, 1));
@@ -111,8 +114,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // bottom
-                        if (y > 0 && (blocks[x, y - 1, z] == BlockType.Air || blocks[x, y - 1, z] == BlockType.Leaves))
-                        {
+                        if (y > 0 && (blocks[x, y - 1, z] == BlockType.Air || blocks[x, y - 1, z] == BlockType.Leaves)) {
                             verts.Add(blockPos + new Vector3(0, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 0, 1));
@@ -123,8 +125,7 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // front
-                        if (blocks[x, y, z - 1] == BlockType.Air || z - 1 == 0 || blocks[x, y, z - 1] == BlockType.Leaves)
-                        {
+                        if (blocks[x, y, z - 1] == BlockType.Air || blocks[x, y, z - 1] == BlockType.Leaves) {
                             verts.Add(blockPos + new Vector3(0, 0, 0));
                             verts.Add(blockPos + new Vector3(0, 1, 0));
                             verts.Add(blockPos + new Vector3(1, 1, 0));
@@ -135,20 +136,18 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // back
-                        if (blocks[x, y, z + 1] == BlockType.Air || z == chunkWidth || blocks[x, y, z + 1] == BlockType.Leaves)
-                        {
+                        if (blocks[x, y, z + 1] == BlockType.Air || blocks[x, y, z + 1] == BlockType.Leaves) {
                             verts.Add(blockPos + new Vector3(1, 0, 1));
                             verts.Add(blockPos + new Vector3(1, 1, 1));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
                             verts.Add(blockPos + new Vector3(0, 0, 1));
-                            
+
                             faces++;
                             uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
                         }
 
                         // left
-                        if (blocks[x - 1, y, z] == BlockType.Air || x - 1 == 0 || blocks[x - 1, y, z] == BlockType.Leaves)
-                        {
+                        if (blocks[x - 1, y, z] == BlockType.Air || blocks[x - 1, y, z] == BlockType.Leaves) {
                             verts.Add(blockPos + new Vector3(0, 0, 1));
                             verts.Add(blockPos + new Vector3(0, 1, 1));
                             verts.Add(blockPos + new Vector3(0, 1, 0));
@@ -159,8 +158,154 @@ public class TerrainChunk : MonoBehaviour
                         }
 
                         // right
-                        if (blocks[x + 1, y, z] == BlockType.Air || x == chunkWidth || blocks[x + 1, y, z] == BlockType.Leaves)
-                        {
+                        if (blocks[x + 1, y, z] == BlockType.Air || blocks[x + 1, y, z] == BlockType.Leaves) {
+                            verts.Add(blockPos + new Vector3(1, 0, 0));
+                            verts.Add(blockPos + new Vector3(1, 1, 0));
+                            verts.Add(blockPos + new Vector3(1, 1, 1));
+                            verts.Add(blockPos + new Vector3(1, 0, 1));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                        }
+
+
+                        int tl = verts.Count - 4 * faces;
+
+                        for (int i = 0; i < faces; i++)
+                            tris.AddRange(new int[] { tl + i * 4, tl + i * 4 + 1, tl + i * 4 + 2, tl + i * 4, tl + i * 4 + 2, tl + i * 4 + 3 });
+                    }
+
+        mesh.vertices = verts.ToArray();
+        mesh.triangles = tris.ToArray();
+        mesh.uv = uvs.ToArray();
+
+        mesh.RecalculateNormals();
+
+        GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+
+    public void RegenerateMesh() {
+        Mesh mesh = new Mesh();
+
+        List<Vector3> verts = new List<Vector3>();
+        List<int> tris = new List<int>();
+        List<Vector2> uvs = new List<Vector2>();
+
+        for (int x = 1; x < chunkWidth + 1; x++)
+            for (int z = 1; z < chunkWidth + 1; z++)
+                for (int y = 0; y < chunkHeight; y++)
+                    if (blocks[x, y, z] != BlockType.Air) {
+                        Vector3 blockPos = new Vector3(x - 1, y, z - 1);
+                        int faces = 0;
+
+                        // top
+                        if (y < chunkHeight - 1 && blocks[x, y + 1, z] == BlockType.Air || blocks[x, y + 1, z] == BlockType.Leaves) {
+                            verts.Add(blockPos + new Vector3(0, 1, 0));
+                            verts.Add(blockPos + new Vector3(0, 1, 1));
+                            verts.Add(blockPos + new Vector3(1, 1, 1));
+                            verts.Add(blockPos + new Vector3(1, 1, 0));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].topPos.uvs);
+                        }
+
+                        // bottom
+                        if (y > 0 && (blocks[x, y - 1, z] == BlockType.Air || blocks[x, y - 1, z] == BlockType.Leaves)) {
+                            verts.Add(blockPos + new Vector3(0, 0, 0));
+                            verts.Add(blockPos + new Vector3(1, 0, 0));
+                            verts.Add(blockPos + new Vector3(1, 0, 1));
+                            verts.Add(blockPos + new Vector3(0, 0, 1));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].bottomPos.uvs);
+                        }
+
+                        // front
+                        if (z-1 == 0) { // check if chunk in front has block on this position
+
+                            //if(terrainChunkFront.blocks[x, y, chunkWidth] == BlockType.Air) {
+                            if (TerrainGenerator.chunks[new Vector2Int(chunkX, chunkZ - 16)].blocks[x, y, chunkWidth] == BlockType.Air) {
+
+                                verts.Add(blockPos + new Vector3(0, 0, 0));
+                                verts.Add(blockPos + new Vector3(0, 1, 0));
+                                verts.Add(blockPos + new Vector3(1, 1, 0));
+                                verts.Add(blockPos + new Vector3(1, 0, 0));
+
+                                faces++;
+                                uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                            }
+                        }
+                        else if (blocks[x, y, z - 1] == BlockType.Air || blocks[x, y, z - 1] == BlockType.Leaves) {
+                            verts.Add(blockPos + new Vector3(0, 0, 0));
+                            verts.Add(blockPos + new Vector3(0, 1, 0));
+                            verts.Add(blockPos + new Vector3(1, 1, 0));
+                            verts.Add(blockPos + new Vector3(1, 0, 0));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                        }
+
+                        // back
+                        if (z + 1 == chunkWidth + 1) {
+                            if (TerrainGenerator.chunks[new Vector2Int(chunkX, chunkZ + 16)].blocks[x, y, 1] == BlockType.Air) {
+
+                                verts.Add(blockPos + new Vector3(1, 0, 1));
+                                verts.Add(blockPos + new Vector3(1, 1, 1));
+                                verts.Add(blockPos + new Vector3(0, 1, 1));
+                                verts.Add(blockPos + new Vector3(0, 0, 1));
+
+                                faces++;
+                                uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                            }
+                        }
+                        else if (blocks[x, y, z + 1] == BlockType.Air || blocks[x, y, z + 1] == BlockType.Leaves) {
+                            verts.Add(blockPos + new Vector3(1, 0, 1));
+                            verts.Add(blockPos + new Vector3(1, 1, 1));
+                            verts.Add(blockPos + new Vector3(0, 1, 1));
+                            verts.Add(blockPos + new Vector3(0, 0, 1));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                        }
+
+                        // left
+                        if (x - 1 == 0) {
+                            if (TerrainGenerator.chunks[new Vector2Int(chunkX - 16, chunkZ)].blocks[chunkWidth, y, z] == BlockType.Air) {
+
+                                verts.Add(blockPos + new Vector3(0, 0, 1));
+                                verts.Add(blockPos + new Vector3(0, 1, 1));
+                                verts.Add(blockPos + new Vector3(0, 1, 0));
+                                verts.Add(blockPos + new Vector3(0, 0, 0));
+
+                                faces++;
+                                uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                            }
+                        }
+                        else if (blocks[x - 1, y, z] == BlockType.Air || blocks[x - 1, y, z] == BlockType.Leaves) {
+                            verts.Add(blockPos + new Vector3(0, 0, 1));
+                            verts.Add(blockPos + new Vector3(0, 1, 1));
+                            verts.Add(blockPos + new Vector3(0, 1, 0));
+                            verts.Add(blockPos + new Vector3(0, 0, 0));
+
+                            faces++;
+                            uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                        }
+
+                        // right
+                        if (x + 1 == chunkWidth + 1) {
+                            if (TerrainGenerator.chunks[new Vector2Int(chunkX + 16, chunkZ)].blocks[1, y, z] == BlockType.Air) {
+
+                                verts.Add(blockPos + new Vector3(1, 0, 0));
+                                verts.Add(blockPos + new Vector3(1, 1, 0));
+                                verts.Add(blockPos + new Vector3(1, 1, 1));
+                                verts.Add(blockPos + new Vector3(1, 0, 1));
+
+                                faces++;
+                                uvs.AddRange(Block.blocks[blocks[x, y, z]].sidePos.uvs);
+                            }
+                        }
+                        else if (blocks[x + 1, y, z] == BlockType.Air || blocks[x + 1, y, z] == BlockType.Leaves) {
                             verts.Add(blockPos + new Vector3(1, 0, 0));
                             verts.Add(blockPos + new Vector3(1, 1, 0));
                             verts.Add(blockPos + new Vector3(1, 1, 1));

@@ -79,6 +79,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         GameObject chunk = Instantiate(this.terrainChunk, new Vector3(chunkX, 0, chunkZ), Quaternion.identity);
         TerrainChunk terrainChunk = chunk.GetComponent<TerrainChunk>();
+        terrainChunk.SetChunkPosition(chunkX, chunkZ);
 
         LoadBlocks(chunkX, chunkZ, terrainChunk);
         terrainChunk.GenerateMesh();

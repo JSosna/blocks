@@ -93,13 +93,14 @@ public class HandCraftingSystem : MonoBehaviour
     }
 
     private void CraftItem(int craftOptionNumber) {
-        bool canCraft = false;
+        bool canCraft = true;
 
         for (int x = 0; x < HandCraftOptions[craftOptionNumber].CostItemsWithAmounts.Count; x++) {
             ItemType requiredItemType = HandCraftOptions[craftOptionNumber].CostItemsWithAmounts.ElementAt(x).Key.itemType;
             int requiredAmount = HandCraftOptions[craftOptionNumber].CostItemsWithAmounts.ElementAt(x).Value;
 
-            canCraft = inventory.CheckIfGotRequiredItemTypeWithAmount(requiredItemType, requiredAmount);
+            if (!inventory.CheckIfGotRequiredItemTypeWithAmount(requiredItemType, requiredAmount))
+                canCraft = false;
         }
 
         if (canCraft) {
@@ -116,13 +117,14 @@ public class HandCraftingSystem : MonoBehaviour
 
     public void SelectCraftableOptions() {
         for(int i = 0; i< HandCraftOptionsTransforms.Count; i++) {
-            bool canCraft = false;
+            bool canCraft = true;
             
             for (int x = 0; x < HandCraftOptions[i].CostItemsWithAmounts.Count; x++) {
                 ItemType requiredItemType = HandCraftOptions[i].CostItemsWithAmounts.ElementAt(x).Key.itemType;
                 int requiredAmount = HandCraftOptions[i].CostItemsWithAmounts.ElementAt(x).Value;
 
-                canCraft = inventory.CheckIfGotRequiredItemTypeWithAmount(requiredItemType, requiredAmount);
+                if (!inventory.CheckIfGotRequiredItemTypeWithAmount(requiredItemType, requiredAmount))
+                    canCraft = false;
             }
 
             if (canCraft) {
