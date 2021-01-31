@@ -13,7 +13,10 @@ public enum ItemType
     IronOre,
 
     // Edible
-    Apple
+    Apple,
+
+    // Other
+    Stick
 }
 
 public class Item
@@ -33,6 +36,8 @@ public class Item
             case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
 
             case ItemType.Apple: return ItemAssets.Instance.appleSprite;
+
+            case ItemType.Stick: return ItemAssets.Instance.appleSprite;
         }
     }
 

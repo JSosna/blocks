@@ -6,7 +6,7 @@ using UnityEngine;
 public class Inventory: MonoBehaviour
 {
     public event EventHandler OnItemListChanged;
-    public List<Item> items;
+    public List<Item> items = new List<Item>();
 
     [SerializeField]
     private UI_Inventory ui_Inventory;
@@ -15,14 +15,11 @@ public class Inventory: MonoBehaviour
     [SerializeField]
     private PlayerHealth playerHealth;
 
-    private void Start()
-    {
-        items = new List<Item>();
+    private void Start() {
         ui_Inventory.SetInventory(this);
     }
 
-    public void AddItem(Item item)
-    {
+    public void AddItem(Item item) {
         if (item.IsStackable()) {
             bool itemAlreadyInInventory = false;
             foreach (Item inventoryItem in items) {
@@ -37,6 +34,20 @@ public class Inventory: MonoBehaviour
 
         } else if(items.Count < 40)
             AddToFirstFreeSlot(item);
+
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void AddItem(ItemType itemType, int amount) {
+        for(int i=0; i<items.Count; i++) {
+            if(items[i].itemType == itemType) {
+                items[i].amount += amount;
+                OnItemListChanged?.Invoke(this, EventArgs.Empty);
+                return;
+            }
+        }
+
+        AddToFirstFreeSlot(itemType, amount);
 
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -59,8 +70,48 @@ public class Inventory: MonoBehaviour
             }      
     }
 
+    public void AddToFirstFreeSlot(ItemType itemType, int amount) {
+        for (int y = 0; y < 5; y++)
+            for (int x = 0; x < 8; x++) {
+                bool slotTaken = false;
+
+                foreach (Item itemInList in items) {
+                    if (itemInList.slot.x == x && itemInList.slot.y == y)
+                        slotTaken = true;
+                }
+
+                if (!slotTaken) {
+                    var item = new Item { itemType = itemType, amount = amount };
+                    item.slot = new Vector2Int(x, y);
+                    items.Add(item);
+                    return;
+                }
+            }
+    }
+
     public List<Item> GetItems() {
         return items;
+    }
+
+    public bool CheckIfGotRequiredItemTypeWithAmount(ItemType itemType, int amount) {
+        for (int i = 0; i < items.Count; i++)
+            if (items[i].itemType == itemType && items[i].amount >= amount)
+                return true;
+        return false;
+    }
+
+    public void SubtractItem(ItemType itemType, int amount) {
+        for (int i = 0; i < items.Count; i++)
+            if (items[i].itemType == itemType) {
+
+                items[i].amount -= amount;
+
+                if (items[i].amount == 0) {
+                    DeleteItem(items[i]);
+                }
+            }
+
+        OnItemListChanged.Invoke(this, EventArgs.Empty);
     }
 
     public bool EatSlotItemIfEdible(int slotNumber) {

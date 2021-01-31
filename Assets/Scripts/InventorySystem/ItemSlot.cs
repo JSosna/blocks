@@ -9,9 +9,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
     [SerializeField]
     private Transform slotBackgroundsToolbar;
     [SerializeField]
-    private Transform craftingSlots;
-
-    [SerializeField]
     private Inventory inventory;
 
     private GameObject oldSlot;

@@ -20,6 +20,9 @@ public class UI_Inventory : MonoBehaviour {
     [SerializeField]
     private GameObject[] slots;
 
+    [SerializeField]
+    private HandCraftingSystem handCraftingSystem;
+
     public static bool InventoryOpened { get; set; }
 
 
@@ -35,6 +38,7 @@ public class UI_Inventory : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.I)) {
             if (InventoryOpened) {
                 CloseInventory();
+                RefreshInventoryItems();
             }
             else {
                 OpenInventory();
@@ -68,6 +72,7 @@ public class UI_Inventory : MonoBehaviour {
     }
 
     private void RefreshInventoryItems() {
+        handCraftingSystem.SelectCraftableOptions();
 
         foreach (Transform child in slotBackgrounds) {
             foreach (Transform childOfChild in child) {
