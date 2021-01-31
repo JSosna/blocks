@@ -127,10 +127,11 @@ public class TerrainBuildingSystem : MonoBehaviour
     private void HandleMouseClick(bool button)
     {
         // Check if holding sth edible and clicking right button
-        if(!button) {
-            bool wasEdible = inventory.EatSlotItemIfEdible(blockSelectCounter);
+        if (!button) {
+            if (inventory.EatSlotItemIfEdible(blockSelectCounter))
+                return;
 
-            if(wasEdible)
+            if (!inventory.IsSlotItemPlaceable(blockSelectCounter))
                 return;
         }
 
@@ -164,8 +165,6 @@ public class TerrainBuildingSystem : MonoBehaviour
                 
                 if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
-                    if (tc.blocks[bix, biy, biz] == BlockType.DiamondOre)
-                        Debug.Log("Diamonds, gg");
 
                     BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
                     if(block.HasValue) {
@@ -183,6 +182,9 @@ public class TerrainBuildingSystem : MonoBehaviour
                         }
                         else if(block == BlockType.Sand) {
                             inventory.AddItem(new Item { itemType = ItemType.Sand, amount = 1 });
+                        }
+                        else if(block == BlockType.CoalOre) {
+                            inventory.AddItem(new Item { itemType = ItemType.Coal, amount = 1 });
                         }
                         else if(block == BlockType.IronOre) {
                             inventory.AddItem(new Item { itemType = ItemType.IronOre, amount = 1 });

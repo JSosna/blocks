@@ -37,7 +37,7 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 4
         };
 
-        // Option 1 - wood -> plank
+        // Option 2 - plank -> stick
         var plankStickCost = new Dictionary<Item, int>();
         plankStickCost.Add(new Item { itemType = ItemType.Plank }, 2);
         CraftingOption plankStick = new CraftingOption {
@@ -46,9 +46,20 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 4
         };
 
+        // Option 3 - stick + coal -> torch
+        var stickCoalTorchCost = new Dictionary<Item, int>();
+        stickCoalTorchCost.Add(new Item { itemType = ItemType.Stick }, 1);
+        stickCoalTorchCost.Add(new Item { itemType = ItemType.Coal }, 1);
+        CraftingOption stickCoalTorch = new CraftingOption {
+            CostItemsWithAmounts = stickCoalTorchCost,
+            ResultItem = new Item { itemType = ItemType.Torch },
+            ResultItemAmount = 4
+        };
+
 
         craftingOptions.Add(woodPlank);
         craftingOptions.Add(plankStick);
+        craftingOptions.Add(stickCoalTorch);
 
         return craftingOptions.ToArray();
     }

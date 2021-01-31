@@ -11,12 +11,14 @@ public enum ItemType
     Plank,
     Sand,
     IronOre,
+    Torch,
 
     // Edible
     Apple,
 
     // Other
-    Stick
+    Stick,
+    Coal
 }
 
 public class Item
@@ -35,12 +37,15 @@ public class Item
             case ItemType.Sand: return ItemAssets.Instance.sandSprite;
             case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
 
+            case ItemType.Torch: return ItemAssets.Instance.torchSprite;
+
             case ItemType.Apple: return ItemAssets.Instance.appleSprite;
 
-            case ItemType.Stick: return ItemAssets.Instance.appleSprite;
+            case ItemType.Stick: return ItemAssets.Instance.stickSprite;
+            case ItemType.Coal: return ItemAssets.Instance.coalSprite;
         }
     }
-
+        
     public bool IsStackable() {
         switch(itemType) {
             default:
@@ -52,6 +57,8 @@ public class Item
             case ItemType.IronOre:
 
             case ItemType.Apple:
+
+            case ItemType.Stick:
                 return true;
         }
     }
@@ -59,15 +66,25 @@ public class Item
     public bool IsEdible() {
         switch (itemType) {
             default:
+                return false;
+
+            case ItemType.Apple:
+                return true;
+        }
+    }
+
+    public bool IsPlacealbe() {
+        switch (itemType) {
+            default:
+                return false;
+
             case ItemType.Dirt:
             case ItemType.Stone:
             case ItemType.Wood:
             case ItemType.Plank:
             case ItemType.Sand:
             case ItemType.IronOre:
-                return false;
-
-            case ItemType.Apple:
+            case ItemType.Torch:
                 return true;
         }
     }

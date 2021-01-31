@@ -1557,7 +1557,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.577, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2533,7 +2533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &534236250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3605,8 +3605,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5078,7 +5078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1082035359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7610,7 +7610,10 @@ MonoBehaviour:
   plankSprite: {fileID: 21300000, guid: 5ff1d03e712de47448d4a5bf7265239d, type: 3}
   sandSprite: {fileID: 21300000, guid: 8aa5514782b136c48bf393e2c2b4a25e, type: 3}
   ironOreSprite: {fileID: 21300000, guid: efe3b0b7f8e84784aac13045c19c99e4, type: 3}
+  torchSprite: {fileID: 21300000, guid: 8c4629bdaa6ee8d428342660f3be0e38, type: 3}
   appleSprite: {fileID: 21300000, guid: 2bb5af3d99e95d147ade4a057d3eb2f3, type: 3}
+  stickSprite: {fileID: 21300000, guid: 6bb4f45fa45e6574996989939dcf621e, type: 3}
+  coalSprite: {fileID: 21300000, guid: 245641e5eaaf5414492beb351fb75dcc, type: 3}
 --- !u!4 &1808023336
 Transform:
   m_ObjectHideFlags: 0
@@ -8226,8 +8229,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

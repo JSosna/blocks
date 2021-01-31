@@ -136,6 +136,13 @@ public class Inventory: MonoBehaviour
             }
         return false;
     }
+    
+    public bool IsSlotItemPlaceable(int slotNumber) {
+        foreach (Item item in items)
+            if (item.slot.y == 0 && item.slot.x == slotNumber)
+                    return item.IsPlacealbe();
+        return false;
+    }
 
     public BlockType GetSlotItem(int slotNumber) {
 

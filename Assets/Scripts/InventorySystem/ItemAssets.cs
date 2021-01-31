@@ -10,11 +10,19 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
 
+    // Blocks
     public Sprite dirtSprite;
     public Sprite stoneSprite;
     public Sprite woodSprite;
     public Sprite plankSprite;
     public Sprite sandSprite;
     public Sprite ironOreSprite;
+    public Sprite torchSprite;
+
+    // Food
     public Sprite appleSprite;
+
+    // Other
+    public Sprite stickSprite;
+    public Sprite coalSprite;
 }
