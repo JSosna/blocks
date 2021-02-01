@@ -16,9 +16,16 @@ public enum ItemType
     // Edible
     Apple,
 
-    // Other
+    // Other (crafting)
     Stick,
-    Coal
+    Coal,
+    Diamond,
+    Iron,
+
+    // Tools
+    StonePickaxe,
+    IronPickaxe,
+    DiamondPickaxe,
 }
 
 public class Item
@@ -43,23 +50,22 @@ public class Item
 
             case ItemType.Stick: return ItemAssets.Instance.stickSprite;
             case ItemType.Coal: return ItemAssets.Instance.coalSprite;
+
+            case ItemType.StonePickaxe: return ItemAssets.Instance.stonePickaxeSprite;
+            case ItemType.IronPickaxe: return ItemAssets.Instance.ironPickaxeSprite;
+            case ItemType.DiamondPickaxe: return ItemAssets.Instance.diamondPickaxeSprite;
         }
     }
         
     public bool IsStackable() {
         switch(itemType) {
             default:
-            case ItemType.Dirt:
-            case ItemType.Stone:
-            case ItemType.Wood:
-            case ItemType.Plank:
-            case ItemType.Sand:
-            case ItemType.IronOre:
-
-            case ItemType.Apple:
-
-            case ItemType.Stick:
                 return true;
+
+            case ItemType.StonePickaxe:
+            case ItemType.IronPickaxe:
+            case ItemType.DiamondPickaxe:
+                return false;
         }
     }
 
@@ -69,6 +75,18 @@ public class Item
                 return false;
 
             case ItemType.Apple:
+                return true;
+        }
+    }
+
+    public bool IsTool() {
+        switch (itemType) {
+            default:
+                return false;
+
+            case ItemType.StonePickaxe:
+            case ItemType.IronPickaxe:
+            case ItemType.DiamondPickaxe:
                 return true;
         }
     }

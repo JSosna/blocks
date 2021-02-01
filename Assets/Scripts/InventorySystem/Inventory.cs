@@ -18,7 +18,12 @@ public class Inventory: MonoBehaviour
     private void Start() {
         ui_Inventory.SetInventory(this);
 
-        items.Add(new Item { amount = 10, itemType = ItemType.Torch, slot = new Vector2Int(0, 0) });
+
+        //items.Add(new Item { amount = 10, itemType = ItemType.Torch, slot = new Vector2Int(0, 0) });
+        items.Add(new Item { amount = 10, itemType = ItemType.Stick, slot = new Vector2Int(0, 0) });
+        items.Add(new Item { amount = 10, itemType = ItemType.Stone, slot = new Vector2Int(1, 0) });
+        items.Add(new Item { amount = 3, itemType = ItemType.Iron, slot = new Vector2Int(2, 0) });
+        items.Add(new Item { amount = 3, itemType = ItemType.Diamond, slot = new Vector2Int(3, 0) });
     }
 
     public void AddItem(Item item) {
@@ -116,6 +121,8 @@ public class Inventory: MonoBehaviour
         OnItemListChanged.Invoke(this, EventArgs.Empty);
     }
 
+    
+
     public bool EatSlotItemIfEdible(int slotNumber) {
         foreach (Item item in items)
             if (item.slot.y == 0 && item.slot.x == slotNumber) {
@@ -164,6 +171,16 @@ public class Inventory: MonoBehaviour
             }
         return BlockType.Air;
     }
+
+
+    public ItemType GetItemTypeInSlot(int slotNumber) {
+        foreach (Item item in items)
+            if (item.slot.y == 0 && item.slot.x == slotNumber)
+                return item.itemType;
+        // Todo - change
+        return ItemType.Stick;
+    }
+
 
     public void DeleteItem(Item item) {
         items.Remove(item);

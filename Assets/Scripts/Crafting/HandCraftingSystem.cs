@@ -28,38 +28,70 @@ public class HandCraftingSystem : MonoBehaviour
         List<CraftingOption> craftingOptions = new List<CraftingOption>();
 
         
-        // Option 1 - wood -> plank
-        var woodPlankCost = new Dictionary<Item, int>();
-        woodPlankCost.Add(new Item { itemType = ItemType.Wood }, 1);
-        CraftingOption woodPlank = new CraftingOption {
-            CostItemsWithAmounts = woodPlankCost,
+        // Option 1 - wood -> 4 planks
+        var plankCost = new Dictionary<Item, int>();
+        plankCost.Add(new Item { itemType = ItemType.Wood }, 1);
+        CraftingOption plank = new CraftingOption {
+            CostItemsWithAmounts = plankCost,
             ResultItem = new Item { itemType = ItemType.Plank },
             ResultItemAmount = 4
         };
 
-        // Option 2 - plank -> stick
-        var plankStickCost = new Dictionary<Item, int>();
-        plankStickCost.Add(new Item { itemType = ItemType.Plank }, 2);
-        CraftingOption plankStick = new CraftingOption {
-            CostItemsWithAmounts = plankStickCost,
+        // Option 2 - plank -> 4 sticks
+        var stickCost = new Dictionary<Item, int>();
+        stickCost.Add(new Item { itemType = ItemType.Plank }, 2);
+        CraftingOption stick = new CraftingOption {
+            CostItemsWithAmounts = stickCost,
             ResultItem = new Item { itemType = ItemType.Stick },
             ResultItemAmount = 4
         };
 
-        // Option 3 - stick + coal -> torch
-        var stickCoalTorchCost = new Dictionary<Item, int>();
-        stickCoalTorchCost.Add(new Item { itemType = ItemType.Stick }, 1);
-        stickCoalTorchCost.Add(new Item { itemType = ItemType.Coal }, 1);
-        CraftingOption stickCoalTorch = new CraftingOption {
-            CostItemsWithAmounts = stickCoalTorchCost,
+        // Option 3 - stick + coal -> 4 torches
+        var torchCost = new Dictionary<Item, int>();
+        torchCost.Add(new Item { itemType = ItemType.Stick }, 1);
+        torchCost.Add(new Item { itemType = ItemType.Coal }, 1);
+        CraftingOption torch = new CraftingOption {
+            CostItemsWithAmounts = torchCost,
             ResultItem = new Item { itemType = ItemType.Torch },
             ResultItemAmount = 4
         };
 
+        // Option 4 - 2 sticks + 3 stones -> stone pickaxe
+        var stonePickaxeCost = new Dictionary<Item, int>();
+        stonePickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        stonePickaxeCost.Add(new Item { itemType = ItemType.Stone }, 3);
+        CraftingOption stonePickaxe = new CraftingOption {
+            CostItemsWithAmounts = stonePickaxeCost,
+            ResultItem = new Item { itemType = ItemType.StonePickaxe },
+            ResultItemAmount = 1
+        };
 
-        craftingOptions.Add(woodPlank);
-        craftingOptions.Add(plankStick);
-        craftingOptions.Add(stickCoalTorch);
+        // Option 4 - 2 sticks + 3 iron -> iron pickaxe
+        var ironPickaxeCost = new Dictionary<Item, int>();
+        ironPickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        ironPickaxeCost.Add(new Item { itemType = ItemType.Iron }, 3);
+        CraftingOption ironPickaxe = new CraftingOption {
+            CostItemsWithAmounts = ironPickaxeCost,
+            ResultItem = new Item { itemType = ItemType.IronPickaxe },
+            ResultItemAmount = 1
+        };
+
+        // Option 4 - 2 sticks + 3 diamonds -> diamond pickaxe
+        var diamondPickaxeCost = new Dictionary<Item, int>();
+        diamondPickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        diamondPickaxeCost.Add(new Item { itemType = ItemType.Diamond }, 3);
+        CraftingOption diamondPickaxe = new CraftingOption {
+            CostItemsWithAmounts = diamondPickaxeCost,
+            ResultItem = new Item { itemType = ItemType.DiamondPickaxe },
+            ResultItemAmount = 1
+        };
+
+        craftingOptions.Add(plank);
+        craftingOptions.Add(stick);
+        craftingOptions.Add(torch);
+        craftingOptions.Add(stonePickaxe);
+        craftingOptions.Add(ironPickaxe);
+        craftingOptions.Add(diamondPickaxe);
 
         return craftingOptions.ToArray();
     }

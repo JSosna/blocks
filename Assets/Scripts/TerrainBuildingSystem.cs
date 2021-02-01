@@ -29,6 +29,11 @@ public class TerrainBuildingSystem : MonoBehaviour
     [SerializeField]
     private GameObject blockHitParticlePrefab;
 
+    [SerializeField]
+    private Tools tools;
+
+    private string currentToolName = "Hand";
+
     private void Start()
     {
         HandleSlotChange(selectedSlot);
@@ -121,6 +126,28 @@ public class TerrainBuildingSystem : MonoBehaviour
         GameObject newSlot = toolbar.transform.GetChild(newIndex).gameObject;
         newSlot.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         selectedSlot = newSelection;
+
+        // Check if there is a tool in the new slot
+        ItemType itemTypeInSelectedSlot = inventory.GetItemTypeInSlot(blockSelectCounter);
+
+        var itemType = new Item { itemType = (ItemType)itemTypeInSelectedSlot };
+
+        if (itemType.IsTool())
+            currentToolName = tools.GetToolGameObjectName(itemTypeInSelectedSlot);
+        else
+            currentToolName = Tools.HandToolName;
+
+        for (int i = 0; i < transform.GetChild(0).childCount; i++) {
+            if(currentToolName != transform.GetChild(0).GetChild(i).name)
+                transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
+            else {
+                transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+                if (itemType.IsTool())
+                    mouseHitInterval = tools.GetToolHitSpeed(itemTypeInSelectedSlot);
+                else
+                    mouseHitInterval = Tools.HandHitSpeed;
+            }
+        }
     }
 
     /// <summary>
@@ -144,8 +171,7 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         // Hit animation
         if(transform.childCount  > 0) {
-            if(transform.GetChild(0).childCount > 0)
-                transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            transform.GetChild(0).Find(currentToolName).GetComponent<Animator>().SetTrigger("Hit");
         }
 
 

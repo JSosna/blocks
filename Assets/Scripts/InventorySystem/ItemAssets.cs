@@ -25,4 +25,9 @@ public class ItemAssets : MonoBehaviour
     // Other
     public Sprite stickSprite;
     public Sprite coalSprite;
+
+    // Tools
+    public Sprite stonePickaxeSprite;
+    public Sprite ironPickaxeSprite;
+    public Sprite diamondPickaxeSprite;
 }
