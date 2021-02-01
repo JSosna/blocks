@@ -26,6 +26,9 @@ public class TerrainBuildingSystem : MonoBehaviour
     [SerializeField]
     private GameObject torchLightPrefab;
 
+    [SerializeField]
+    private GameObject blockHitParticlePrefab;
+
     private void Start()
     {
         HandleSlotChange(selectedSlot);
@@ -165,11 +168,23 @@ public class TerrainBuildingSystem : MonoBehaviour
             // replace block with air if left click - (button == true)
             if (button)
             {
-                
                 if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
+
+                    // Add block hit particle effect
+                    GameObject hitEffect = Instantiate(blockHitParticlePrefab, tc.transform);
+                    hitEffect.name = bix + " " + biy + " " + biz;
+                    hitEffect.transform.position =
+                        new Vector3(tc.transform.position.x + bix - .5f, tc.transform.position.y + biy + .6f, tc.transform.position.z + biz - .5f);
+                    var ps = hitEffect.GetComponent<ParticleSystem>();
+                    var main = ps.main;
+                    BlockType blockType = tc.blocks[bix, biy, biz];
+                    main.startColor = Block.GetBlockTypeParticlesGradient(blockType);
+
+
                     BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
-                    if(block.HasValue) {
+
+                    if (block.HasValue) {
                         if (block == BlockType.Dirt || block == BlockType.Grass || block == BlockType.GrassSnow) {
                             inventory.AddItem(new Item { itemType = ItemType.Dirt, amount = 1 });
                         }

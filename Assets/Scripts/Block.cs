@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using UnityEngine;
 
 public enum BlockType 
 { 
@@ -156,4 +156,64 @@ public class Block
 
         {BlockType.Torch, new Block(TileType.TorchTop, TileType.TorchSide, TileType.TorchBottom) }
     };
+
+    public static ParticleSystem.MinMaxGradient GetBlockTypeParticlesGradient(BlockType blockType) {
+        switch (blockType) {
+            default:
+                return new ParticleSystem.MinMaxGradient(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0));
+            case BlockType.Dirt:
+            case BlockType.DirtD1:
+            case BlockType.DirtD2:
+            case BlockType.DirtD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.45f, .35f, .25f), new Color(.35f, .25f, .15f));
+            case BlockType.Grass:
+            case BlockType.GrassD1:
+            case BlockType.GrassD2:
+            case BlockType.GrassD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.45f, .35f, .25f), new Color(.20f, .65f, .40f));
+            case BlockType.GrassSnow:
+            case BlockType.GrassSnowD1:
+            case BlockType.GrassSnowD2:
+            case BlockType.GrassSnowD3:
+                return new ParticleSystem.MinMaxGradient(new Color(1, 1, 1), new Color(.45f, .35f, .25f));
+            case BlockType.Leaves:
+                return new ParticleSystem.MinMaxGradient(new Color(.16f, .45f, .17f), new Color(.16f, .27f, .17f));
+            case BlockType.Torch:
+            case BlockType.Wood:
+            case BlockType.WoodD1:
+            case BlockType.WoodD2:
+            case BlockType.WoodD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.27f, .15f, .11f), new Color(.15f, .08f, .04f));
+            case BlockType.Stone:
+            case BlockType.StoneD1:
+            case BlockType.StoneD2:
+            case BlockType.StoneD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.3f, .3f, .3f), new Color(.5f, .5f, .5f));
+            case BlockType.CoalOre:
+            case BlockType.CoalOreD1:
+            case BlockType.CoalOreD2:
+            case BlockType.CoalOreD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.03f, .03f, .03f), new Color(.5f, .5f, .5f));
+            case BlockType.IronOre:
+            case BlockType.IronOreD1:
+            case BlockType.IronOreD2:
+            case BlockType.IronOreD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.87f, .7f, .5f), new Color(.5f, .5f, .5f));
+            case BlockType.DiamondOre:
+            case BlockType.DiamondOreD1:
+            case BlockType.DiamondOreD2:
+            case BlockType.DiamondOreD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.3f, .7f, 1), new Color(.5f, .5f, .5f));
+            case BlockType.Sand:
+            case BlockType.SandD1:
+            case BlockType.SandD2:
+            case BlockType.SandD3:
+                return new ParticleSystem.MinMaxGradient(new Color(1, .9f, .6f), new Color(.9f, .7f, .4f));
+            case BlockType.Plank:
+            case BlockType.PlankD1:
+            case BlockType.PlankD2:
+            case BlockType.PlankD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.7f, .5f, .3f), new Color(.5f, .3f, .2f));
+        }
+    }
 }
