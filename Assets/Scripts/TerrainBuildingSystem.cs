@@ -19,7 +19,7 @@ public class TerrainBuildingSystem : MonoBehaviour
 
     float maxDist = 7;
 
-    private float mouseHitInterval = .25f;
+    private float mouseHitInterval = .5f;
     private float timeToNextHit;
     private bool destroyButtonPressed = false;
 
@@ -140,6 +140,14 @@ public class TerrainBuildingSystem : MonoBehaviour
             if (!inventory.IsSlotItemPlaceable(blockSelectCounter))
                 return;
         }
+
+
+        // Hit animation
+        if(transform.childCount  > 0) {
+            if(transform.GetChild(0).childCount > 0)
+                transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+        }
+
 
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxDist, groundLayer))
