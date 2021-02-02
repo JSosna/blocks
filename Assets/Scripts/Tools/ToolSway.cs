@@ -25,6 +25,8 @@ public class ToolSway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UI_Inventory.InventoryOpened) return;
+
         float movementX = -Input.GetAxis("Mouse X") * amount;
         float movementY = -Input.GetAxis("Mouse Y") * amount;
 
