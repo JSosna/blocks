@@ -18,15 +18,10 @@ public class Inventory: MonoBehaviour
     private void Start() {
         ui_Inventory.SetInventory(this);
 
-
-        //items.Add(new Item { amount = 10, itemType = ItemType.Torch, slot = new Vector2Int(0, 0) });
-        items.Add(new Item { amount = 1, itemType = ItemType.StoneAxe, slot = new Vector2Int(1, 0) });
-        items.Add(new Item { amount = 1, itemType = ItemType.IronAxe, slot = new Vector2Int(2, 0) });
-        items.Add(new Item { amount = 1, itemType = ItemType.DiamondAxe, slot = new Vector2Int(3, 0) });
-
-        items.Add(new Item { amount = 1, itemType = ItemType.StoneShovel, slot = new Vector2Int(4, 0) });
-        items.Add(new Item { amount = 1, itemType = ItemType.IronShovel, slot = new Vector2Int(5, 0) });
-        items.Add(new Item { amount = 1, itemType = ItemType.DiamondShovel, slot = new Vector2Int(6, 0) });
+        AddItem(ItemType.Stone, 10);
+        AddItem(ItemType.Stick, 20);
+        AddItem(ItemType.IronOre, 15);
+        AddItem(ItemType.Diamond, 15);
     }
 
     public void AddItem(Item item) {
@@ -132,6 +127,7 @@ public class Inventory: MonoBehaviour
 
                 if (item.IsEdible()) {
                     if (playerHealth.Health < 10) {
+                        Debug.Log("Inventory adding 2");
                         playerHealth.Health += 2;
 
                         item.amount--;

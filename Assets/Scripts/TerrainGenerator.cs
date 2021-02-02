@@ -127,7 +127,7 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     var random = Random.Range(0, 20);
 
-                    if (random <= 1 && y < 18)
+                    if (random < 1 && y < 18)
                         GenerateOre(terrainChunk, x, y, z, BlockType.DiamondOre, 2);
                     else if (random < 8 && y < 28)
                         GenerateOre(terrainChunk, x, y, z, BlockType.IronOre, 3);

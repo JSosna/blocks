@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
             return _health;
         }
         set {
-            _health += value;
+            _health = value;
             if (_health > 10) _health = 10;
             timeLeftToReduceHealth = healthReduceThreshold;
 

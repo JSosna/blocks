@@ -28,7 +28,7 @@ public class HandCraftingSystem : MonoBehaviour
         List<CraftingOption> craftingOptions = new List<CraftingOption>();
 
         
-        // Option 1 - wood -> 4 planks
+        // wood -> 4 planks
         var plankCost = new Dictionary<Item, int>();
         plankCost.Add(new Item { itemType = ItemType.Wood }, 1);
         CraftingOption plank = new CraftingOption {
@@ -37,7 +37,7 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 4
         };
 
-        // Option 2 - plank -> 4 sticks
+        // plank -> 4 sticks
         var stickCost = new Dictionary<Item, int>();
         stickCost.Add(new Item { itemType = ItemType.Plank }, 2);
         CraftingOption stick = new CraftingOption {
@@ -46,7 +46,7 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 4
         };
 
-        // Option 3 - stick + coal -> 4 torches
+        // stick + coal -> 4 torches
         var torchCost = new Dictionary<Item, int>();
         torchCost.Add(new Item { itemType = ItemType.Stick }, 1);
         torchCost.Add(new Item { itemType = ItemType.Coal }, 1);
@@ -56,7 +56,16 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 4
         };
 
-        // Option 4 - 2 sticks + 3 stones -> stone pickaxe
+        // 10 stone -> furnace
+        var furnaceCost = new Dictionary<Item, int>();
+        furnaceCost.Add(new Item { itemType = ItemType.Stone }, 10);
+        CraftingOption furnace = new CraftingOption {
+            CostItemsWithAmounts = furnaceCost,
+            ResultItem = new Item { itemType = ItemType.Furnace },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 3 stones -> stone pickaxe
         var stonePickaxeCost = new Dictionary<Item, int>();
         stonePickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
         stonePickaxeCost.Add(new Item { itemType = ItemType.Stone }, 3);
@@ -66,7 +75,27 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 1
         };
 
-        // Option 4 - 2 sticks + 3 iron -> iron pickaxe
+        // 2 sticks + 3 stones -> stone axe
+        var stoneAxeCost = new Dictionary<Item, int>();
+        stoneAxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        stoneAxeCost.Add(new Item { itemType = ItemType.Stone }, 3);
+        CraftingOption stoneAxe = new CraftingOption {
+            CostItemsWithAmounts = stoneAxeCost,
+            ResultItem = new Item { itemType = ItemType.StoneAxe },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 1 stone -> stone shovel
+        var stoneShovelCost = new Dictionary<Item, int>();
+        stoneShovelCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        stoneShovelCost.Add(new Item { itemType = ItemType.Stone }, 1);
+        CraftingOption stoneShovel = new CraftingOption {
+            CostItemsWithAmounts = stoneShovelCost,
+            ResultItem = new Item { itemType = ItemType.StoneShovel },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 3 iron -> iron pickaxe
         var ironPickaxeCost = new Dictionary<Item, int>();
         ironPickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
         ironPickaxeCost.Add(new Item { itemType = ItemType.Iron }, 3);
@@ -76,7 +105,27 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 1
         };
 
-        // Option 4 - 2 sticks + 3 diamonds -> diamond pickaxe
+        // 2 sticks + 3 iron -> iron axe
+        var ironAxeCost = new Dictionary<Item, int>();
+        ironAxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        ironAxeCost.Add(new Item { itemType = ItemType.Iron }, 3);
+        CraftingOption ironAxe = new CraftingOption {
+            CostItemsWithAmounts = ironAxeCost,
+            ResultItem = new Item { itemType = ItemType.IronAxe },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 1 iron -> iron shovel
+        var ironShovelCost = new Dictionary<Item, int>();
+        ironShovelCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        ironShovelCost.Add(new Item { itemType = ItemType.Iron }, 1);
+        CraftingOption ironShovel = new CraftingOption {
+            CostItemsWithAmounts = ironShovelCost,
+            ResultItem = new Item { itemType = ItemType.IronShovel },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 3 diamonds -> diamond pickaxe
         var diamondPickaxeCost = new Dictionary<Item, int>();
         diamondPickaxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
         diamondPickaxeCost.Add(new Item { itemType = ItemType.Diamond }, 3);
@@ -86,12 +135,42 @@ public class HandCraftingSystem : MonoBehaviour
             ResultItemAmount = 1
         };
 
+        // 2 sticks + 3 diamonds -> diamond axe
+        var diamondAxeCost = new Dictionary<Item, int>();
+        diamondAxeCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        diamondAxeCost.Add(new Item { itemType = ItemType.Diamond }, 3);
+        CraftingOption diamondAxe = new CraftingOption {
+            CostItemsWithAmounts = diamondAxeCost,
+            ResultItem = new Item { itemType = ItemType.DiamondAxe },
+            ResultItemAmount = 1
+        };
+
+        // 2 sticks + 1 diamond -> diamond shovel
+        var diamondShovelCost = new Dictionary<Item, int>();
+        diamondShovelCost.Add(new Item { itemType = ItemType.Stick }, 2);
+        diamondShovelCost.Add(new Item { itemType = ItemType.Diamond }, 1);
+        CraftingOption diamondShovel = new CraftingOption {
+            CostItemsWithAmounts = diamondShovelCost,
+            ResultItem = new Item { itemType = ItemType.DiamondShovel },
+            ResultItemAmount = 1
+        };
+
         craftingOptions.Add(plank);
         craftingOptions.Add(stick);
         craftingOptions.Add(torch);
+        craftingOptions.Add(furnace);
+
         craftingOptions.Add(stonePickaxe);
         craftingOptions.Add(ironPickaxe);
         craftingOptions.Add(diamondPickaxe);
+
+        craftingOptions.Add(stoneAxe);
+        craftingOptions.Add(ironAxe);
+        craftingOptions.Add(diamondAxe);
+
+        craftingOptions.Add(stoneShovel);
+        craftingOptions.Add(ironShovel);
+        craftingOptions.Add(diamondShovel);
 
         return craftingOptions.ToArray();
     }

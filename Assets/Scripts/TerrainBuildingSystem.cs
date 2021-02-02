@@ -244,10 +244,16 @@ public class TerrainBuildingSystem : MonoBehaviour
                         else if(block == BlockType.IronOre) {
                             inventory.AddItem(new Item { itemType = ItemType.IronOre, amount = 1 });
                         }
+                        else if (block == BlockType.DiamondOre) {
+                            inventory.AddItem(new Item { itemType = ItemType.Diamond, amount = 1 });
+                        }
                         else if(block == BlockType.Leaves) {
                             if(Random.Range(1, 13) == 1) {
                                 inventory.AddItem(new Item { itemType = ItemType.Apple, amount = 1 });
                             }
+                        }
+                        else if (block == BlockType.Furnace) {
+                            inventory.AddItem(new Item { itemType = ItemType.Furnace, amount = 1 });
                         }
                         else if(block == BlockType.Torch) {
                             // Remove torch light from chunk
@@ -290,6 +296,14 @@ public class TerrainBuildingSystem : MonoBehaviour
             else {
                 if (tc.blocks[bix, biy, biz] != BlockType.Torch && biy <= TerrainChunk.chunkHeight - 2) {  // we can't place blocks above the limit
                     BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
+
+                    if (tc.blocks[bix, biy, biz] != BlockType.Furnace) {
+                        if (blockType == BlockType.IronOre) {
+                            inventory.AddItem(ItemType.Iron, 1);
+                            return;
+                        }
+                    }
+
                     if (blockType != BlockType.Air)
                         tc.blocks[bix, biy, biz] = blockType;
 

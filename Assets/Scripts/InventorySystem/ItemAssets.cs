@@ -18,6 +18,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite sandSprite;
     public Sprite ironOreSprite;
     public Sprite torchSprite;
+    public Sprite furnaceSprite;
 
     // Food
     public Sprite appleSprite;
@@ -25,6 +26,8 @@ public class ItemAssets : MonoBehaviour
     // Other
     public Sprite stickSprite;
     public Sprite coalSprite;
+    public Sprite ironSprite;
+    public Sprite diamondSprite;
 
     // Tools
     public Sprite stonePickaxeSprite;

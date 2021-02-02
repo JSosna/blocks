@@ -8574,9 +8574,12 @@ MonoBehaviour:
   sandSprite: {fileID: 21300000, guid: 8aa5514782b136c48bf393e2c2b4a25e, type: 3}
   ironOreSprite: {fileID: 21300000, guid: efe3b0b7f8e84784aac13045c19c99e4, type: 3}
   torchSprite: {fileID: 21300000, guid: 8c4629bdaa6ee8d428342660f3be0e38, type: 3}
+  furnaceSprite: {fileID: 21300000, guid: 7a4f28feac9c78248a432525a7fc1b8a, type: 3}
   appleSprite: {fileID: 21300000, guid: 2bb5af3d99e95d147ade4a057d3eb2f3, type: 3}
   stickSprite: {fileID: 21300000, guid: 6bb4f45fa45e6574996989939dcf621e, type: 3}
   coalSprite: {fileID: 21300000, guid: 245641e5eaaf5414492beb351fb75dcc, type: 3}
+  ironSprite: {fileID: 21300000, guid: 20df65a64faaff54a8737240b89d2abb, type: 3}
+  diamondSprite: {fileID: 21300000, guid: 8613e21187a251442aabda339139212c, type: 3}
   stonePickaxeSprite: {fileID: 21300000, guid: bad123060fedc83449a3b21d258a96a0, type: 3}
   ironPickaxeSprite: {fileID: 21300000, guid: 9139759161e7e3b44844a082e3ec4785, type: 3}
   diamondPickaxeSprite: {fileID: 21300000, guid: 31a1ce5126cb1ee44aa63960e21d3983, type: 3}

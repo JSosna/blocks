@@ -80,6 +80,16 @@ public enum TileType {
     SandD2,
     SandD3,
 
+    FurnaceTopBottom,
+    FurnaceTopBottomD1,
+    FurnaceTopBottomD2,
+    FurnaceTopBottomD3,
+
+    FurnaceSide,
+    FurnaceSideD1,
+    FurnaceSideD2,
+    FurnaceSideD3,
+
     TorchTop,
     TorchSide,
     TorchBottom
@@ -171,6 +181,16 @@ public class Tile
         {TileType.SandD1, new Tile(12, 1)},
         {TileType.SandD2, new Tile(12, 2)},
         {TileType.SandD3, new Tile(12, 3)},
+
+        {TileType.FurnaceTopBottom, new Tile(8, 4)},
+        {TileType.FurnaceTopBottomD1, new Tile(8, 5)},
+        {TileType.FurnaceTopBottomD2, new Tile(8, 6)},
+        {TileType.FurnaceTopBottomD3, new Tile(8, 7)},
+
+        {TileType.FurnaceSide, new Tile(8, 0)},
+        {TileType.FurnaceSideD1, new Tile(8, 1)},
+        {TileType.FurnaceSideD2, new Tile(8, 2)},
+        {TileType.FurnaceSideD3, new Tile(8, 3)},
 
         {TileType.TorchTop, new Tile(11, 2) },
         {TileType.TorchSide, new Tile(11, 1) },

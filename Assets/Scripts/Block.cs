@@ -67,6 +67,11 @@ public enum BlockType
     SandD2,
     SandD3,
 
+    Furnace,
+    FurnaceD1,
+    FurnaceD2,
+    FurnaceD3,
+
     Torch,
 }
 
@@ -153,6 +158,10 @@ public class Block
         {BlockType.SandD2, new Block(TileType.SandD2)},
         {BlockType.SandD3, new Block(TileType.SandD3)},
 
+        {BlockType.Furnace, new Block(TileType.FurnaceTopBottom, TileType.FurnaceSide, TileType.FurnaceTopBottom)},
+        {BlockType.FurnaceD1, new Block(TileType.FurnaceTopBottomD1, TileType.FurnaceSideD1, TileType.FurnaceTopBottomD1)},
+        {BlockType.FurnaceD2, new Block(TileType.FurnaceTopBottomD2, TileType.FurnaceSideD2, TileType.FurnaceTopBottomD2)},
+        {BlockType.FurnaceD3, new Block(TileType.FurnaceTopBottomD3, TileType.FurnaceSideD3, TileType.FurnaceTopBottomD3)},
 
         {BlockType.Torch, new Block(TileType.TorchTop, TileType.TorchSide, TileType.TorchBottom) }
     };

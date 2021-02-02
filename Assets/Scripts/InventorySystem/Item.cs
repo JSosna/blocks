@@ -11,6 +11,7 @@ public enum ItemType
     Plank,
     Sand,
     IronOre,
+    Furnace,
     Torch,
 
     // Edible
@@ -19,8 +20,8 @@ public enum ItemType
     // Other (crafting)
     Stick,
     Coal,
-    Diamond,
     Iron,
+    Diamond,
 
     // Tools
     StonePickaxe,
@@ -51,6 +52,7 @@ public class Item
             case ItemType.Plank: return ItemAssets.Instance.plankSprite;
             case ItemType.Sand: return ItemAssets.Instance.sandSprite;
             case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
+            case ItemType.Furnace: return ItemAssets.Instance.furnaceSprite;
 
             case ItemType.Torch: return ItemAssets.Instance.torchSprite;
 
@@ -58,6 +60,8 @@ public class Item
 
             case ItemType.Stick: return ItemAssets.Instance.stickSprite;
             case ItemType.Coal: return ItemAssets.Instance.coalSprite;
+            case ItemType.Iron: return ItemAssets.Instance.ironSprite;
+            case ItemType.Diamond: return ItemAssets.Instance.diamondSprite;
 
             case ItemType.StonePickaxe: return ItemAssets.Instance.stonePickaxeSprite;
             case ItemType.IronPickaxe: return ItemAssets.Instance.ironPickaxeSprite;
@@ -78,6 +82,7 @@ public class Item
             default:
                 return true;
 
+            case ItemType.Furnace:
             case ItemType.StonePickaxe:
             case ItemType.IronPickaxe:
             case ItemType.DiamondPickaxe:
@@ -126,6 +131,7 @@ public class Item
             case ItemType.Plank:
             case ItemType.Sand:
             case ItemType.IronOre:
+            case ItemType.Furnace:
             case ItemType.Torch:
                 return true;
         }
@@ -146,6 +152,8 @@ public class Item
                 return BlockType.Sand;
             case ItemType.IronOre:
                 return BlockType.IronOre;
+            case ItemType.Furnace:
+                return BlockType.Furnace;
             case ItemType.Torch:
                 return BlockType.Torch;
             default:
