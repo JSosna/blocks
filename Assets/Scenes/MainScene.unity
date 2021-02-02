@@ -265,6 +265,10 @@ PrefabInstance:
       value: StonePickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -911,6 +915,10 @@ PrefabInstance:
       value: DiamondAxe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1545,6 +1553,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
       propertyPath: m_Name
       value: DiamondPickaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
       propertyPath: m_IsActive
@@ -2709,6 +2721,10 @@ PrefabInstance:
       value: DiamondShovel
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d574825a47630a48ab9779dfdb56f9b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d574825a47630a48ab9779dfdb56f9b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3223,6 +3239,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604084577}
   m_CullTransparentMesh: 0
+--- !u!1 &613682219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613682221}
+  - component: {fileID: 613682220}
+  m_Layer: 0
+  m_Name: Tool Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &613682220
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613682219}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &613682221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613682219}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0000030398369, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 664446766}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654468945
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,6 +6075,10 @@ PrefabInstance:
       value: StoneAxe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -7039,6 +7133,10 @@ PrefabInstance:
       value: IronAxe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 013b1c60a5ffdc24d86d3d736c17885b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -7335,6 +7433,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 83b1d27fe7a513c4ba80f649243320b6, type: 3}
       propertyPath: m_Name
       value: IronShovel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 83b1d27fe7a513c4ba80f649243320b6, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 83b1d27fe7a513c4ba80f649243320b6, type: 3}
       propertyPath: m_IsActive
@@ -8478,6 +8580,12 @@ MonoBehaviour:
   stonePickaxeSprite: {fileID: 21300000, guid: bad123060fedc83449a3b21d258a96a0, type: 3}
   ironPickaxeSprite: {fileID: 21300000, guid: 9139759161e7e3b44844a082e3ec4785, type: 3}
   diamondPickaxeSprite: {fileID: 21300000, guid: 31a1ce5126cb1ee44aa63960e21d3983, type: 3}
+  stoneAxeSprite: {fileID: 21300000, guid: e85df653d499a3441870859d7e3aaed7, type: 3}
+  ironAxeSprite: {fileID: 21300000, guid: 356f97b990bc6254e96c2db7d69c03b6, type: 3}
+  diamondAxeSprite: {fileID: 21300000, guid: a9efa23d0d2658a47aa0f4d3a8738791, type: 3}
+  stoneShovelSprite: {fileID: 21300000, guid: add1b8a2c2a767845b29b3034f3b5951, type: 3}
+  ironShovelSprite: {fileID: 21300000, guid: a2095bcbbef03894d9df666391752671, type: 3}
+  diamondShovelSprite: {fileID: 21300000, guid: 2d4413e028af8de45a0b03c030012513, type: 3}
 --- !u!4 &1808023336
 Transform:
   m_ObjectHideFlags: 0
@@ -8558,6 +8666,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7c178e95c85f4494f9fad6fa1874f539, type: 3}
       propertyPath: m_Name
       value: StoneShovel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c178e95c85f4494f9fad6fa1874f539, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7c178e95c85f4494f9fad6fa1874f539, type: 3}
       propertyPath: m_IsActive
@@ -8684,6 +8796,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
       propertyPath: m_Name
       value: IronPickaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f588db989d26fc4e8e383abea6c3284, type: 3}
       propertyPath: m_IsActive
@@ -9565,6 +9681,10 @@ PrefabInstance:
     - target: {fileID: 4095484572348883642, guid: cebd434dc76ebe34abbaeb1e6ec5a89a, type: 3}
       propertyPath: m_Name
       value: Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095484572348883642, guid: cebd434dc76ebe34abbaeb1e6ec5a89a, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4095484572348883642, guid: cebd434dc76ebe34abbaeb1e6ec5a89a, type: 3}
       propertyPath: m_IsActive

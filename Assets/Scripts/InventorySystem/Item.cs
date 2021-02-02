@@ -62,6 +62,14 @@ public class Item
             case ItemType.StonePickaxe: return ItemAssets.Instance.stonePickaxeSprite;
             case ItemType.IronPickaxe: return ItemAssets.Instance.ironPickaxeSprite;
             case ItemType.DiamondPickaxe: return ItemAssets.Instance.diamondPickaxeSprite;
+
+            case ItemType.StoneAxe: return ItemAssets.Instance.stoneAxeSprite;
+            case ItemType.IronAxe: return ItemAssets.Instance.ironAxeSprite;
+            case ItemType.DiamondAxe: return ItemAssets.Instance.diamondAxeSprite;
+
+            case ItemType.StoneShovel: return ItemAssets.Instance.stoneShovelSprite;
+            case ItemType.IronShovel: return ItemAssets.Instance.ironShovelSprite;
+            case ItemType.DiamondShovel: return ItemAssets.Instance.diamondShovelSprite;
         }
     }
         

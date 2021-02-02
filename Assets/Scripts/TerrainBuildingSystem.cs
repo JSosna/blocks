@@ -47,8 +47,9 @@ public class TerrainBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
             HandleMouseClick(false);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) {
             HandleMouseClick(true);
+        }
 
         if(Input.GetMouseButtonUp(0)) {
             destroyButtonPressed = false;
@@ -218,7 +219,7 @@ public class TerrainBuildingSystem : MonoBehaviour
                     BlockType blockType = tc.blocks[bix, biy, biz];
                     main.startColor = Block.GetBlockTypeParticlesGradient(blockType);
 
-
+                    if (!destroyButtonPressed) return;
                     BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
 
                     if (block.HasValue) {

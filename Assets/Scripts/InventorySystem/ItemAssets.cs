@@ -30,4 +30,12 @@ public class ItemAssets : MonoBehaviour
     public Sprite stonePickaxeSprite;
     public Sprite ironPickaxeSprite;
     public Sprite diamondPickaxeSprite;
+
+    public Sprite stoneAxeSprite;
+    public Sprite ironAxeSprite;
+    public Sprite diamondAxeSprite;
+
+    public Sprite stoneShovelSprite;
+    public Sprite ironShovelSprite;
+    public Sprite diamondShovelSprite;
 }
