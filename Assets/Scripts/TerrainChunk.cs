@@ -11,7 +11,8 @@ public class TerrainChunk : MonoBehaviour
     public BlockType[,,] blocks = new BlockType[chunkWidth + 2, chunkHeight, chunkWidth + 2];
     private int[,,] damageLevel = new int[chunkWidth + 2, chunkHeight, chunkWidth + 2];
 
-    private Dictionary<Tuple<int, int, int>, float> blocksToObserve = new Dictionary<Tuple<int, int, int>, float>();
+    // x, y, z, startingBlock, timeLeftToRestore
+    private Dictionary<Tuple<int, int, int, int>, float> blocksToObserve = new Dictionary<Tuple<int, int, int, int>, float>();
     
     private float timeToRestore = 2f;
     private int chunkX;
@@ -31,12 +32,23 @@ public class TerrainChunk : MonoBehaviour
             // Reduce block damage
             if (blocksToObserve.ElementAt(i).Value <= 0) {
                 damageLevel[key.Item1, key.Item2, key.Item3]--;
-                blocks[key.Item1, key.Item2, key.Item3]--;
+
+                Debug.Log(damageLevel[key.Item1, key.Item2, key.Item3]);
+
+                if ((int)blocks[key.Item1, key.Item2, key.Item3] != key.Item4 || damageLevel[key.Item1, key.Item2, key.Item3] < 0) {
+                    Debug.Log("reducing - " + (int)blocks[key.Item1, key.Item2, key.Item3] + " starting: " + key.Item4);
+                    blocks[key.Item1, key.Item2, key.Item3]--;
+                }
+
+
                 blocksToObserve[key] = .2f;
 
                 // Remove block from list of observing blocks if damage is 0
-                if (damageLevel[key.Item1, key.Item2, key.Item3] == 0)
+                if (damageLevel[key.Item1, key.Item2, key.Item3] <= 0) {
+                    damageLevel[key.Item1, key.Item2, key.Item3] = 0;
+                    blocks[key.Item1, key.Item2, key.Item3] = (BlockType)key.Item4;
                     blocksToObserve.Remove(key);
+                }
 
                 RegenerateMesh();
             }
@@ -48,7 +60,7 @@ public class TerrainChunk : MonoBehaviour
         chunkZ = z;
     }
 
-    public BlockType? IncreaseBLockDestroyLevel(int x, int y, int z)
+    public BlockType? IncreaseBLockDestroyLevel(int x, int y, int z, Tools.ToolType? toolType)
     {
         if (blocks[x, y, z] == BlockType.Air) return null;
 
@@ -60,30 +72,42 @@ public class TerrainChunk : MonoBehaviour
             return blockType;
         }
 
-        var key = new Tuple<int, int, int>(x, y, z);
+        var key = new Tuple<int, int, int, int>(x, y, z, (int)Block.GetNotDestroyedBlock(blocks[x, y, z]));
 
         // if block is already being observed
         if (blocksToObserve.ContainsKey(key))
         {
-            damageLevel[x, y, z]++;
-            blocks[x, y, z]++;
+            if (toolType == Block.GetMostEffectiveToolType(blocks[x, y, z])) {
+                damageLevel[x, y, z] += 4;
+            }
+            else if (toolType.HasValue) {
+                damageLevel[x, y, z] += 2;
+            }
+            else {
+                damageLevel[x, y, z] += 2;
+            }
+
+            // Change block texture to damaged
+            if (damageLevel[x, y, z] % 4 == 0) {
+                blocks[x, y, z]++;
+            }
+            
             blocksToObserve[key] = timeToRestore;
 
             // Destroy block and add block to inventory
-            if (damageLevel[x, y, z] == 4)
+            if (damageLevel[x, y, z] >= 12)
             {
-                BlockType blockType = blocks[x, y, z] - 4;
+                BlockType notDestroyedBlock = blocks[x, y, z] - 4;
                 blocks[x, y, z] = BlockType.Air;
                 damageLevel[x, y, z] = 0;
                 blocksToObserve.Remove(key);
 
-                return blockType;
+                return notDestroyedBlock;
             }
         }
         else // Add block to the list
         {
             blocksToObserve.Add(key, timeToRestore);
-            damageLevel[x, y, z]++;
             blocks[x, y, z]++;
         }
 

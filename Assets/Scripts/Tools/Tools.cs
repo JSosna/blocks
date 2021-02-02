@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tools : MonoBehaviour {
+
+    public enum ToolType {
+        Pickaxe,
+        Axe,
+        Shovel
+    }
+
     public static Tools Instance { get; private set; }
 
     private void Awake() {
@@ -60,6 +67,27 @@ public class Tools : MonoBehaviour {
             case ItemType.IronShovel: return .3f;
             case ItemType.DiamondShovel: return .25f;
 
+        }
+    }
+
+    public ToolType GetToolType(ItemType tool) {
+        switch (tool) {
+            default:
+
+            case ItemType.StonePickaxe:
+            case ItemType.IronPickaxe:
+            case ItemType.DiamondPickaxe:
+                return ToolType.Pickaxe;
+
+            case ItemType.StoneAxe:
+            case ItemType.IronAxe:
+            case ItemType.DiamondAxe:
+                return ToolType.Axe;
+
+            case ItemType.StoneShovel:
+            case ItemType.IronShovel:
+            case ItemType.DiamondShovel:
+                return ToolType.Shovel;
         }
     }
 }

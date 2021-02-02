@@ -33,6 +33,8 @@ public class TerrainBuildingSystem : MonoBehaviour
     private Tools tools;
 
     private string currentToolName = "Hand";
+    private Tools.ToolType currentTool;
+    private bool holdingTool = false;
 
     private void Start()
     {
@@ -131,12 +133,17 @@ public class TerrainBuildingSystem : MonoBehaviour
         // Check if there is a tool in the new slot
         ItemType itemTypeInSelectedSlot = inventory.GetItemTypeInSlot(blockSelectCounter);
 
-        var itemType = new Item { itemType = (ItemType)itemTypeInSelectedSlot };
+        var itemType = new Item { itemType = itemTypeInSelectedSlot };
 
-        if (itemType.IsTool())
+        if (itemType.IsTool()) {
+            holdingTool = true;
+            currentTool = tools.GetToolType(itemTypeInSelectedSlot);
             currentToolName = tools.GetToolGameObjectName(itemTypeInSelectedSlot);
-        else
+        }
+        else {
+            holdingTool = false;
             currentToolName = Tools.HandToolName;
+        }
 
         for (int i = 0; i < transform.GetChild(0).childCount; i++) {
             if (currentToolName != transform.GetChild(0).GetChild(i).name) {
@@ -219,8 +226,14 @@ public class TerrainBuildingSystem : MonoBehaviour
                     BlockType blockType = tc.blocks[bix, biy, biz];
                     main.startColor = Block.GetBlockTypeParticlesGradient(blockType);
 
+                    BlockType? block = null;
+
                     if (!destroyButtonPressed) return;
-                    BlockType? block = tc.IncreaseBLockDestroyLevel(bix, biy, biz);
+
+                    if(holdingTool)
+                        block = tc.IncreaseBLockDestroyLevel(bix, biy, biz, currentTool);
+                    else
+                        block = tc.IncreaseBLockDestroyLevel(bix, biy, biz, null);
 
                     if (block.HasValue) {
                         if (block == BlockType.Dirt || block == BlockType.Grass || block == BlockType.GrassSnow) {

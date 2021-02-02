@@ -225,4 +225,117 @@ public class Block
                 return new ParticleSystem.MinMaxGradient(new Color(.7f, .5f, .3f), new Color(.5f, .3f, .2f));
         }
     }
+
+    public static Tools.ToolType GetMostEffectiveToolType(BlockType blockType) {
+        switch (blockType) {
+            default:
+                return Tools.ToolType.Pickaxe;
+
+            case BlockType.Wood:
+            case BlockType.WoodD1:
+            case BlockType.WoodD2:
+            case BlockType.WoodD3:
+            case BlockType.Plank:
+            case BlockType.PlankD1:
+            case BlockType.PlankD2:
+            case BlockType.PlankD3:
+                return Tools.ToolType.Axe;
+
+            case BlockType.Dirt:
+            case BlockType.DirtD1:
+            case BlockType.DirtD2:
+            case BlockType.DirtD3:
+            case BlockType.Grass:
+            case BlockType.GrassD1:
+            case BlockType.GrassD2:
+            case BlockType.GrassD3:
+            case BlockType.GrassSnow:
+            case BlockType.GrassSnowD1:
+            case BlockType.GrassSnowD2:
+            case BlockType.GrassSnowD3:
+            case BlockType.Sand:
+            case BlockType.SandD1:
+            case BlockType.SandD2:
+            case BlockType.SandD3:
+                return Tools.ToolType.Shovel;
+        }
+    }
+
+    public static BlockType GetNotDestroyedBlock(BlockType blockType) {
+        switch (blockType) {
+            
+            case BlockType.Air:
+                return BlockType.Air;
+            case BlockType.Leaves:
+                return BlockType.Leaves;
+            default:
+            case BlockType.Torch:
+                return BlockType.Torch;
+            case BlockType.Dirt:
+            case BlockType.DirtD1:
+            case BlockType.DirtD2:
+            case BlockType.DirtD3:
+                return BlockType.Dirt;
+            case BlockType.Grass:
+            case BlockType.GrassD1:
+            case BlockType.GrassD2:
+            case BlockType.GrassD3:
+                return BlockType.Grass;
+            case BlockType.GrassSnow:
+            case BlockType.GrassSnowD1:
+            case BlockType.GrassSnowD2:
+            case BlockType.GrassSnowD3:
+                return BlockType.GrassSnow;
+            case BlockType.Wood:
+            case BlockType.WoodD1:
+            case BlockType.WoodD2:
+            case BlockType.WoodD3:
+                return BlockType.Wood;
+            case BlockType.Stone:
+            case BlockType.StoneD1:
+            case BlockType.StoneD2:
+            case BlockType.StoneD3:
+                return BlockType.Stone;
+            case BlockType.CoalOre:
+            case BlockType.CoalOreD1:
+            case BlockType.CoalOreD2:
+            case BlockType.CoalOreD3:
+                return BlockType.CoalOre;
+            case BlockType.IronOre:
+            case BlockType.IronOreD1:
+            case BlockType.IronOreD2:
+            case BlockType.IronOreD3:
+                return BlockType.IronOre;
+            case BlockType.DiamondOre:
+            case BlockType.DiamondOreD1:
+            case BlockType.DiamondOreD2:
+            case BlockType.DiamondOreD3:
+                return BlockType.DiamondOre;
+            case BlockType.Sand:
+            case BlockType.SandD1:
+            case BlockType.SandD2:
+            case BlockType.SandD3:
+                return BlockType.Sand;
+            case BlockType.Plank:
+            case BlockType.PlankD1:
+            case BlockType.PlankD2:
+            case BlockType.PlankD3:
+                return BlockType.Plank;
+            case BlockType.Furnace:
+            case BlockType.FurnaceD1:
+            case BlockType.FurnaceD2:
+            case BlockType.FurnaceD3:
+                return BlockType.Furnace;
+            case BlockType.WoolWhite:
+            case BlockType.WoolWhiteD1:
+            case BlockType.WoolWhiteD2:
+            case BlockType.WoolWhiteD3:
+                return BlockType.WoolWhite;
+            case BlockType.WoolBlack:
+            case BlockType.WoolBlackD1:
+            case BlockType.WoolBlackD2:
+            case BlockType.WoolBlackD3:
+                return BlockType.WoolBlack;
+        }
+    }
 }
