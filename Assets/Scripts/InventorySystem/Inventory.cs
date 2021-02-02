@@ -20,10 +20,13 @@ public class Inventory: MonoBehaviour
 
 
         //items.Add(new Item { amount = 10, itemType = ItemType.Torch, slot = new Vector2Int(0, 0) });
-        items.Add(new Item { amount = 10, itemType = ItemType.Stick, slot = new Vector2Int(0, 0) });
-        items.Add(new Item { amount = 10, itemType = ItemType.Stone, slot = new Vector2Int(1, 0) });
-        items.Add(new Item { amount = 3, itemType = ItemType.Iron, slot = new Vector2Int(2, 0) });
-        items.Add(new Item { amount = 3, itemType = ItemType.Diamond, slot = new Vector2Int(3, 0) });
+        items.Add(new Item { amount = 1, itemType = ItemType.StoneAxe, slot = new Vector2Int(1, 0) });
+        items.Add(new Item { amount = 1, itemType = ItemType.IronAxe, slot = new Vector2Int(2, 0) });
+        items.Add(new Item { amount = 1, itemType = ItemType.DiamondAxe, slot = new Vector2Int(3, 0) });
+
+        items.Add(new Item { amount = 1, itemType = ItemType.StoneShovel, slot = new Vector2Int(4, 0) });
+        items.Add(new Item { amount = 1, itemType = ItemType.IronShovel, slot = new Vector2Int(5, 0) });
+        items.Add(new Item { amount = 1, itemType = ItemType.DiamondShovel, slot = new Vector2Int(6, 0) });
     }
 
     public void AddItem(Item item) {

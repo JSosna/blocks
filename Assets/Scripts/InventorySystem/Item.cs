@@ -26,6 +26,14 @@ public enum ItemType
     StonePickaxe,
     IronPickaxe,
     DiamondPickaxe,
+
+    StoneAxe,
+    IronAxe,
+    DiamondAxe,
+
+    StoneShovel,
+    IronShovel,
+    DiamondShovel
 }
 
 public class Item
@@ -87,6 +95,14 @@ public class Item
             case ItemType.StonePickaxe:
             case ItemType.IronPickaxe:
             case ItemType.DiamondPickaxe:
+
+            case ItemType.StoneAxe:
+            case ItemType.IronAxe:
+            case ItemType.DiamondAxe:
+
+            case ItemType.StoneShovel:
+            case ItemType.IronShovel:
+            case ItemType.DiamondShovel:
                 return true;
         }
     }

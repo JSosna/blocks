@@ -138,12 +138,15 @@ public class TerrainBuildingSystem : MonoBehaviour
             currentToolName = Tools.HandToolName;
 
         for (int i = 0; i < transform.GetChild(0).childCount; i++) {
-            if(currentToolName != transform.GetChild(0).GetChild(i).name)
-                transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
+            if (currentToolName != transform.GetChild(0).GetChild(i).name) {
+                transform.GetChild(0).GetChild(i).GetComponent<Renderer>().enabled = false;
+            }
             else {
-                transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
-                if (itemType.IsTool())
+                transform.GetChild(0).GetChild(i).GetComponent<Renderer>().enabled = true;
+
+                if (itemType.IsTool()) {
                     mouseHitInterval = tools.GetToolHitSpeed(itemTypeInSelectedSlot);
+                }
                 else
                     mouseHitInterval = Tools.HandHitSpeed;
             }
