@@ -13,6 +13,7 @@ public enum ItemType
     IronOre,
     Furnace,
     Torch,
+    Glass,
 
     // Edible
     Apple,
@@ -53,6 +54,7 @@ public class Item
             case ItemType.Sand: return ItemAssets.Instance.sandSprite;
             case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
             case ItemType.Furnace: return ItemAssets.Instance.furnaceSprite;
+            case ItemType.Glass: return ItemAssets.Instance.glassSprite;
 
             case ItemType.Torch: return ItemAssets.Instance.torchSprite;
 
@@ -132,6 +134,7 @@ public class Item
             case ItemType.Sand:
             case ItemType.IronOre:
             case ItemType.Furnace:
+            case ItemType.Glass:
             case ItemType.Torch:
                 return true;
         }
@@ -154,6 +157,8 @@ public class Item
                 return BlockType.IronOre;
             case ItemType.Furnace:
                 return BlockType.Furnace;
+            case ItemType.Glass:
+                return BlockType.Glass;
             case ItemType.Torch:
                 return BlockType.Torch;
             default:

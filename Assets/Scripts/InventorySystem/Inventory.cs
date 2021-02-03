@@ -18,9 +18,10 @@ public class Inventory: MonoBehaviour
     private void Start() {
         ui_Inventory.SetInventory(this);
 
-        AddItem(ItemType.IronAxe, 1);
-        AddItem(ItemType.StonePickaxe, 1);
-        AddItem(ItemType.DiamondShovel, 1);
+        AddItem(ItemType.Glass, 5);
+        AddItem(ItemType.Furnace, 1);
+        AddItem(ItemType.Sand, 5);
+        AddItem(ItemType.IronOre, 10);
     }
 
     public void AddItem(Item item) {

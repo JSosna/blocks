@@ -308,11 +308,21 @@ public class TerrainBuildingSystem : MonoBehaviour
             // right click
             else {
                 if (tc.blocks[bix, biy, biz] != BlockType.Torch && biy <= TerrainChunk.chunkHeight - 2) {  // we can't place blocks above the limit
+
+                    // index of the target block
+                    int blockHitX = Mathf.FloorToInt((hitInfo.point + transform.forward * .01f).x) - chunkPosX + 1;
+                    int blockHitY = Mathf.FloorToInt((hitInfo.point + transform.forward * .01f).y);
+                    int blockHitZ = Mathf.FloorToInt((hitInfo.point + transform.forward * .01f).z) - chunkPosZ + 1;
+
                     BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
 
-                    if (tc.blocks[bix, biy, biz] != BlockType.Furnace) {
+                    if (tc.blocks[blockHitX, blockHitY, blockHitZ] == BlockType.Furnace) {
                         if (blockType == BlockType.IronOre) {
                             inventory.AddItem(ItemType.Iron, 1);
+                            return;
+                        }
+                        else if (blockType == BlockType.Sand) {
+                            inventory.AddItem(ItemType.Glass, 1);
                             return;
                         }
                     }

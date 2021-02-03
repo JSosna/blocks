@@ -19,6 +19,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite ironOreSprite;
     public Sprite torchSprite;
     public Sprite furnaceSprite;
+    public Sprite glassSprite;
 
     // Food
     public Sprite appleSprite;

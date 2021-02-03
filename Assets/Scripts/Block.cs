@@ -56,6 +56,7 @@ public enum BlockType
     WoodD3,
 
     Leaves,
+    Glass,
 
     GrassSnow,
     GrassSnowD1,
@@ -147,6 +148,7 @@ public class Block
         {BlockType.WoodD3, new Block(TileType.WoodTopD3, TileType.WoodSideD3, TileType.WoodTopD3)},
 
         {BlockType.Leaves, new Block(TileType.Leaves)},
+        {BlockType.Glass, new Block(TileType.Glass)},
 
         {BlockType.GrassSnow, new Block(TileType.GrassSnow, TileType.GrassSnowSide, TileType.Dirt)},
         {BlockType.GrassSnowD1, new Block(TileType.GrassSnowD1, TileType.GrassSnowSideD1, TileType.DirtD1)},
@@ -223,6 +225,13 @@ public class Block
             case BlockType.PlankD2:
             case BlockType.PlankD3:
                 return new ParticleSystem.MinMaxGradient(new Color(.7f, .5f, .3f), new Color(.5f, .3f, .2f));
+            case BlockType.Furnace:
+            case BlockType.FurnaceD1:
+            case BlockType.FurnaceD2:
+            case BlockType.FurnaceD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.7f, .7f, .7f), new Color(.278f, .278f, .278f));
+            case BlockType.Glass:
+                return new ParticleSystem.MinMaxGradient(new Color(.77f, .929f, .956f), new Color(.737f, .898f, .925f));
         }
     }
 

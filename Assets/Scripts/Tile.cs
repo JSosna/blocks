@@ -64,6 +64,7 @@ public enum TileType {
     WoodSideD3,
 
     Leaves,
+    Glass,
 
     GrassSnow,
     GrassSnowD1,
@@ -166,7 +167,8 @@ public class Tile
         {TileType.WoodSideD3, new Tile(10, 7)},
 
         {TileType.Leaves, new Tile(11, 0)},
-        
+        {TileType.Glass, new Tile(11, 4)},
+
         {TileType.GrassSnow, new Tile(0, 12)},
         {TileType.GrassSnowD1, new Tile(0, 13)},
         {TileType.GrassSnowD2, new Tile(0, 14)},
