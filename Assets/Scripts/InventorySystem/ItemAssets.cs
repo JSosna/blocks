@@ -16,6 +16,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite woodSprite;
     public Sprite plankSprite;
     public Sprite sandSprite;
+    public Sprite woolSprite;
     public Sprite ironOreSprite;
     public Sprite torchSprite;
     public Sprite furnaceSprite;

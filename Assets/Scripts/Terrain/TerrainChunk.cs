@@ -33,10 +33,8 @@ public class TerrainChunk : MonoBehaviour
             if (blocksToObserve.ElementAt(i).Value <= 0) {
                 damageLevel[key.Item1, key.Item2, key.Item3]--;
 
-                Debug.Log(damageLevel[key.Item1, key.Item2, key.Item3]);
 
                 if ((int)blocks[key.Item1, key.Item2, key.Item3] != key.Item4 || damageLevel[key.Item1, key.Item2, key.Item3] < 0) {
-                    Debug.Log("reducing - " + (int)blocks[key.Item1, key.Item2, key.Item3] + " starting: " + key.Item4);
                     blocks[key.Item1, key.Item2, key.Item3]--;
                 }
 

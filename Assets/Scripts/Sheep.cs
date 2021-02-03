@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Sheep : MonoBehaviour
 {
-    public LayerMask groundLayer;
+    [SerializeField]
+    private LayerMask groundLayer;
+
+    [SerializeField]
+    private Material redWool;
+
+    [SerializeField]
+    private Inventory inventory;
 
     private Animator animator;
     private Rigidbody rigidbody;
@@ -24,6 +31,9 @@ public class Sheep : MonoBehaviour
     private const float jumpCooldown = 1f;
     private float currentJumpCooldown = 0f;
 
+    private int health = 3;
+    private bool alive = true;
+
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -31,6 +41,8 @@ public class Sheep : MonoBehaviour
     }
 
     void Update() {
+        if (!alive) return;
+
         if(currentJumpCooldown > 0)
             currentJumpCooldown -= Time.deltaTime;
 
@@ -92,12 +104,36 @@ public class Sheep : MonoBehaviour
 
     private void Jump() {
         if(currentJumpCooldown <= 0) {
-            Debug.Log("Jump");
             rigidbody.AddForce(transform.right * .5f, ForceMode.Impulse);
             rigidbody.AddForce(jumpForce, ForceMode.Impulse);
             rigidbody.AddForce(-transform.right * 2, ForceMode.Force);
 
             currentJumpCooldown = jumpCooldown;
+        }
+    }
+
+    public void ReduceHealth(Vector3 otherPosition) {
+        inventory.AddItem(new Item { itemType = ItemType.Wool, amount = 1 });
+
+        health--;
+        GetComponent<ParticleSystem>().Play();
+
+        // Knockback
+        Vector3 direction = (transform.position - new Vector3(otherPosition.x, transform.position.y - 5, otherPosition.z)).normalized;
+        rigidbody.AddForce(direction * 10, ForceMode.Impulse);
+
+        if (health <= 0) {
+            alive = false;
+
+            transform.Find("Cube").GetComponent<SkinnedMeshRenderer>().materials = new Material[] { redWool, redWool, redWool, redWool, redWool, redWool };
+
+            transform.rotation = Quaternion.Euler(new Vector3(
+            transform.rotation.eulerAngles.x + 90,
+            transform.rotation.eulerAngles.y,
+            transform.rotation.eulerAngles.z));
+
+            GetComponent<BoxCollider>().enabled = false;
+            Destroy(gameObject, 5);
         }
     }
 }

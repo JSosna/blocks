@@ -10,6 +10,7 @@ public enum ItemType
     Wood,
     Plank,
     Sand,
+    Wool,
     IronOre,
     Furnace,
     Torch,
@@ -52,6 +53,7 @@ public class Item
             case ItemType.Wood: return ItemAssets.Instance.woodSprite;
             case ItemType.Plank: return ItemAssets.Instance.plankSprite;
             case ItemType.Sand: return ItemAssets.Instance.sandSprite;
+            case ItemType.Wool: return ItemAssets.Instance.woolSprite;
             case ItemType.IronOre: return ItemAssets.Instance.ironOreSprite;
             case ItemType.Furnace: return ItemAssets.Instance.furnaceSprite;
             case ItemType.Glass: return ItemAssets.Instance.glassSprite;
@@ -132,6 +134,7 @@ public class Item
             case ItemType.Wood:
             case ItemType.Plank:
             case ItemType.Sand:
+            case ItemType.Wool:
             case ItemType.IronOre:
             case ItemType.Furnace:
             case ItemType.Glass:
@@ -153,6 +156,8 @@ public class Item
                 return BlockType.Plank;
             case ItemType.Sand:
                 return BlockType.Sand;
+            case ItemType.Wool:
+                return BlockType.WoolWhite;
             case ItemType.IronOre:
                 return BlockType.IronOre;
             case ItemType.Furnace:

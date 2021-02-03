@@ -125,6 +125,9 @@ public class Block
         {BlockType.PlankD3, new Block(TileType.PlankD3)},
 
         {BlockType.WoolWhite, new Block(TileType.WoolWhite)},
+        {BlockType.WoolWhiteD1, new Block(TileType.WoolWhiteD1)},
+        {BlockType.WoolWhiteD2, new Block(TileType.WoolWhiteD2)},
+        {BlockType.WoolWhiteD3, new Block(TileType.WoolWhiteD3)},
         {BlockType.WoolBlack, new Block(TileType.WoolBlack)},
 
         {BlockType.DiamondOre, new Block(TileType.DiamondOre)},
@@ -220,6 +223,11 @@ public class Block
             case BlockType.SandD2:
             case BlockType.SandD3:
                 return new ParticleSystem.MinMaxGradient(new Color(1, .9f, .6f), new Color(.9f, .7f, .4f));
+            case BlockType.WoolWhite:
+            case BlockType.WoolWhiteD1:
+            case BlockType.WoolWhiteD2:
+            case BlockType.WoolWhiteD3:
+                return new ParticleSystem.MinMaxGradient(new Color(.7f, .7f, .7f), new Color(.9f, .9f, .9f));
             case BlockType.Plank:
             case BlockType.PlankD1:
             case BlockType.PlankD2:
@@ -266,6 +274,10 @@ public class Block
             case BlockType.SandD1:
             case BlockType.SandD2:
             case BlockType.SandD3:
+            case BlockType.WoolWhite:
+            case BlockType.WoolWhiteD1:
+            case BlockType.WoolWhiteD2:
+            case BlockType.WoolWhiteD3:
                 return Tools.ToolType.Shovel;
         }
     }

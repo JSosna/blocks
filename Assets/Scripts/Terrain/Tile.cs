@@ -138,7 +138,10 @@ public class Tile
         {TileType.PlankD3, new Tile(2, 3)},
 
         {TileType.WoolWhite, new Tile(3, 0)},
-        
+        {TileType.WoolWhiteD1, new Tile(3, 1)},
+        {TileType.WoolWhiteD2, new Tile(3, 2)},
+        {TileType.WoolWhiteD3, new Tile(3, 3)},
+
         {TileType.WoolBlack, new Tile(4, 0)},
         
         {TileType.DiamondOre, new Tile(5, 0)},

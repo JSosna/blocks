@@ -185,6 +185,22 @@ public class TerrainBuildingSystem : MonoBehaviour
             transform.GetChild(0).Find(currentToolName).GetComponent<Animator>().SetTrigger("Hit");
         }
 
+        RaycastHit animalHitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out animalHitInfo, maxDist - 3)) {
+            
+            if (button) {
+                if (animalHitInfo.collider.gameObject.tag == "Sheep") {
+                    var sheep = animalHitInfo.collider.GetComponent<Sheep>();
+
+                    if(sheep != null) {
+                        sheep.ReduceHealth(transform.position);
+                    }
+
+                    return;
+                }
+            }
+        }
+
 
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxDist, groundLayer))
@@ -250,6 +266,9 @@ public class TerrainBuildingSystem : MonoBehaviour
                         }
                         else if(block == BlockType.Sand) {
                             inventory.AddItem(new Item { itemType = ItemType.Sand, amount = 1 });
+                        }
+                        else if (block == BlockType.WoolWhite) {
+                            inventory.AddItem(new Item { itemType = ItemType.Wool, amount = 1 });
                         }
                         else if(block == BlockType.CoalOre) {
                             inventory.AddItem(new Item { itemType = ItemType.Coal, amount = 1 });
