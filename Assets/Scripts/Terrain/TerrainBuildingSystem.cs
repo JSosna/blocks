@@ -170,13 +170,14 @@ public class TerrainBuildingSystem : MonoBehaviour
     /// </param>
     private void HandleMouseClick(bool button)
     {
+
         // Check if holding sth edible and clicking right button
         if (!button) {
             if (inventory.EatSlotItemIfEdible(blockSelectCounter))
                 return;
-
+/*
             if (!inventory.IsSlotItemPlaceable(blockSelectCounter))
-                return;
+                return;*/
         }
 
 
@@ -333,7 +334,12 @@ public class TerrainBuildingSystem : MonoBehaviour
                     int blockHitY = Mathf.FloorToInt((hitInfo.point + transform.forward * .01f).y);
                     int blockHitZ = Mathf.FloorToInt((hitInfo.point + transform.forward * .01f).z) - chunkPosZ + 1;
 
-                    BlockType blockType = inventory.GetSlotItem(blockSelectCounter);
+                    BlockType blockType;
+
+                    if (inventory.GetItemTypeInSlot(blockSelectCounter) == ItemType.Mutton)
+                        blockType = BlockType.Air;
+                    else
+                        blockType = inventory.GetSlotItem(blockSelectCounter);
 
                     if (tc.blocks[blockHitX, blockHitY, blockHitZ] == BlockType.Furnace) {
                         if (blockType == BlockType.IronOre) {
@@ -342,6 +348,14 @@ public class TerrainBuildingSystem : MonoBehaviour
                         }
                         else if (blockType == BlockType.Sand) {
                             inventory.AddItem(ItemType.Glass, 1);
+                            return;
+                        }
+
+                        ItemType itemType = inventory.GetItemTypeInSlot(blockSelectCounter);
+                        if (itemType == ItemType.Mutton) {
+                            inventory.SubtractItem(ItemType.Mutton, 1);
+                            inventory.AddItem(ItemType.CookedMutton, 1);
+                            
                             return;
                         }
                     }

@@ -24,6 +24,8 @@ public class ItemAssets : MonoBehaviour
 
     // Food
     public Sprite appleSprite;
+    public Sprite muttonSprite;
+    public Sprite cookedMuttonSprite;
 
     // Other
     public Sprite stickSprite;

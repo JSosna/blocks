@@ -10,7 +10,6 @@ public class Sheep : MonoBehaviour
     [SerializeField]
     private Material redWool;
 
-    [SerializeField]
     private Inventory inventory;
 
     private Animator animator;
@@ -38,6 +37,10 @@ public class Sheep : MonoBehaviour
     private void Awake() {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+    }
+
+    internal void SetInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     void Update() {
@@ -113,6 +116,8 @@ public class Sheep : MonoBehaviour
     }
 
     public void ReduceHealth(Vector3 otherPosition) {
+        if (inventory == null) return;
+
         inventory.AddItem(new Item { itemType = ItemType.Wool, amount = 1 });
 
         health--;
@@ -123,6 +128,8 @@ public class Sheep : MonoBehaviour
         rigidbody.AddForce(direction * 10, ForceMode.Impulse);
 
         if (health <= 0) {
+            inventory.AddItem(new Item { itemType = ItemType.Mutton, amount = 2 });
+
             alive = false;
 
             transform.Find("Cube").GetComponent<SkinnedMeshRenderer>().materials = new Material[] { redWool, redWool, redWool, redWool, redWool, redWool };

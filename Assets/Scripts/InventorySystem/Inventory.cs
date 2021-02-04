@@ -127,7 +127,6 @@ public class Inventory: MonoBehaviour
 
                 if (item.IsEdible()) {
                     if (playerHealth.Health < 10) {
-                        Debug.Log("Inventory adding 2");
                         playerHealth.Health += 2;
 
                         item.amount--;

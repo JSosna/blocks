@@ -18,6 +18,8 @@ public enum ItemType
 
     // Edible
     Apple,
+    Mutton,
+    CookedMutton,
 
     // Other (crafting)
     Stick,
@@ -61,6 +63,8 @@ public class Item
             case ItemType.Torch: return ItemAssets.Instance.torchSprite;
 
             case ItemType.Apple: return ItemAssets.Instance.appleSprite;
+            case ItemType.Mutton: return ItemAssets.Instance.muttonSprite;
+            case ItemType.CookedMutton: return ItemAssets.Instance.cookedMuttonSprite;
 
             case ItemType.Stick: return ItemAssets.Instance.stickSprite;
             case ItemType.Coal: return ItemAssets.Instance.coalSprite;
@@ -100,6 +104,7 @@ public class Item
                 return false;
 
             case ItemType.Apple:
+            case ItemType.CookedMutton:
                 return true;
         }
     }
