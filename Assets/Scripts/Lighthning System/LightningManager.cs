@@ -20,7 +20,7 @@ public class LightningManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            TimeOfDay += Time.deltaTime / 15;
+            TimeOfDay += Time.deltaTime / 25;
             TimeOfDay %= 24;
             UpdateLightning(TimeOfDay / 24f);
         }

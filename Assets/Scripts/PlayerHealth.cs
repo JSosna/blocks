@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField]
+    private PauseMenu pauseMenu;
+
     private int _health = 10;
     public int Health {
         get {
@@ -43,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
     private void DisplayHealthStatus() {
         if(_health <= 0) {
             //TODO: Death screen
+            pauseMenu.OpenDeathMenu();
         }
 
         for (int i = 0; i < transform.childCount; i++) {

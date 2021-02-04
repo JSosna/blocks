@@ -69,7 +69,6 @@ public class MobSpawner : MonoBehaviour
 
         // If we can't - spawn sheep
         if (!onScreen) {
-            Debug.Log("Spawning sheep");
             var sheep = Instantiate(sheepPrefab, transform);
             sheep.GetComponent<Sheep>().SetInventory(inventory);
             sheep.transform.position = sheepPosition;

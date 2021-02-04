@@ -9,22 +9,31 @@ public class PauseMenu : MonoBehaviour
     public static bool SceneLoadingAgain = false;
 
     public GameObject PauseMenuUI;
-    
-    // Update is called once per frame
+    public GameObject DeathMenuUI;
+
+
+    private bool playerDead = false;
+
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GamePaused)
-            {
+        if (Input.GetKeyDown(KeyCode.Escape) && !playerDead) {
+            if(GamePaused) {
                 Resume();
             } 
-            else
-            {
+            else {
                 Pause();
             }
 
         }
+    }
+
+    public void OpenDeathMenu() {
+        DeathMenuUI.SetActive(true);
+        playerDead = true;
+
+        Time.timeScale = 0f;
+        GamePaused = true;
     }
 
     public void Resume()
@@ -51,15 +60,5 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void OpenSettings()
-    {
-
-    }
-
-    public void CloseSettings()
-    {
-
     }
 }
