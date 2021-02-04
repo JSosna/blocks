@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DisplayHealthStatus() {
         if(_health <= 0) {
-            //TODO: Death screen
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
             pauseMenu.OpenDeathMenu();
         }
 

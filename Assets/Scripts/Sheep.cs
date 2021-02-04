@@ -122,6 +122,7 @@ public class Sheep : MonoBehaviour
 
         health--;
         GetComponent<ParticleSystem>().Play();
+        FindObjectOfType<AudioManager>().Play("SheepHit");
 
         // Knockback
         Vector3 direction = (transform.position - new Vector3(otherPosition.x, transform.position.y - 5, otherPosition.z)).normalized;

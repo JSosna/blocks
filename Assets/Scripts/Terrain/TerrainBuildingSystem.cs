@@ -170,19 +170,20 @@ public class TerrainBuildingSystem : MonoBehaviour
     /// </param>
     private void HandleMouseClick(bool button)
     {
-
+        
         // Check if holding sth edible and clicking right button
         if (!button) {
-            if (inventory.EatSlotItemIfEdible(blockSelectCounter))
+            
+            if (inventory.EatSlotItemIfEdible(blockSelectCounter)) {
+                FindObjectOfType<AudioManager>().Play("Chew");
                 return;
-/*
-            if (!inventory.IsSlotItemPlaceable(blockSelectCounter))
-                return;*/
+            }
         }
-
+        else
+            FindObjectOfType<AudioManager>().Play("Swish");
 
         // Hit animation
-        if(transform.childCount  > 0) {
+        if (transform.childCount  > 0) {
             transform.GetChild(0).Find(currentToolName).GetComponent<Animator>().SetTrigger("Hit");
         }
 
@@ -230,6 +231,7 @@ public class TerrainBuildingSystem : MonoBehaviour
             // replace block with air if left click - (button == true)
             if (button)
             {
+
                 if (biy != 0) // we can't destroy blocks on the bottom of the map
                 {
 
@@ -359,11 +361,15 @@ public class TerrainBuildingSystem : MonoBehaviour
                             return;
                         }
                     }
+                    
 
-                    if (blockType != BlockType.Air)
+                    if (blockType != BlockType.Air) {
+                        FindObjectOfType<AudioManager>().Play("Place");
                         tc.blocks[bix, biy, biz] = blockType;
+                    }
 
                     if (blockType == BlockType.Torch) {
+                        FindObjectOfType<AudioManager>().Play("Place");
                         GameObject lightGameObject = Instantiate(torchLightPrefab, tc.transform);
                         lightGameObject.name = bix + " " + biy + " " + biz;
                         lightGameObject.transform.position = 

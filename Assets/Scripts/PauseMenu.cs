@@ -24,7 +24,6 @@ public class PauseMenu : MonoBehaviour
             else {
                 Pause();
             }
-
         }
     }
 
@@ -38,6 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
@@ -52,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         Resume();
         TerrainGenerator.InitialMapLoaded = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
@@ -59,6 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         Application.Quit();
     }
 }

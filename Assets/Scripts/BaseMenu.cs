@@ -39,4 +39,8 @@ public class BaseMenu : MonoBehaviour
     {
         CrossSceneData.Strength = value;
     }
+
+    public void Click() {
+        FindObjectOfType<AudioManager>().Play("Click");
+    }
 }
