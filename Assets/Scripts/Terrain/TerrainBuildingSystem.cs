@@ -16,6 +16,7 @@ public class TerrainBuildingSystem : MonoBehaviour
     private int blockSelectCounter = 0;
 
     public LayerMask groundLayer;
+    public LayerMask animalLayer;
 
     float maxDist = 7;
 
@@ -173,14 +174,10 @@ public class TerrainBuildingSystem : MonoBehaviour
         
         // Check if holding sth edible and clicking right button
         if (!button) {
-            
             if (inventory.EatSlotItemIfEdible(blockSelectCounter)) {
-                FindObjectOfType<AudioManager>().Play("Chew");
                 return;
             }
         }
-        else
-            FindObjectOfType<AudioManager>().Play("Swish");
 
         // Hit animation
         if (transform.childCount  > 0) {
@@ -188,7 +185,7 @@ public class TerrainBuildingSystem : MonoBehaviour
         }
 
         RaycastHit animalHitInfo;
-        if (Physics.Raycast(transform.position, transform.forward, out animalHitInfo, maxDist - 3)) {
+        if (Physics.Raycast(transform.position, transform.forward, out animalHitInfo, maxDist - 3, animalLayer)) {
             
             if (button) {
                 if (animalHitInfo.collider.gameObject.tag == "Sheep") {
@@ -244,6 +241,7 @@ public class TerrainBuildingSystem : MonoBehaviour
                     var main = ps.main;
                     BlockType blockType = tc.blocks[bix, biy, biz];
                     main.startColor = Block.GetBlockTypeParticlesGradient(blockType);
+                    FindObjectOfType<AudioManager>().Play(Block.GetBlockTypeHitSoundEffect(blockType));
 
                     BlockType? block = null;
 
@@ -261,36 +259,36 @@ public class TerrainBuildingSystem : MonoBehaviour
                         else if (block == BlockType.Stone) {
                             inventory.AddItem(new Item { itemType = ItemType.Stone, amount = 1 });
                         }
-                        else if(block == BlockType.Wood) {
+                        else if (block == BlockType.Wood) {
                             inventory.AddItem(new Item { itemType = ItemType.Wood, amount = 1 });
                         }
-                        else if(block == BlockType.Plank) {
+                        else if (block == BlockType.Plank) {
                             inventory.AddItem(new Item { itemType = ItemType.Plank, amount = 1 });
                         }
-                        else if(block == BlockType.Sand) {
+                        else if (block == BlockType.Sand) {
                             inventory.AddItem(new Item { itemType = ItemType.Sand, amount = 1 });
                         }
                         else if (block == BlockType.WoolWhite) {
                             inventory.AddItem(new Item { itemType = ItemType.Wool, amount = 1 });
                         }
-                        else if(block == BlockType.CoalOre) {
+                        else if (block == BlockType.CoalOre) {
                             inventory.AddItem(new Item { itemType = ItemType.Coal, amount = 1 });
                         }
-                        else if(block == BlockType.IronOre) {
+                        else if (block == BlockType.IronOre) {
                             inventory.AddItem(new Item { itemType = ItemType.IronOre, amount = 1 });
                         }
                         else if (block == BlockType.DiamondOre) {
                             inventory.AddItem(new Item { itemType = ItemType.Diamond, amount = 1 });
                         }
-                        else if(block == BlockType.Leaves) {
-                            if(Random.Range(1, 13) == 1) {
+                        else if (block == BlockType.Leaves) {
+                            if (Random.Range(1, 13) == 1) {
                                 inventory.AddItem(new Item { itemType = ItemType.Apple, amount = 1 });
                             }
                         }
                         else if (block == BlockType.Furnace) {
                             inventory.AddItem(new Item { itemType = ItemType.Furnace, amount = 1 });
                         }
-                        else if(block == BlockType.Torch) {
+                        else if (block == BlockType.Torch) {
                             // Remove torch light from chunk
                             for (int i = 0; i < tc.torches.Count; i++) {
                                 if (tc.torches[i].name == bix + " " + biy + " " + biz) {
@@ -303,6 +301,7 @@ public class TerrainBuildingSystem : MonoBehaviour
                             inventory.AddItem(new Item { itemType = ItemType.Torch, amount = 1 });
                         }
                     }
+                    
 
                     tc.RegenerateMesh();
 
@@ -381,5 +380,7 @@ public class TerrainBuildingSystem : MonoBehaviour
                 tc.RegenerateMesh();
             }
         }
+        else
+            FindObjectOfType<AudioManager>().Play("Swish");
     }
 }

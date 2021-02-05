@@ -19,7 +19,7 @@ public class MobSpawner : MonoBehaviour
     [SerializeField]
     private GameObject sheepPrefab;
 
-    private int maximumMobCount = 8;
+    private int maximumMobCount = 15;
 
     private readonly float mobRespawnCooldown = 10f;
 
@@ -31,7 +31,7 @@ public class MobSpawner : MonoBehaviour
     {
         // Destroy sheep if it is too far from the player
         for(int i=0; i<transform.childCount; i++) {
-            if(Vector3.Distance(transform.GetChild(i).position, playerTransform.position) > 250) {
+            if(Vector3.Distance(transform.GetChild(i).position, playerTransform.position) > 300) {
                 Destroy(transform.GetChild(i).gameObject);
             }
         }
@@ -46,9 +46,9 @@ public class MobSpawner : MonoBehaviour
 
     private void SpawnSheep() {
         var sheepPosition = new Vector3(
-                playerTransform.position.x + Random.Range(-120, 120),
+                playerTransform.position.x + Random.Range(-140, 140),
                 100,
-                playerTransform.position.z + Random.Range(-120, 120)
+                playerTransform.position.z + Random.Range(-140, 140)
             );
 
         // Find a position of the ground and move there

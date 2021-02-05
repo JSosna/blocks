@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6687971641053913908}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoneLegFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3807986976655152766}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8645051847831619346}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoneLegRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7593932047168241062}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoneLegFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6898997374639852413}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoneLegRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 5742821776506402554}
   - component: {fileID: 5742821776506402532}
   - component: {fileID: 5742821776506402555}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sheep
   m_TagString: Sheep
   m_Icon: {fileID: 0}
@@ -239,7 +239,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   redWool: {fileID: 2100000, guid: f47048b2400681e4199164f1901ae4ed, type: 2}
-  inventory: {fileID: 0}
 --- !u!65 &5742821776506402554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5042,7 +5041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6853398845120556939}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BoneBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5072,7 +5071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8537684557879740248}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5109,7 +5108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4731814684329011721}
   - component: {fileID: 5370097139984519425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
