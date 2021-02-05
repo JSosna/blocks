@@ -73,6 +73,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MouseLook.XSensitivity = 0;
                 m_MouseLook.YSensitivity = 0;
                 m_MouseLook.lockCursor = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else {
                 m_MouseLook.XSensitivity = m_BaseMouseXSensitivity;

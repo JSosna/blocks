@@ -3834,6 +3834,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  animalLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   torchLightPrefab: {fileID: 1216706051746100662, guid: dd55fc1295a2c7a40982ab41b29b5404, type: 3}
   blockHitParticlePrefab: {fileID: 6976230424857959919, guid: c22e4f350cf99474eb3c4f81bf639326, type: 3}
   tools: {fileID: 1516618872}

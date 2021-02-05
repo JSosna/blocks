@@ -17,14 +17,6 @@ public class Inventory: MonoBehaviour
 
     private void Start() {
         ui_Inventory.SetInventory(this);
-
-        AddItem(ItemType.Torch, 4);
-        AddItem(ItemType.Glass, 4);
-        AddItem(ItemType.Sand, 4);
-        AddItem(ItemType.Dirt, 4);
-        AddItem(ItemType.Wood, 4);
-        AddItem(ItemType.Plank, 4);
-        AddItem(ItemType.Stone, 4);
     }
 
     public void AddItem(Item item) {

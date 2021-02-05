@@ -25,18 +25,24 @@ public class MobSpawner : MonoBehaviour
 
     private float currentMobRespawnCooldown = 10f;
 
+    private readonly float mobDistanceCheckCooldown = 20f;
+    private float currentMobDistanceCheckCooldown = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        // Destroy sheep if it is too far from the player
-        for(int i=0; i<transform.childCount; i++) {
-            if(Vector3.Distance(transform.GetChild(i).position, playerTransform.position) > 300) {
-                Destroy(transform.GetChild(i).gameObject);
+        currentMobDistanceCheckCooldown += Time.deltaTime;
+        if(currentMobDistanceCheckCooldown >= mobDistanceCheckCooldown) {
+            // Destroy sheep if it is too far from the player
+            for (int i = 0; i < transform.childCount; i++) {
+                if (Vector3.Distance(transform.GetChild(i).position, playerTransform.position) > 300) {
+                    Destroy(transform.GetChild(i).gameObject);
+                }
             }
         }
 
-        if(transform.childCount < maximumMobCount) {
+
+        if (transform.childCount < maximumMobCount) {
             currentMobRespawnCooldown -= Time.deltaTime;
 
             if(currentMobRespawnCooldown <= 0)
