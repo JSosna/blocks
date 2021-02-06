@@ -100,8 +100,6 @@ public class TerrainGenerator : MonoBehaviour
     {
 
         float heightMap = GetHeightMap(chunkX, chunkZ, x, z, y - offsetY);
-        //return noise + noise2 + noise3 < TerrainChunk.chunkHeight;
-
 
         if (heightMap < TerrainChunk.chunkHeight)
         {
@@ -119,7 +117,7 @@ public class TerrainGenerator : MonoBehaviour
                 terrainChunk.blocks[x, y, z] = BlockType.Air;
                 return;
             }*/
-            else if (y < Random.Range(25, 30))
+            else if (y < Random.Range(28 , 33))
             {
                 terrainChunk.blocks[x, y, z] = BlockType.Stone;
 

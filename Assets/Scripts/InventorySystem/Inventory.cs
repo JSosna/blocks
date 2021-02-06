@@ -10,6 +10,8 @@ public class Inventory: MonoBehaviour
 
     [SerializeField]
     private UI_Inventory ui_Inventory;
+    [SerializeField]
+    private TaskManager taskManager;
 
 
     [SerializeField]
@@ -17,6 +19,7 @@ public class Inventory: MonoBehaviour
 
     private void Start() {
         ui_Inventory.SetInventory(this);
+        taskManager.SetInventory(this);
     }
 
     public void AddItem(Item item) {
@@ -179,5 +182,13 @@ public class Inventory: MonoBehaviour
     public void DeleteItem(Item item) {
         items.Remove(item);
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetItemTypeAmount(ItemType itemType) {
+        for(int i=0; i<items.Count; i++)
+            if (items[i].itemType == itemType)
+                return items[i].amount;
+
+        return 0;
     }
 }

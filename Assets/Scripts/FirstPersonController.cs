@@ -68,6 +68,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (PauseMenu.GamePaused){
                 m_MouseLook.XSensitivity = 0.03f;
                 m_MouseLook.YSensitivity = 0.03f;
+                m_MouseLook.lockCursor = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else if (UI_Inventory.InventoryOpened) {
                 m_MouseLook.XSensitivity = 0;
@@ -79,6 +82,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else {
                 m_MouseLook.XSensitivity = m_BaseMouseXSensitivity;
                 m_MouseLook.YSensitivity = m_BaseMouseYSensitivity;
+                m_MouseLook.lockCursor = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
 
 

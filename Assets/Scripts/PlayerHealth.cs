@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private const float healthReduceThreshold = 60f;
+    private const float healthReduceThreshold = 80f;
     private float timeLeftToReduceHealth;
 
     // Start is called before the first frame update
