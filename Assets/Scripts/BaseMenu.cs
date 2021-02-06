@@ -30,6 +30,11 @@ public class BaseMenu : MonoBehaviour
         CrossSceneData.ViewDistance = (int)value;
     }
 
+    public void HandleSoundVolumeSliderChange(float value) {
+        CrossSceneData.SoundVolume = value;
+        AudioListener.volume = value;
+    }
+
     public void HandleFrequencySliderChange(float value)
     {
         CrossSceneData.Frequency = value;

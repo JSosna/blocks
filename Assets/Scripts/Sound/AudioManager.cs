@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        AudioListener.volume = CrossSceneData.SoundVolume;
+
         if (instance == null)
             instance = this;
         else {
